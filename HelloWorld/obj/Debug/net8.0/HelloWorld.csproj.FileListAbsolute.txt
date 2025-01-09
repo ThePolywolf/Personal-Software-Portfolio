@@ -1,0 +1,14 @@
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/bin/Debug/net8.0/HelloWorld
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/bin/Debug/net8.0/HelloWorld.deps.json
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/bin/Debug/net8.0/HelloWorld.runtimeconfig.json
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/bin/Debug/net8.0/HelloWorld.dll
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/bin/Debug/net8.0/HelloWorld.pdb
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/obj/Debug/net8.0/HelloWorld.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/obj/Debug/net8.0/HelloWorld.AssemblyInfoInputs.cache
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/obj/Debug/net8.0/HelloWorld.AssemblyInfo.cs
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/obj/Debug/net8.0/HelloWorld.csproj.CoreCompileInputs.cache
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/obj/Debug/net8.0/HelloWorld.dll
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/obj/Debug/net8.0/refint/HelloWorld.dll
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/obj/Debug/net8.0/HelloWorld.pdb
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/obj/Debug/net8.0/HelloWorld.genruntimeconfig.cache
+/Users/dallinwolfer/Documents/Code/CSE 310/HelloWorld/obj/Debug/net8.0/ref/HelloWorld.dll

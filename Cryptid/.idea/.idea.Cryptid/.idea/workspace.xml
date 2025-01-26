@@ -7,59 +7,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55fae-79aa-4ff8-8299-c17630e5d64f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Cryptid/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Cryptid/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Cryptid/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Cryptid/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid.sln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Cryptid.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Encryption/EncryptionStack.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Encryption/EncryptionStackBuilder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Encryption/HexConverter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Encryption/HuffmanCompressor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Encryption/HuffmanNode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Encryption/IByteStringConverter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Encryption/ICompressor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Encryption/IEncrypter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Encryption/IHash.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Encryption/SHA256.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Encryption/UnitConversion.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/Cryptid.csproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/Cryptid.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/Cryptid.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.GlobalUsings.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cryptid/obj/rider.project.restore.info" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/CryptidUnitTesting.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/GlobalUsings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/HexConverterUnitTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/HuffmanCompressorUnitTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/SHA256UnitTesting.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/UnitConversionUnitTesting.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/CryptidUnitTesting.csproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/CryptidUnitTesting.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/CryptidUnitTesting.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.GlobalUsings.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.csproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/rider.project.restore.info" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
+    <list default="true" id="91b55fae-79aa-4ff8-8299-c17630e5d64f" name="Changes" comment="Corrected encapsulation">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cryptid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cryptid/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptid.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptid.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptid/bin/Debug/net8.0/Cryptid.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptid/bin/Debug/net8.0/Cryptid.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptid/bin/Debug/net8.0/Cryptid.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptid/bin/Debug/net8.0/Cryptid.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/Cryptid.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/ref/Cryptid.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/ref/Cryptid.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/refint/Cryptid.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptid/obj/Debug/net8.0/refint/Cryptid.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/bin/Debug/net8.0/Cryptid.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/bin/Debug/net8.0/Cryptid.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/bin/Debug/net8.0/Cryptid.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/bin/Debug/net8.0/Cryptid.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/bin/Debug/net8.0/CryptidUnitTesting.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/bin/Debug/net8.0/CryptidUnitTesting.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/bin/Debug/net8.0/CryptidUnitTesting.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/bin/Debug/net8.0/CryptidUnitTesting.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/CryptidUnitTesting.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/ref/CryptidUnitTesting.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/ref/CryptidUnitTesting.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/refint/CryptidUnitTesting.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CryptidUnitTesting/obj/Debug/net8.0/refint/CryptidUnitTesting.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,27 +72,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.Cryptid.executor": "Run",
-    "58c56b00-f81e-48fd-a74f-c8e84271fcf4.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "eb857466-9cc6-4c7a-9015-fccd95f2b8f9.executor": "Debug",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.Cryptid.executor&quot;: &quot;Run&quot;,
+    &quot;58c56b00-f81e-48fd-a74f-c8e84271fcf4.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;eb857466-9cc6-4c7a-9015-fccd95f2b8f9.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.Cryptid">
     <configuration name="Cryptid" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Cryptid/bin/Debug/net8.0/Cryptid" />
-      <option name="PROGRAM_PARAMETERS" value="decrypt SomeRandomFile.txt_250125_171247.enc" />
+      <option name="PROGRAM_PARAMETERS" value="decrypt SomeRandomFile.txt_250125_174329.enc" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Cryptid/bin/Debug/net8.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -157,7 +128,17 @@
       <workItem from="1737258193678" duration="1321000" />
       <workItem from="1737532837692" duration="394000" />
       <workItem from="1737834823198" duration="11821000" />
+      <workItem from="1737851261843" duration="1023000" />
     </task>
+    <task id="LOCAL-00001" summary="Corrected encapsulation">
+      <option name="closed" value="true" />
+      <created>1737851360355</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1737851360355</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +146,10 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Corrected encapsulation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrected encapsulation" />
+  </component>
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="RiderUnitTests">

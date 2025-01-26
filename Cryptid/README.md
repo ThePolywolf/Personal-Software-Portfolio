@@ -9,7 +9,7 @@ This software uses the following features of C#:
 - XUnit
 - Reading/writing to/from a file
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/SrtncFHRs2w)
 
 # Development Environment
 

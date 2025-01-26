@@ -14,7 +14,7 @@ public class HuffmanCompressor : ICompressor
     /// </summary>
     /// <param name="bytes">Bytes to count</param>
     /// <returns>Dictionary of bytes and their count</returns>
-    public static Dictionary<byte, int> GetByteCounts(byte[] bytes)
+    private static Dictionary<byte, int> GetByteCounts(byte[] bytes)
     {
         var byteCounts = new Dictionary<byte, int>();
         
@@ -30,7 +30,7 @@ public class HuffmanCompressor : ICompressor
     /// </summary>
     /// <param name="node">New node to insert</param>
     /// <param name="orderedStack">Empty stack, or stack ordered by occurrences (low to high)</param>
-    public static void OrderInStack(HuffmanNode node, ref Stack<HuffmanNode> orderedStack)
+    private static void OrderInStack(HuffmanNode node, ref Stack<HuffmanNode> orderedStack)
     {
         if (orderedStack.Count == 0)
         {
@@ -54,7 +54,7 @@ public class HuffmanCompressor : ICompressor
     /// </summary>
     /// <param name="byteCounts">Dictionary of byte patterns and the counts of their occurrences</param>
     /// <returns>A huffman encoding tree</returns>
-    public static HuffmanNode CreateTree(ref Dictionary<byte, int> byteCounts)
+    private static HuffmanNode CreateTree(ref Dictionary<byte, int> byteCounts)
     {
         // Create huffman nodes sorted in a stack of lowest to highest occurrences
         var nodes = new Stack<HuffmanNode>();

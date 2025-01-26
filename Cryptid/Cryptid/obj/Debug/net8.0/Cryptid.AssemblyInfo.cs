@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cryptid")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05119cfb8cc3653a2efe509a52ea008ea73072ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16bd211b1d15c199f1da3f52f710a80b5ede1961")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cryptid")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cryptid")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

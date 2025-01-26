@@ -4,6 +4,65 @@
     "/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/CryptidUnitTesting/CryptidUnitTesting.csproj": {}
   },
   "projects": {
+    "/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/Cryptid.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/Cryptid.csproj",
+        "projectName": "Cryptid",
+        "projectPath": "/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/Cryptid.csproj",
+        "packagesPath": "/Users/dallinwolfer/.nuget/packages/",
+        "outputPath": "/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/dallinwolfer/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/CryptidUnitTesting/CryptidUnitTesting.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -20,18 +79,28 @@
           "net8.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/Cryptid.csproj": {
+                "projectPath": "/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/Cryptid.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -75,7 +144,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/Users/dallinwolfer/.dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,15 @@
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/bin/Debug/net8.0/Cryptid
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/bin/Debug/net8.0/Cryptid.deps.json
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/bin/Debug/net8.0/Cryptid.runtimeconfig.json
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/bin/Debug/net8.0/Cryptid.dll
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/bin/Debug/net8.0/Cryptid.pdb
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/obj/Debug/net8.0/Cryptid.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/obj/Debug/net8.0/Cryptid.AssemblyInfoInputs.cache
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/obj/Debug/net8.0/Cryptid.AssemblyInfo.cs
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/obj/Debug/net8.0/Cryptid.csproj.CoreCompileInputs.cache
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/obj/Debug/net8.0/Cryptid.sourcelink.json
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/obj/Debug/net8.0/Cryptid.dll
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/obj/Debug/net8.0/refint/Cryptid.dll
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/obj/Debug/net8.0/Cryptid.pdb
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/obj/Debug/net8.0/Cryptid.genruntimeconfig.cache
+/Users/dallinwolfer/Documents/Code/CSE 310/Cryptid/Cryptid/obj/Debug/net8.0/ref/Cryptid.dll

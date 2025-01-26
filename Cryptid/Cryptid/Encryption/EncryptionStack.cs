@@ -1,48 +1,34 @@
+using System.Text;
+
 namespace Cryptid.Encryption;
 
+/// <summary>
+/// An encryption stack that compresses and encrypts plain text
+/// </summary>
+/// <param name="compressionSequence">A compression sequence; Each compression occurs in order</param>
+/// <param name="encryptionSequence">An encryption sequence; Each encryption occurs in order</param>
+/// <param name="byteStringConverter">Optional final encryption into a specified format. If null, converts into a UTF8 string</param>
 public class EncryptionStack(ICompressor[] compressionSequence, IEncrypter[] encryptionSequence, IByteStringConverter? byteStringConverter)
 {
-    private readonly ICompressor[] _compressionSequence = compressionSequence;
-    
-    private readonly IEncrypter[] _encryptionSequence = encryptionSequence;
-    
-    private readonly IByteStringConverter? _byteStringConverter = byteStringConverter;
-
     public string Encrypt(string plainText)
     {
-        // plainText to byte[]
-        
-        var bytes = Array.Empty<byte>();
+        var bytes = Encoding.UTF8.GetBytes(plainText);
 
-        foreach (var compressor in _compressionSequence)
-        {
-            bytes = compressor.Encrypt(bytes);
-        }
+        bytes = compressionSequence.Aggregate(bytes, (current, compressor) => compressor.Encrypt(current));
 
-        foreach (var encrypter in _encryptionSequence)
-        {
-            bytes = encrypter.Encrypt(bytes);
-        }
+        bytes = encryptionSequence.Aggregate(bytes, (current, encryptor) => encryptor.Decrypt(current));
         
-        // todo: null byte convertor to standard string
-        return _byteStringConverter?.ToString(bytes) ?? "";
+        return byteStringConverter?.ToString(bytes) ?? Encoding.UTF8.GetString(bytes);
     }
 
     public string Decrypt(string cipherText)
     {
-        var bytes = _byteStringConverter?.ToBytes(cipherText) ?? [];
+        var bytes = byteStringConverter?.ToBytes(cipherText) ?? [];
         
-        foreach (var encrypter in _encryptionSequence.Reverse())
-        {
-            bytes = encrypter.Decrypt(bytes);
-        }
-        
-        foreach (var compressor in _compressionSequence.Reverse())
-        {
-            bytes = compressor.Decrypt(bytes);
-        }
+        bytes = encryptionSequence.Reverse().Aggregate(bytes, (current, encryptor) => encryptor.Decrypt(current));
 
-        // bytes back into string
-        return "";
+        bytes = compressionSequence.Reverse().Aggregate(bytes, (current, compressor) => compressor.Decrypt(current));
+
+        return Encoding.UTF8.GetString(bytes);
     }
 }

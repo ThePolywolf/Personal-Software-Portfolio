@@ -1,0 +1,566 @@
+id,stage,name,from,hp,type,ability,a1cost,a1name,a1damage,a1bonus,a1bonusDmg,a2cost,a2name,a2damage,a2bonus,a2bonusDmg,weakness,retreat,rarity
+ga1,0,bulbasaur,,70,grass,,gx,vine whip,40,,,,,,,,fire,1,1d
+ga2,1,ivysaur,bulbasaur,90,grass,,gxx,razor leaf,60,,,,,,,,fire,2,2d
+ga3,2,venusaur,ivysaur,160,grass,,ggxx,mega drain,80,heal,30,,,,,,fire,3,3d
+ga4,2,venusaur EX,ivysaur,190,grass,,gxx,razor leaf,60,,,ggxx,giant bloom,100,heal,30,fire,3,4d
+ga5,0,caterpie,,50,grass,,x,find a friend,,,,,,,,,fire,1,1d
+ga6,1,metapod,caterpie,80,grass,,xx,bug bite,30,,,,,,,,fire,2,1d
+ga7,2,butterfree,metapod,120,grass,powder hear,gxx,gust,60,,,,,,,,fire,1,3d
+ga8,0,weedle,,50,grass,,g,sting,20,,,,,,,,fire,1,1d
+ga9,1,kakuna,weedle,80,grass,,g,bug bite,30,,,,,,,,fire,2,2d
+ga10,2,beedrill,kakuna,120,grass,,g,sharp sting,70,,,,,,,,fire,1,3d
+ga11,0,oddish,,60,grass,,g,ram,20,,,,,,,,fire,1,1d
+ga12,1,gloom,oddish,80,grass,,gx,drool,40,,,,,,,,fire,2,2d
+ga13,2,vileplume,gloom,140,grass,,ggx,soothing scent,80,sleep,,,,,,,fire,3,3d
+ga14,0,paras,,70,grass,,gx,scratch,30,,,,,,,,fire,1,1d
+ga15,1,parasect,paras,120,grass,,ggx,slash,80,,,,,,,,fire,2,2d
+ga16,0,venonat,,60,grass,,g,tackle,20,,,,,,,,fire,1,1d
+ga17,1,venomoth,venonat,80,grass,,g,poison powder,30,poison,,,,,,,fire,1,1d
+ga18,0,bellsprout,,60,grass,,g,vine whip,20,,,,,,,,fire,1,1d
+ga19,1,weepinbell,bellsprout,90,grass,,gx,razor leaf,40,,,,,,,,fire,2,2d
+ga20,2,victreebel,weepinbell,140,grass,fragrance trap,gx,vine whip,60,,,,,,,,fire,2,3d
+ga21,0,exeggute,,50,grass,,g,seed bomb,20,,,,,,,,fire,1,1d
+ga22,1,exeggutor,exeggute,130,grass,,g,stomp,30,coin-1,30,,,,,,fire,3,3d
+ga23,1,exeggutor EX,exeggute,160,grass,,g,tropical swing,40,coin-1,40,,,,,,fire,3,4d
+ga24,0,tangela,,80,grass,,gx,absorb,40,heal,10,,,,,,fire,2,1d
+ga25,0,scyther,,70,grass,,g,sharp scythe,30,,,,,,,,fire,1,1d
+ga26,0,pinsir,,90,grass,,gg,double horn,0,coin-2,50,,,,,,fire,2,2d
+ga27,0,cottonee,,50,grass,,x,attach,10,,,,,,,,fire,1,1d
+ga28,1,whimsicott,cottonee,80,grass,,x,rolling tackle,40,,,,,,,,fire,1,2d
+ga29,0,petilil,,60,grass,,g,blot,10,heal,10,,,,,,fire,1,1d
+ga30,1,lilligant,petilil,100,grass,,gg,leaf supply,,,,,,,,,fire,1,2d
+ga31,0,skiddo,,70,grass,,x,suprise attack,0,coin-1,40,,,,,,fire,1,1d
+ga32,1,gogoat,skiddo,120,grass,,gxx,razor leaf,70,,,,,,,,fire,2,1d
+ga33,0,charmander,,60,fire,,r-r,ember,30,,,,,,,,water,1,1d
+ga34,1,charmeleon,charmander,90,fire,,rxx,fire claws,60,,,,,,,,water,2,2d
+ga35,2,charizard,charmeleon,150,fire,,rrxx-rr,fire spin,150,,,,,,,,water,2,3d
+ga36,2,charizard EX,charmeleon,180,fire,,rxx,slash,60,,,rrxx-rr,crimson storm,200,,,water,2,4d
+ga37,0,vulpix,,50,fire,,x,tail whip,0,\no attack,,,,,,,water,1,1d
+ga38,1,ninetales,vulpix,90,fire,,rr-r,flamethrower,90,,,,,,,,water,1,2d
+ga39,0,growlithe,,70,fire,,xx,bite,20,,,,,,,,water,1,1d
+ga40,1,arcanine,growlithe,130,fire,,rrx,heat tackle,100,recoil,20,,,,,,water,2,3d
+ga41,1,arcanine EX,growlithe,150,fire,,rrx,inferno onrush,120,recoil,20,,,,,,water,2,4d
+ga42,0,ponyta,,60,fire,,r,flare,20,,,,,,,,water,1,1d
+ga43,1,rapidash,rapidash,100,fire,,r,fire mane,40,,,,,,,,water,1,2d
+ga44,0,magmar,,80,fire,,rr,magma punch,50,,,,,,,,water,2,1d
+ga45,1,flareon,eevee,120,fire,,rxx-r,flamethrower,110,,,,,,,,water,2,3d
+ga46,0,moltres,,100,fire,,rxx,sky attack,0,coin-1,130,,,,,,electric,1,3d
+ga47,0,moltres EX,,140,fire,,r,inferno dance,,,,rxx,heat blast,70,,,electric,2,4d
+ga48,0,heatmor,,80,fire,,r,combustion,30,,,,,,,,water,1,1d
+ga49,0,salandit,,60,fire,,r,scratch,20,,,,,,,,water,1,1d
+ga50,1,slazzle,salandit,90,fire,,rx,fire claws,60,,,,,,,,water,1,1d
+ga51,0,sizzlipede,,60,fire,,x,gnaw,10,,,,,,,,water,1,1d
+ga52,1,centiskorch,sizzlipede,130,fire,,rxxx-r,fire blast,130,,,,,,,,water,3,2d
+ga53,0,squirtle,,60,water,,w,water gun,20,,,,,,,,electric,1,1d
+ga54,1,wartortle,squirtle,80,water,,wx,wave splash,40,,,,,,,,electric,1,2d
+ga55,2,blastoise,wartortle,150,water,,wwx,hydro pump,80,water-2,60,,,,,,electric,3,3d
+ga56,2,blastoise EX,wartortle,180,water,,wx,surf,40,,,wwx,hydro bazooka,100,water-2,60,electric,3,4d
+ga57,0,psyduck,,60,water,,x,headache,10,no support,,,,,,,electric,1,1d
+ga58,1,golduck,psyduck,90,water,,ww,aqua jet,70,,,,,,,,electric,1,2d
+ga59,0,poliwag,,60,water,,x,razor fin,10,,,,,,,,electric,1,1d
+ga60,1,poliwhirl,poliwag,90,water,,xx,knuckle punch,40,,,,,,,,electric,2,2d
+ga61,2,poliwrath,poliwhirl,150,water,counterattack,wxx,mega punch,80,,,,,,,,electric,2,3d
+ga62,0,tentacool,,60,water,,w,gentle slap,20,,,,,,,,electric,1,1d
+ga63,1,tentacruel,tentacool,110,water,,wx,poison tentacles,50,poison,,,,,,,electric,2,2d
+ga64,0,seel,,80,water,,xx,headbutt,30,,,,,,,,electric,2,1d
+ga65,1,dewgong,seel,120,water,,www,surf,90,,,,,,,,electric,3,2d
+ga66,0,shellder,,60,water,,w,tounge slap,20,,,,,,,,electric,1,1d
+ga67,1,cloyster,shellder,120,water,shell armor,wwx,surf,70,,,,,,,,electric,3,2d
+ga68,0,krabby,,70,water,,wx,vice grip,40,,,,,,,,electric,2,1d
+ga69,1,kingler,krabby,120,water,,wwx,KO Crab,,,,,,,,,electric,3,2d
+ga70,0,horsea,,60,water,,w,water gun,20,,,,,,,,electric,1,1d
+ga71,1,seadra,horsea,70,water,,www,water arrow,0,free,50,,,,,,electric,1,2d
+ga72,0,goldeen,,60,water,,xx,flop,10,,,,,,,,electric,1,1d
+ga73,1,seaking,goldeen,100,water,,w,horn hazard,0,coin-1,80,,,,,,electric,1,1d
+ga74,0,staryu,,50,water,,w,smack,20,,,,,,,,electric,1,1d
+ga75,1,starmie,staryu,90,water,,w,wave splash,40,,,,,,,,electric,0,2d
+ga76,1,starmie EX,staryu,130,water,,ww,hydro pump,90,,,,,,,,electric,0,4d
+ga77,0,magikarp,,30,water,,x,splash,10,,,,,,,,electric,1,1d
+ga78,1,gyarados,magikarp,150,water,,wwww,hyper beam,100,energy discard,,,,,,,electric,4,3d
+ga79,0,lapras,,100,water,,w,hydro pump,20,water-3,70,,,,,,electric,2,3d
+ga80,1,vaporeon,eevee,130,water,,wxx,bubble drain,60,heal,30,,,,,,electric,2,3d
+ga81,1,omanyte,helix fossil,90,water,,w,water gun,40,,,,,,,,electric,1,2d
+ga82,2,omastar,omanyte,140,water,,wxx,ancient whirlpool,70,no attack,,,,,,,electric,2,3d
+ga83,0,articuno,,100,water,,wwx,ice beam,60,\paralysis,,,,,,,electric,1,3d
+ga84,0,articuno EX,,140,water,,wx,ice wing,40,,,www,blizzard,80,bTarget-all,10,electric,2,4d
+ga85,0,ducklett,,50,water,,xx,flap,30,,,,,,,,electric,1,1d
+ga86,1,swanna,ducklett,90,water,,xxx,wing attack,70,,,,,,,,electric,1,2d
+ga87,0,froakie,,60,water,,x,flop,10,,,,,,,,electric,1,1d
+ga88,1,frogadier,froakie,80,water,,x,water drip,30,,,,,,,,electric,1,2d
+ga89,2,greninja,frogadier,120,water,water shuriken,wx,mist slash,60,,,,,,,,electric,1,3d
+ga90,0,pyukumuku,,70,water,,w,rain splash,30,,,,,,,,electric,1,1d
+ga91,0,bruxish,,90,water,,wx,second strike,10,damaged,60,,,,,,electric,1,2d
+ga92,0,snom,,50,water,,x,ram,10,,,,,,,,metal,1,1d
+ga93,1,frosmoth,snom,90,water,,wx,powder snow,40,sleep,,,,,,,metal,1,2d
+ga94,0,pikachu,,60,electric,,e,gnaw,20,,,,,,,,fighting,1,1d
+ga95,1,raichu,pikachu,100,electric,,eee-[*],thunderbolt,140,,,,,,,,fighting,1,3d
+ga96,0,pikachu EX,,120,electric,,eee,circle circuit,0,bench-e,30,,,,,,fighting,1,4d
+ga97,0,magnemite,,60,electric,,e,lightning ball,20,,,,,,,,fighting,1,1d
+ga98,1,magneton,magnemite,80,electric,,exxx,spinning attack,60,,,,,,,,fighting,2,3d
+ga99,0,voltorb,,60,electric,,e,tackle,20,,,,,,,,fighting,1,1d
+ga100,1,electrode,voltorb,80,electric,,eee,electro ball,70,,,,,,,,fighting,0,2d
+ga101,0,electabuzz,,70,electric,,eee,thunder punch,,,,,,,,,fighting,1,1d
+ga102,1,jolteon,eevee,90,electric,,exxx,pin missile,0,coin-4,40,,,,,,fighting,1,3d
+ga103,0,zapdos,,100,electric,,eex,raging thunder,100,bTarget-self,30,,,,,,electric,1,3d
+ga104,0,zapdos EX,,130,electric,,e,peck,20,,,eee,thundering hurricane,0,coin-4,50,electric,1,4d
+ga105,0,blitzle,,60,electric,,e,zap kick,20,,,,,,,,fighting,1,1d
+ga106,1,zebstrika,blitzle,90,electric,,e,thunder spear,0,bTarget-1,30,,,,,,fighting,1,1d
+ga107,0,tynamo,,30,electric,,e,tiny charge,30,,,,,,,,fighting,1,1d
+ga108,1,eelektrik,tynamo,80,electric,,e,head bolt,40,,,,,,,,fighting,2,2d
+ga109,2,eelektross,eelektrik,140,electric,,eex,thunder fang,80,\paralysis,,,,,,,fighting,3,3d
+ga110,0,helioptile,,60,electric,,e,tail whap,20,,,,,,,,fighting,1,1d
+ga111,1,heliolisk,helioptile,90,electric,,xx,quick attack,40,coin-1,40,,,,,,fighting,1,1d
+ga112,0,pincurchin,,70,electric,,ee,thunder shock,30,\paralysis,,,,,,,fighting,1,1d
+ga113,0,clefairy,,60,psychic,,p,slap,20,,,,,,,,metal,1,1d
+ga114,1,clefable,clefairy,100,psychic,,p,magical shot,40,,,,,,,,metal,1,2d
+ga115,0,abra,,60,psychic,,x,teleport,,,,,,,,,dark,1,1d
+ga116,1,kadabra,abra,80,psychic,,pxx,super psy bolt,60,,,,,,,,dark,1,2d
+ga117,2,alakazam,kadabra,130,psychic,,pxx,psychic,60,energy,30,,,,,,dark,2,3d
+ga118,0,slowpoke,,70,psychic,,px,tail whap,30,,,,,,,,dark,2,1d
+ga119,1,slowbro,slowpoke,130,psychic,,ppx,super psy bolt,80,,,,,,,,dark,3,2d
+ga120,0,gastly,,60,psychic,,p,suffocating gas,20,,,,,,,,dark,1,1d
+ga121,1,haunter,gastly,80,psychic,,p,will-o-wisp,30,,,,,,,,dark,1,2d
+ga122,2,gengar,haunter,130,psychic,,p,bother,50,no support,,,,,,,dark,2,3d
+ga123,2,gengar EX,haunter,170,psychic,shadowy spellbind,ppp,spooky shot,100,,,,,,,,dark,2,4d
+ga124,0,drowzee,,70,psychic,,px,mumble,30,,,,,,,,dark,2,1d
+ga125,1,hypno,drowzee,100,psychic,sleep pendelum,ppx,psypunch,50,,,,,,,,dark,2,3d
+ga126,0,mr. mime,,80,psychic,,px,barrier attack,30,defend,20,,,,,,dark,1,2d
+ga127,0,jynx,,80,psychic,,px,psychic,30,energy,20,,,,,,dark,1,1d
+ga128,0,mewtwo,,120,psychic,,ppxx-pp,power blast,120,,,,,,,,dark,2,3d
+ga129,0,mewtwo EX,,150,psychic,,px,psychic sphere,50,,,ppxx-pp,psydrive,150,,,dark,2,4d
+ga130,0,ralts,,60,psychic,,x,ram,10,,,,,,,,dark,1,1d
+ga131,1,kirlia,ralts,80,psychic,,px,smack,30,,,,,,,,dark,1,2d
+ga132,2,gardevoir,kirlia,110,psychic,psy shadow,ppx,psyshot,60,,,,,,,,dark,2,3d
+ga133,0,woobat,,60,psychic,,x,gnaw,10,,,,,,,,dark,1,1d
+ga134,1,swoobat,woobat,90,psychic,,px,heart stamp,60,,,,,,,,dark,1,1d
+ga135,0,golett,,90,psychic,,pxx,mega punch,50,,,,,,,,dark,3,1d
+ga136,1,golurk,golett,140,psychic,,ppxx,double lariat,0,coin-2,100,,,,,,dark,4,2d
+ga137,0,sandshrew,,70,fighting,,f,scratch,10,,,,,,,,grass,1,1d
+ga138,1,sandslash,sandshrew,100,fighting,,ff,slash,70,,,,,,,,grass,2,2d
+ga139,0,diglett,,50,fighting,,f,mud-slap,20,,,,,,,,grass,1,1d
+ga140,1,dugtrio,diglett,70,fighting,,f,dig,40,\invulnerable,,,,,,,grass,1,2d
+ga141,0,mankey,,60,fighting,,f,low kick,20,,,,,,,,psychic,1,1d
+ga142,1,primape,mankey,90,fighting,,ff,fight back,40,hurt,60,,,,,,psychic,1,2d
+ga143,0,machop,,70,fighting,,f,knuckle punch,20,,,,,,,,psychic,2,1d
+ga144,1,machoke,machop,100,fighting,,ff,strength,50,,,,,,,,psychic,2,2d
+ga145,2,machamp,machoke,150,fighting,,fff,seismic toss,100,,,,,,,,psychic,3,3d
+ga146,2,machamp EX,machoke,180,fighting,,fff,mega punch,120,,,,,,,,psychic,3,4d
+ga147,0,geodude,,70,fighting,,f,tackle,20,,,,,,,,grass,2,1d
+ga148,1,graveler,geodude,100,fighting,,fxx,rollout,70,,,,,,,,grass,3,2d
+ga149,2,golem,graveler,160,fighting,,fxxx,double-edge,150,recoil,50,,,,,,grass,4,3d
+ga150,0,onix,,110,fighting,,fff,land crush,70,,,,,,,,grass,4,2d
+ga151,0,cubone,,60,fighting,,x,growl,0,defend,20,,,,,,grass,1,1d
+ga152,1,marowak,cubone,100,fighting,,f,bone beatdown,40,,,,,,,,grass,1,2d
+ga153,1,marowak EX,cubone,140,fighting,,ff,boomerang,0,coin-2,80,,,,,,grass,1,4d
+ga154,0,hitmonlee,,80,fighting,,f,stretch kick,0,bTarget-1,30,,,,,,psychic,1,1d
+ga155,0,hitmonchan,,80,fighting,,f,jab,30,,,,,,,,psychic,1,1d
+ga156,0,rhyhorn,,80,fighting,,ffx,tackle,60,,,,,,,,grass,3,1d
+ga157,1,rhydon,rhyhorn,120,fighting,,fffx,horn drill,100,,,,,,,,grass,4,2d
+ga158,1,kabuto,dome fossil,90,fighting,,f,shell attack,40,,,,,,,,grass,1,2d
+ga159,2,kabutops,kabuto,140,fighting,,f,leech life,,,,,,,,,grass,1,3d
+ga160,0,mienfoo,,60,fighting,,x,pound,20,,,,,,,,psychic,1,1d
+ga161,1,mienshao,mienfoo,80,fighting,,x,spiral kick,40,,,,,,,,psychic,1,2d
+ga162,0,clobbopus,,80,fighting,,fx,knuckle punch,30,,,,,,,,psychic,2,1d
+ga163,1,grapploct,clobbobus,130,fighting,,ffx,knock back,,,,,,,,,psychic,3,2d
+ga164,0,ekans,,60,dark,,d,bite,20,,,,,,,,fighting,1,1d
+ga165,1,arbok,ekans,100,dark,,dx,corner,60,no retreat,,,,,,,fighting,2,2d
+ga166,0,nidoran f,,60,dark,,d,call for family,,,,,,,,,fighting,1,1d
+ga167,1,nidorina,nidoran f,80,dark,,d,bite,30,,,,,,,,fighting,1,2d
+ga168,2,nidoqueen,nidorina,140,dark,,ddx,lovestrike,80,bench-nidoking,80,,,,,,fighting,2,3d
+ga169,0,nidoran m,,60,dark,,d,peck,20,,,,,,,,fighting,1,1d
+ga170,1,nidorino,nidoran m,90,dark,,dx,horn attack,40,,,,,,,,fighting,2,2d
+ga171,2,nidoking,nidorino,150,dark,,ddx,poison horn,90,poison,,,,,,,fighting,3,3d
+ga172,0,zubat,,50,dark,,x,glide,10,,,,,,,,fighting,1,1d
+ga173,1,golbat,zubat,70,dark,,x,wing attack,40,,,,,,,,fighting,1,2d
+ga174,0,grimer,,70,dark,,d,poison gas,10,poison,,,,,,,fighting,3,1d
+ga175,1,muk,grimer,130,dark,,ddx,venoshock,70,poisoned,50,,,,,,fighting,3,3d
+ga176,0,koffing,,70,dark,,d,suffocating gas,20,,,,,,,,fighting,1,1d
+ga177,1,wheezing,koffing,110,dark,,d,tackle,30,,,,,,,,fighting,3,3d
+ga178,0,mawile,,70,metal,,m,crunch,20,\energy discard,,,,,,,fire,1,1d
+ga179,0,pawniard,,50,metal,,m,pierce,30,,,,,,,,fire,1,1d
+ga180,1,bisharp,pawniard,90,metal,,mm,metal claw,70,,,,,,,,fire,1,2d
+ga181,0,meltan,,60,metal,,m+m,amass,0,,,,,,,,fire,1,1d
+ga182,1,melmetal,meltan,130,metal,hard coat,mmmx,heavy impact,120,,,,,,,,fire,3,3d
+ga183,0,dratini,,70,dragon,,we,ram,40,,,,,,,,,1,1d
+ga184,1,dragonair,dratini,100,dragon,,wex,tail smack,80,,,,,,,,,1,2d
+ga185,2,dragonite,dragonair,160,dragon,,wexx,draco meteor,0,random-4,50,,,,,,,3,3d
+ga186,0,pidgey,,60,normal,,x,gust,10,,,,,,,,electric,1,1d
+ga187,1,pidgeotto,pidgey,80,normal,,x,gust,30,,,,,,,,electric,1,1d
+ga188,2,pidgeot,pidgeotto,130,normal,drive off,xx,wing attack,70,,,,,,,,electric,1,3d
+ga189,0,rattata,,40,normal,,x,gnaw,20,,,,,,,,fighting,1,1d
+ga190,1,raticate,rattata,80,normal,,x,bite,40,,,,,,,,fighting,1,1d
+ga191,0,spearow,,60,normal,,x,peck,20,,,,,,,,electric,1,1d
+ga192,1,fearow,spearow,100,normal,,xx,drill run,50,\energy discard,,,,,,,electric,1,1d
+ga193,0,jigglypuff,,60,normal,,xx,pound,30,,,,,,,,fighting,1,1d
+ga194,1,wigglytuff,jigglypuff,100,normal,,xx,hyper voice,60,,,,,,,,fighting,2,1d
+ga195,1,wigglytuff EX,jigglypuff,140,normal,,xxx,sleepy song,80,sleep,,,,,,,fighting,2,4d
+ga196,0,meowth,,60,normal,,x,pay day,10,draw,1,,,,,,fighting,1,1d
+ga197,1,persian,meowth,90,normal,,xx,shadow claw,40,\discard,,,,,,,fighting,1,2d
+ga198,0,farfech'd,,60,normal,,x,leek slap,40,,,,,,,,electric,1,1d
+ga199,0,doduo,,60,normal,,x,peck,20,,,,,,,,electric,1,1d
+ga200,1,dodrio,doduo,80,normal,,x,drill peck,40,,,,,,,,electric,0,2d
+ga201,0,lickitung,,90,normal,,xxx,continuous lick,0,allCoins,60,,,,,,fighting,3,2d
+ga202,0,chancey,,120,normal,,xxx,gentle slap,60,,,,,,,,fighting,3,2d
+ga203,0,kangaskhan,,100,normal,,x,dizzy punch,0,coin-2,30,,,,,,fighting,3,3d
+ga204,0,tauros,,100,normal,,xx,horn attack,50,,,,,,,,fighting,2,2d
+ga205,0,ditto,,70,normal,,x,copy anything,,,,,,,,,fighting,1,3d
+ga206,0,eevee,,60,normal,,x,tackle,20,,,,,,,,fighting,1,1d
+ga207,0,eevee,,60,normal,,x,tackle,20,,,,,,,,fighting,1,1d
+ga208,0,eevee,,60,normal,,x,tackle,20,,,,,,,,fighting,1,1d
+ga209,0,porygon,,50,normal,data scan,x,sharpen,20,,,,,,,,fighting,1,2d
+ga210,1,aerodactyl,old amber,100,normal,,xx,primal wingbeat,0,\shuffle,,,,,,,electric,1,3d
+ga211,0,snorlax,,150,normal,,xxxx,rollout,70,,,,,,,,fighting,4,3d
+ga212,0,minccino,,60,normal,,x,tail smack,20,,,,,,,,fighting,1,1d
+ga213,1,cinccino,minccino,90,normal,,xxx,do the wave,0,bench-all,30,,,,,,fighting,1,2d
+ga214,0,wooloo,,70,normal,,xx,tackle,30,,,,,,,,fighting,1,1d
+ga215,1,dubwool,wooloo,120,normal,,xxx,rolling tackle,80,,,,,,,,fighting,2,1d
+ga227,0,bulbasaur,,70,grass,,gx,vine whip,40,,,,,,,,fire,1,1s
+ga228,1,gloom,oddish,80,grass,,gx,drool,40,,,,,,,,fire,2,1s
+ga229,0,pinsir,,90,grass,,gg,double horn,0,coin-2,50,,,,,,fire,2,1s
+ga230,0,charmander,,60,fire,,r-r,ember,30,,,,,,,,water,1,1s
+ga231,1,rapidash,rapidash,100,fire,,r,fire mane,40,,,,,,,,water,1,1s
+ga232,0,squirtle,,60,water,,w,water gun,20,,,,,,,,electric,1,1s
+ga233,1,gyarados,magikarp,150,water,,wwww,hyper beam,100,energy discard,,,,,,,electric,4,1s
+ga234,0,lapras,,100,water,,w,hydro pump,20,water-3,70,,,,,,electric,2,1s
+ga235,1,electrode,voltorb,80,electric,,eee,electro ball,70,,,,,,,,fighting,0,1s
+ga236,2,alakazam,kadabra,130,psychic,,pxx,psychic,60,energy,30,,,,,,dark,2,1s
+ga237,0,slowpoke,,70,psychic,,px,tail whap,30,,,,,,,,dark,2,1s
+ga238,0,diglett,,50,fighting,,f,mud-slap,20,,,,,,,,grass,1,1s
+ga239,0,cubone,,60,fighting,,x,growl,0,defend,20,,,,,,grass,1,1s
+ga240,2,nidoqueen,nidorina,140,dark,,ddx,lovestrike,80,bench-nidoking,50,,,,,,fighting,2,1s
+ga241,2,nidoking,nidorino,150,dark,,ddx,poison horn,90,poison,,,,,,,fighting,3,1s
+ga242,1,golbat,zubat,70,dark,,x,wing attack,40,,,,,,,,fighting,1,1s
+ga243,1,weezing,koffing,110,dark,,d,tackle,30,,,,,,,,fighting,3,1s
+ga244,2,dragonite,dragonair,150,dragon,,wexx,draco meteor,0,random-4,50,,,,,,,3,1s
+ga245,2,pidgeot,pidgeotto,130,normal,drive off,xx,wing attack,70,,,,,,,,electric,1,1s
+ga246,0,meowth,,60,normal,,x,pay day,10,draw,1,,,,,,fighting,1,1s
+ga247,0,ditto,,70,normal,,x,copy anything,,,,,,,,,fighting,1,1s
+ga248,0,eevee,,60,normal,,x,tackle,20,,,,,,,,fighting,1,1s
+ga249,0,porygon,,50,normal,data scan,x,sharpen,20,,,,,,,,fighting,1,1s
+ga250,0,snorlax,,150,normal,,xxxx,rollout,70,,,,,,,,fighting,4,1s
+ga251,2,venusaur EX,ivysaur,180,grass,,gxx,razor leaf,60,,,ggxx,giant bloom,100,heal,30,fire,3,2s
+ga252,1,exeggutor EX,exeggute,160,grass,,g,tropical swing,40,coin-1,40,,,,,,fire,3,2s
+ga253,2,charizard EX,charmeleon,180,fire,,rxx,slash,60,,,rrxx-rr,crimson storm,200,,,water,2,2s
+ga254,1,arcanine EX,growlithe,150,fire,,rrx,inferno onrush,120,recoil,20,,,,,,water,2,2s
+ga255,0,moltres EX,,140,fire,,r,inferno dance,,,,rxx,heat blast,70,,,electric,2,2s
+ga256,2,blastoise EX,wartortle,180,water,,wx,surf,40,,,wwx,hydro bazooka,100,water-2,60,electric,3,2s
+ga257,1,starmie EX,staryu,130,water,,ww,hydro pump,90,,,,,,,,electric,0,2s
+ga258,0,articuno EX,,140,water,,wx,ice wing,40,,,www,blizzard,80,bTarget-all,10,electric,2,2s
+ga259,0,pikachu EX,,120,electric,,eee,circle circuit,0,bench-e,30,,,,,,fighting,1,2s
+ga260,0,zapdos EX,,130,electric,,e,peck,20,,,eee,thundering hurricane,0,coin-4,50,electric,1,2s
+ga261,2,gengar EX,haunter,170,psychic,shadow spellbind,ppp,spooky shot,100,,,,,,,,dark,2,2s
+ga262,0,mewtwo EX,,150,psychic,,px,psychic sphere,50,,,ppxx-pp,psyshot,150,,,dark,2,2s
+ga263,1,marowak EX,cubone,140,fighting,,ff,bonerang,0,coin-2,80,,,,,,grass,1,2s
+ga264,2,machamp EX,machoke,180,fighting,,fff,mega punch,120,,,,,,,,psychic,3,2s
+ga265,1,wigglytuff EX,jigglypuff,140,normal,,xxx,sleepy song,80,sleep,,,,,,,fighting,2,2s
+ga274,0,moltres EX,,140,fire,,r,inferno dance,,,,rxx,heat blast,70,,,electric,2,2s
+ga275,0,articuno EX,,140,water,,wx,ice wing,40,,,www,blizzard,80,bTarget-all,10,electric,2,2s
+ga276,0,zapdos EX,,130,electric,,e,peck,20,,,eee,thundering hurricane,0,coin-4,50,electric,1,2s
+ga277,2,gengar EX,haunter,170,psychic,shadow spellbind,ppp,spooky shot,100,,,,,,,,dark,2,2s
+ga278,2,machamp EX,machoke,180,fighting,,fff,mega punch,120,,,,,,,,psychic,3,2s
+ga279,1,wigglytuff EX,jigglypuff,140,normal,,xxx,sleepy song,80,sleep,,,,,,,fighting,2,2s
+ga280,2,charizard EX,charmeleon,180,fire,,rxx,slash,60,,,rrxx-rr,crimson storm,200,,,water,2,3s
+ga281,0,pikachu EX,,120,electric,,ee,circle circuit,0,bench-e,30,,,,,,fighting,1,3s
+ga282,0,mewtwo EX,,150,psychic,,px,psychic sphere,50,,,ppxx-pp,psyshot,150,,,dark,2,3s
+ga283,0,mew,,60,psychic,,p,psy report,20,,,,,,,,dark,1,3s
+ga284,2,charizard EX,charmeleon,180,fire,,rxx,slash,60,,,rrxx-rr,crimson storm,200,,,water,2,crown
+ga285,0,pikachu EX,,120,electric,,ee,circle circuit,0,bench-e,30,,,,,,fighting,1,crown
+ga286,0,mewtwo EX,,150,psychic,,px,psychic sphere,50,,,ppxx-pp,psyshot,150,,,dark,2,crown
+mi1,0,exeggute,,50,grass,,x+g,growth spurt,0,,,,,,,,fire,1,1d
+mi2,1,exeggutor,exeggute,130,grass,,gxxx,psychic,80,energy,20,,,,,,fire,3,2d
+mi3,0,celebi EX,,130,grass,,gx,powerful bloom,0,coin-g,50,,,,,,fire,1,4d
+mi4,0,snivy,,70,grass,,gx,vine whip,40,,,,,,,,fire,1,1d
+mi5,1,servine,snivy,80,grass,,gx,vine whip,50,,,,,,,,fire,1,2d
+mi6,2,serperior,servine,110,grass,jungle totem,gxxx,solar beam,70,,,,,,,,fire,2,3d
+mi7,0,morellul,,60,grass,,g,ram,20,,,,,,,,fire,1,1d
+mi8,1,shiinotic,morellul,90,grass,,gg,flickering spores,50,sleep,,,,,,,fire,2,2d
+mi9,0,dhelmise,,100,grass,,g,energy whip,20,grass-3,70,,,,,,fire,2,2d
+mi10,0,ponyta,,60,fire,,r,stomp,10,coin-1,30,,,,,,water,1,1d
+mi11,1,rapidash,ponyta,100,fire,,rx,rising lunge,40,coin-1,60,,,,,,water,1,2d
+mi12,0,magmar,,80,fire,,rr-rr,fire blast,80,,,,,,,,water,2,2d
+mi13,0,larvesta,,80,fire,,rx,combustion,30,,,,,,,,water,2,1d
+mi14,1,volcarona,larvesta,120,fire,,rrx-rr,volcanic ash,0,free,80,,,,,,water,2,3d
+mi15,0,salandit,,60,fire,,x,venoshock,10,poisoned,40,,,,,,water,1,1d
+mi16,1,salazzle,salandit,80,fire,,r,poison claws,30,poison,,,,,,,water,1,1d
+mi17,0,magikarp,,30,water,,w,leap out,,,,,,,,,electric,1,1d
+mi18,1,gyarados EX,magikarp,180,water,,wwwx,rampaging whirlpool,140,random energy,,,,,,,electric,3,4d
+mi19,1,vaporeon,eevee,120,water,wash out,wxx,wave splash,60,,,,,,,,electric,2,3d
+mi20,0,finneon,,60,water,,w,water gun,20,,,,,,,,electric,1,1d
+mi21,1,lumineon,finneon,80,water,,ww,aqua liner,0,bTarget-1,50,,,,,,electric,0,2d
+mi22,0,chewtle,,80,water,,wx,bite,30,,,,,,,,electric,2,1d
+mi23,1,drednaw,chewtle,130,water,,www,crunch,70,\energy discard,,,,,,,electric,3,2d
+mi24,0,cramorant,,80,water,,wwx,dive,60,invulnerable,,,,,,,electric,1,1d
+mi25,0,pikachu,,60,electric,,e,circle circuit,0,bench-e,10,,,,,,fighting,1,1d
+mi26,1,raichu,pikachu,120,electric,,eee,gigashock,60,bTarget-all,20,,,,,,fighting,2,3d
+mi27,0,electabuzz,,70,electric,,ee,thunder spear,0,free,40,,,,,,fighting,1,2d
+mi28,0,joltik,,40,electric,,e,bug bite,30,,,,,,,,fighting,1,1d
+mi29,1,galvantula,joltik,80,electric,,ee,electroweb,70,no retreat,,,,,,,fighting,1,2d
+mi30,0,dedenne,,60,electric,,e,thunder shock,10,\paralysis,,,,,,,fighting,1,1d
+mi31,0,mew,,60,psychic,,p,psy report,20,show hand,,,,,,,dark,1,3d
+mi32,0,mew EX,,130,psychic,,p,psyshot,20,,,xxx,genome hacking,,,,dark,1,4d
+mi33,0,sigilyph,,80,psychic,,p,spike draw,10,draw,1,,,,,,dark,1,2d
+mi34,0,elgyem,,60,psychic,,p,headbutt,20,,,,,,,,dark,1,1d
+mi35,1,beheeyem,elgyem,90,psychic,,p,mind jack,10,bench-opp,20,,,,,,dark,1,2d
+mi36,0,flabebe,,40,psychic,,p,hypnotic gaze,0,sleep,,,,,,,metal,1,1d
+mi37,1,florette,flabebe,70,psychic,,p,leaf drain,40,heal,10,,,,,,metal,1,1d
+mi38,2,florges,florette,120,psychic,,pp,bloomshine,80,healAll,20,,,,,,metal,1,2d
+mi39,0,swirlix,,60,psychic,,p,fairy wind,20,,,,,,,,metal,1,1d
+mi40,1,slurpuff,swirlix,100,psychic,,px,magical shot,60,,,,,,,,metal,2,1d
+mi41,0,mankey,,50,fighting,,f,focus fist,0,coin-1,50,,,,,,psychic,1,1d
+mi42,1,primape,mankey,80,fighting,,f,punch,50,,,,,,,,psychic,1,2d
+mi43,0,geodude,,70,fighting,,fx,light punch,30,,,,,,,,grass,2,1d
+mi44,1,graveler,geodude,100,fighting,,fx,lunge out,40,,,,,,,,grass,3,1d
+mi45,2,golem,graveler,160,fighting,,fffx,guard press,120,,,,,,,,grass,3,1d
+mi46,1,aerodactyl EX,old amber,140,fighting,primeval law,fx,land crush,80,,,,,,,,electric,1,1d
+mi47,0,marshadow,,80,fighting,,fx,revenge,40,ko,60,,,,,,psychic,1,2d
+mi48,0,stonejourner,,120,fighting,,fff,mega kick,90,,,,,,,,grass,3,2d
+mi49,0,koffing,,70,dark,,d,division,,,,,,,,,fighting,2,1d
+mi50,1,weezing,koffing,110,dark,,ddx,smokescreen,50,smokescreen,,,,,,,fighting,3,1d
+mi51,0,purrloin,,60,dark,,d,scratch,20,,,,,,,,grass,1,4d
+mi52,1,liepard,purrloin,90,dark,,d,slash,40,,,,,,,,grass,1,3d
+mi53,0,venipede,,60,dark,,d,ram,20,,,,,,,,fighting,1,1d
+mi54,1,whirlipede,venipede,90,dark,,d,poison sting,20,poison,,,,,,,fighting,2,1d
+mi55,2,scolipede,whirlipede,140,dark,,dx,venoshock,70,poisoned,50,,,,,,fighting,2,1d
+mi56,0,druddigon,,100,dragon,rough skin,rwx,dragon claw,90,,,,,,,,,2,2d
+mi57,0,pidgey,,50,normal,,x,flap,20,,,,,,,,electric,1,1d
+mi58,1,pidgeotto,pidgey,90,normal,,xxx,wing attack,50,,,,,,,,electric,1,1d
+mi59,2,pidgeot EX,pidgeotto,170,normal,,xxx,scattering cyclone,80,bench-opp,20,,,,,,electric,1,4d
+mi60,0,tauros,,100,normal,,xxx,fighting tackle,40,ex,80,,,,,,fighting,2,3d
+mi61,0,eevee,,60,normal,,x,continuous steps,0,allCoins,20,,,,,,fighting,1,1d
+mi62,0,chatot,,60,normal,,x,mimic,,,,,,,,,electric,1,1d
+mi69,1,exeggutor,exeggute,130,grass,,gxxx,psychic,80,energy,20,,,,,,fire,3,1s
+mi70,2,serperior,servine,110,grass,jungle totem,gxxx,solar beam,70,,,,,,,,fire,2,1s
+mi71,0,salandit,,60,fire,,x,venoshock,10,poisoned,40,,,,,,water,1,1s
+mi72,1,vaporeon,eevee,120,water,wash out,wxx,wave splash,60,,,,,,,,electric,2,1s
+mi73,0,dedenne,,60,electric,,e,thunder shock,10,\paralysis,,,,,,,fighting,1,1s
+mi74,0,marshadow,,80,fighting,,fx,revenge,40,ko,60,,,,,,psychic,1,1s
+mi75,0,celebi EX,,130,grass,,gx,powerful bloom,0,coin-g,50,,,,,,fire,1,2s
+mi76,1,gyarados EX,magikarp,180,water,,wwwx,rampaging whirlpool,140,random energy,,,,,,,electric,3,2s
+mi77,0,mew EX,,130,psychic,,p,psyshot,20,,,xxx,genome hacking,,,,dark,1,2s
+mi78,1,aerodactyl EX,old amber,140,fighting,primeval law,fx,land crush,80,,,,,,,,electric,1,2s
+mi79,2,pidgeot EX,pidgeotto,170,normal,,xxx,scattering cyclone,80,bench-opp,20,,,,,,electric,1,2s
+mi83,0,mew EX,,130,psychic,,p,psyshot,20,,,xxx,genome hacking,,,,dark,1,2s
+mi84,1,aerodactyl EX,old amber,140,fighting,primeval law,fx,land crush,80,,,,,,,,electric,1,2s
+mi85,0,celebi EX,,130,grass,,gx,powerful bloom,0,coin-g,50,,,,,,fire,1,3s
+mi86,0,mew EX,,130,psychic,,p,psyshot,20,,,xxx,genome hacking,,,,dark,1,crown
+ss1,0,oddish,,60,grass,,g,blot,10,heal,10,,,,,,fire,1,1d
+ss2,1,gloom,oddish,80,grass,,g,razor leaf,30,,,,,,,,fire,2,1d
+ss3,2,bellossom,gloom,130,grass,,gg,leaf step,80,,,,,,,,fire,1,2d
+ss4,0,tangela,,70,grass,,gx,vine whip,30,,,,,,,,fire,1,1d
+ss5,1,tangrowth,tangela,130,grass,,gggx,mega drain,90,heal,30,,,,,,fire,3,2d
+ss6,0,yanma,,50,grass,,x,flap,20,,,,,,,,electric,1,1d
+ss7,1,yanmega EX,yanma,140,grass,,xxx-*,air slash,120,,,,,,,,electric,1,4d
+ss8,0,roselia,,70,grass,,g,sting,20,,,,,,,,fire,1,1d
+ss9,1,roserade,roselia,100,grass,,gx,poisonous whip,50,poison,,,,,,,fire,2,2d
+ss10,0,turtwig,,80,grass,,gx,bite,30,,,,,,,,fire,2,1d
+ss11,1,grotle,turtwig,100,grass,,ggx,razor leaf,60,,,,,,,,fire,3,2d
+ss12,2,torterra,grotle,160,grass,,ggxx,frenzy plant,150,attackLock,,,,,,,fire,4,3d
+ss13,0,kricketot,,60,grass,,g,bug bite,20,,,,,,,,fire,1,1d
+ss14,1,kricketune,kricketot,90,grass,,gx,entrancing melody,50,confused,,,,,,,fire,1,1d
+ss15,0,burmy,,60,grass,,x,tackle,10,,,,,,,,fire,1,1d
+ss16,1,wormadam,burmy,120,grass,,gxx,leaf cutter,60,coin-1,30,,,,,,fire,2,1d
+ss17,0,combee,,50,grass,,x,call for family,,,,,,,,,fire,1,1d
+ss18,1,vespiqueen,combee,100,grass,,gg,pierce,70,,,,,,,,fire,2,2d
+ss19,0,carnivine,,90,grass,,ggx,flog,40,coin-1,50,,,,,,fire,1,2d
+ss20,1,leafeon,eevee,90,grass,,gx,leafy cyclone,90,attackLock,,,,,,,fire,1,3d
+ss21,0,mow rotom,,80,grass,,gx,energy cutoff,30,\discard energy,,,,,,,fire,1,1d
+ss22,0,shaymin,,60,grass,fragrant flower garden,gx,flop,30,,,,,,,,fire,1,3d
+ss23,0,magmar,,80,fire,,r+r,stoke,0,,,,,,,,water,2,1d
+ss24,1,magmortar,magmar,130,fire,,rrrr,bursting inferno,100,burn,,,,,,,water,3,3d
+ss25,0,slugma,,70,fire,,r,flare,20,,,,,,,,water,2,1d
+ss26,1,magcargo,slugma,120,fire,,rx,searing flame,30,burn,,,,,,,water,3,2d
+ss27,0,chimchar,,60,fire,,r,scratch,20,,,,,,,,water,1,1d
+ss28,1,monferno,chimchar,80,fire,,r,fiery punch,30,,,,,,,,water,1,2d
+ss29,2,infernape EX,monferno,170,fire,,rr-[r],flare blitz,140,,,,,,,,water,0,4d
+ss30,0,heat rotom,,80,fire,,rx,heat breath,30,coin-1,30,,,,,,water,1,1d
+ss31,0,swinub,,60,water,,wx,headbutt,40,,,,,,,,metal,2,1d
+ss32,1,piloswine,swinub,110,water,thick fat,wwx,hammer in,60,,,,,,,,metal,3,2d
+ss33,2,mamoswine,piloswine,160,water,thick fat,wwxx,frosty flattening,120,,,,,,,,metal,4,3d
+ss34,0,regice,,110,water,crystal body,ww,frost smash,50,,,,,,,,metal,2,2d
+ss35,0,piplup,,60,water,,x,nap,0,heal,20,,,,,,electric,1,1d
+ss36,1,prinplup,piplup,90,water,,wx,surf,30,,,,,,,,electric,1,2d
+ss37,2,empoleon,prinplup,150,water,,wwx,aqua jet,80,bTarget-1,30,,,,,,electric,2,3d
+ss38,0,buizel,,60,water,,w,water gun,20,,,,,,,,electric,1,1d
+ss39,1,floatzel,buizel,90,water,,w,jet screw,30,coin-1,30,,,,,,electric,1,2d
+ss40,0,shellos,,70,water,,wx,mud-slap,30,,,,,,,,electric,2,1d
+ss41,1,gastrodon,shellos,120,water,,wxx,muddy water,60,bTarget,20,,,,,,electric,3,2d
+ss42,0,finneon,,50,water,,w,elegant swim,10,\invulnerable,,,,,,,electric,1,1d
+ss43,1,lumineon,finneon,90,water,,w,waterfall,50,,,,,,,,electric,1,2d
+ss44,0,snover,,70,water,,w,ice shard,10,active-f,30,,,,,,metal,2,1d
+ss45,1,abomasnow,snover,140,water,,wwwx,frost breath,120,,,,,,,,metal,4,2d
+ss46,1,glaceon,eevee,90,water,,ww,ice beam,60,\paralysis,,,,,,,metal,1,3d
+ss47,0,wash rotom,,80,water,,w,wave splash,30,,,,,,,,electric,2,1d
+ss48,0,frost rotom,,80,water,,ww,blizzard,30,bTarget-all,10,,,,,,metal,1,1d
+ss49,0,palkia EX,,150,water,,w,slash,30,,,wwwx-www,dimensional storm,150,bTarget-all,20,electric,2,4d
+ss50,0,manaphy,,50,water,,w,oceanic gift,,,,,,,,,electric,1,2d
+ss51,0,magnemite,,60,electric,,x,ram,10,,,,,,,,fighting,1,1d
+ss52,1,magneton,magnemite,80,electric,,ee,lightning ball,50,,,,,,,,fighting,1,2d
+ss53,2,magnezone,magneton,140,electric,,exx-e,thunder blast,110,,,,,,,,fighting,2,3d
+ss54,0,voltorb,,60,electric,,e,big explosion,30,recoil,10,,,,,,fighting,1,1d
+ss55,1,electrode,voltorb,80,electric,,e,rolling attack,50,,,,,,,,fighting,1,2d
+ss56,0,electabuzz,,80,electric,,e+e,charge,0,,,,,,,,fighting,2,1d
+ss57,1,electivire,electabuzz,120,electric,,ee,exciting voltage,40,electric-2,80,,,,,,fighting,3,3d
+ss58,0,shinx,,60,electric,,e,hide,0,\invulnerable,,,,,,,fighting,1,1d
+ss59,1,luxio,shinx,90,electric,,ex,electric claws,40,,,,,,,,fighting,1,2d
+ss60,2,luxray,luxio,130,electric,,eee-[e],volt bolt,0,free,120,,,,,,fighting,0,3d
+ss61,0,pachirisu EX,,120,electric,,ee,sparking gadget,40,hasTool,40,,,,,,fighting,1,4d
+ss62,0,rotom,,70,electric,,x,assault laser,20,hasTool,30,,,,,,fighting,1,1d
+ss63,0,togepi,,50,psychic,,p,pound,20,,,,,,,,metal,1,1d
+ss64,1,togetic,togepi,80,psychic,,p,fairy wind,40,,,,,,,,metal,1,2d
+ss65,2,togekiss,togetic,140,psychic,,pp,overdrive smash,60,usedLast,60,,,,,,metal,1,3d
+ss66,0,misdreavus,,60,psychic,,p,mumble,20,,,,,,,,dark,1,1d
+ss67,1,mismagius EX,misdreavus,140,psychic,,pp,magical delusion,70,confused,,,,,,,dark,1,4d
+ss68,0,ralts,,60,psychic,,x,teleport,,,,,,,,,dark,1,1d
+ss69,1,kirlia,,80,psychic,,x,slap,20,,,,,,,,dark,1,1d
+ss70,0,duskull,,60,psychic,,p,will-o-wisp,20,,,,,,,,dark,1,1d
+ss71,1,dusclops,duskull,90,psychic,,pxx,psypunch,50,,,,,,,,dark,2,2d
+ss72,2,dusknoir,dusclops,130,psychic,shadow void,pxx,devour soul,70,,,,,,,,dark,2,3d
+ss73,0,drifloon,,50,psychic,,p,expand,10,defend,20,,,,,,electric,1,1d
+ss74,1,drifblim,drifloon,100,psychic,,pp,balloon strike,60,,,,,,,,electric,1,2d
+ss75,0,uxie,,70,psychic,,p,mind boost,,,,,,,,,dark,1,2d
+ss76,0,mespirit,,70,psychic,,ppp-[*],supreme blast,,,,,,,,,dark,1,3d
+ss77,0,azelf,,70,psychic,,p,psychic arrow,0,free,20,,,,,,dark,1,2d
+ss78,0,giratina,,120,psychic,levitate,ppx,spooky shot,70,,,,,,,,dark,3,3d
+ss79,0,cresselia,,110,psychic,,pp,moonlight gain,50,heal,20,,,,,,dark,2,3d
+ss80,0,rhyhorn,,80,fighting,,fx,horn attack,40,,,,,,,,grass,3,1d
+ss81,1,rhydon,rhyhorn,110,fighting,,ffx,wrack down,70,,,,,,,,grass,3,2d
+ss82,2,rhyperior,rhydon,160,fighting,,fffx,mountain swing,150,discard-self,3,,,,,,grass,4,3d
+ss83,0,gligar,,60,fighting,,f,pierce,20,,,,,,,,grass,1,1d
+ss84,1,gliscor,gligar,100,fighting,,f,acrobatics,0,coin-2,20,,,,,,grass,2,2d
+ss85,0,himontop,,80,fighting,,ff,spinning attack,50,,,,,,,,psychic,1,1d
+ss86,0,nosepass,,70,fighting,,xxx,ram,30,,,,,,,,grass,2,1d
+ss87,0,regirock,,120,fighting,exoskeleton,fffx,boulder crush,100,,,,,,,,grass,3,2d
+ss88,1,cranidos,skull fossil,90,fighting,,f,headbutt,50,,,,,,,,grass,2,2d
+ss89,2,rampardos,cranidos,150,fighting,,f,head smash,130,recoil-ko,50,,,,,,grass,2,3d
+ss90,1,wormadam,burmy,120,fighting,,fxx,land crush,70,,,,,,,,grass,2,1d
+ss91,0,riolu,,60,fighting,,f,jab,20,,,,,,,,psychic,1,1d
+ss92,1,lucario,riolu,100,fighting,fighting coach,ff,subarine blow,40,,,,,,,,psychic,2,3d
+ss93,0,hippopotas,,80,fighting,,ffx,rolling tackle,60,,,,,,,,grass,3,1d
+ss94,1,hippowdon,hippopotas,140,fighting,,fffx,earthen press,120,,,,,,,,grass,4,2d
+ss95,2,gallade EX,kirlia,170,fighting,,ff,energized blade,70,energy,20,,,,,,psychic,1,4d
+ss96,0,murkrow,,60,dark,,d,peck,20,,,,,,,,electric,1,1d
+ss97,1,honchcrow,murkrow,100,dark,,dd,skill dive,0,free,50,,,,,,electric,2,2d
+ss98,0,sneasel,,60,dark,,d,double scratch,0,coin-2,20,,,,,,grass,1,1d
+ss99,1,weavile EX,sneasel,140,dark,,d,scratching nails,30,damaged,40,,,,,,grass,1,4d
+ss100,0,poochyena,,60,dark,,d,bite,20,,,,,,,,grass,1,1d
+ss101,1,mightyena,poochyena,90,dark,,dx,darkness fang,60,,,,,,,,grass,1,2d
+ss102,0,stunky,,70,dark,,d,scratch,10,,,,,,,,fighting,1,1d
+ss103,1,skuntank,stunky,100,dark,,dx,poison gas,50,poison,,,,,,,fighting,2,2d
+ss104,0,spiritomb,,80,dark,,x,swirling disaster,10,bTarget-all,10,,,,,,grass,1,2d
+ss105,0,skorupi,,70,dark,,dx,pierce,30,,,,,,,,fighting,2,1d
+ss106,1,drapion,skorupi,120,dark,,ddd,cross poison,,,,,,,,,fighting,3,2d
+ss107,0,croagunk,,60,dark,,dd,group beatdown,,,,,,,,,fighting,1,1d
+ss108,1,toxicroak,croagunk,90,dark,,dd,group beatdown,,,,,,,,,fighting,2,2d
+ss109,0,darkrai,,110,dark,,ddx,dark void,60,sleep,,,,,,,grass,2,3d
+ss110,0,darkrai EX,,140,dark,,ddx,dark prism,80,,,,,,,,grass,2,4d
+ss111,0,skarmory,,80,metal,,m,metal arms,20,hasTool,30,,,,,,electric,1,2d
+ss112,0,registeel,,110,metal,,mmm,metal claw,90,,,,,,,,fire,2,2d
+ss113,1,shieldon,armor fossil,100,metal,,mx,headbutt,50,,,,,,,,fire,2,2d
+ss114,2,bastidon,shieldon,160,metal,guarded grill,mmx,headbang,80,,,,,,,,fire,4,3d
+ss115,1,wormadam,burmy,110,metal,,mm,iron head,50,allCoins,30,,,,,,fire,1,1d
+ss116,0,bronzor,,60,metal,,mx,tackle,30,,,,,,,,fire,1,1d
+ss117,1,bronzong,bronzor,120,metal,,mmx,guard press,60,defend,20,,,,,,fire,3,2d
+ss118,1,probopass,nosepass,130,metal,,mmmx,triple nose,30,coin-3,50,,,,,,fire,4,2d
+ss119,0,dialga EX,,150,metal,,mm,metallic turbo,,,,mmxx,heavy impact,100,,,fire,2,4d
+ss120,0,heatran,,120,metal,,mmm,steel tackle,110,recoil,20,,,,,,fire,3,3d
+ss121,0,gible,,60,dragon,,x,gnaw,20,,,,,,,,,1,1d
+ss122,1,gabite,gible,90,dragon,,wf,slash,60,,,,,,,,,1,2d
+ss123,2,garchomp,gabite,140,dragon,reckless shearing,wf,dragon claw,100,,,,,,,,,1,3d
+ss124,0,lickitung,,80,normal,,xxx,tongue slap,50,,,,,,,,fighting,2,1d
+ss125,1,lickilicky EX,lickitung,160,normal,,xxxx,licking fury,100,allCoins,40,,,,,,fighting,4,4d
+ss126,0,eevee,,60,normal,,x,quick attack,10,coin-1,20,,,,,,fighting,1,1d
+ss127,0,porygon,,60,normal,,x,beam,20,,,,,,,,fighting,1,1d
+ss128,1,porygon-2,porygon,80,normal,,x,sharpen,30,,,,,,,,fighting,1,2d
+ss129,2,porygon-Z,porygon-2,140,normal,,xxx,buggy beam,,,,,,,,,fighting,2,3d
+ss130,0,aipom,,60,normal,,x,tail jab,20,,,,,,,,fighting,1,1d
+ss131,1,ambipom,aipom,90,normal,,x,double hit,0,coin-2,40,,,,,,fighting,1,1d
+ss132,0,starly,,50,normal,,x,pluck,,,,,,,,,electric,1,1d
+ss133,1,staravia,starly,80,normal,,xx,wing attack,40,,,,,,,,electric,1,1d
+ss134,2,staraptor,staravia,140,normal,,xxx,clutch,80,no retreat,,,,,,,electric,1,2d
+ss135,0,bidoof,,60,normal,,xx,super fang,,,,,,,,,fighting,2,1d
+ss136,1,bibarel,bidoof,110,normal,,xx,rolling tackle,60,,,,,,,,fighting,2,1d
+ss137,0,buneary,,60,normal,,x,splash,10,,,,,,,,fighting,1,1d
+ss138,1,lopunny,buneary,90,normal,,x,jump kick,20,bTarget-1,20,,,,,,fighting,1,1d
+ss139,0,glameow,,60,normal,,x,pose,0,coin-1,40,,,,,,fighting,1,1d
+ss140,1,purugly,glameow,110,normal,,xxx,interrupt,,,,,,,,,fighting,3,2d
+ss141,0,chatot,,70,normal,,x,fury attack,0,coin-3,20,,,,,,electric,1,1d
+ss142,0,fan rotom,,80,normal,,xx,spin storm,0,\shuffle,,,,,,,electric,1,1d
+ss143,0,regigigas,,140,normal,,xxxx,raging hammer,50,ownDamage,,,,,,,fighting,4,3d
+ss156,1,tangrowth,tangela,130,grass,,gggx,mega drain,90,heal,30,,,,,,fire,3,1s
+ss157,0,combee,,50,grass,,x,call for family,,,,,,,,,fire,1,1s
+ss158,0,carnivine,,90,grass,,ggx,flog,40,coin-1,50,,,,,,fire,1,1s
+ss159,0,shaymin,,60,grass,fragrant flower garden,gx,flop,30,,,,,,,,fire,1,1s
+ss160,2,mamoswine,piloswine,160,water,thick fat,wwxx,frosty flattening,120,,,,,,,,metal,4,1s
+ss161,1,gastrodon,shellos,120,water,,wxx,muddy water,60,bTarget,20,,,,,,electric,3,1s
+ss162,0,manaphy,,50,water,,w,oceanic gift,,,,,,,,,electric,1,1s
+ss163,0,shinx,,60,electric,,e,hide,0,\invulnerable,,,,,,,fighting,1,1s
+ss164,0,rotom,,70,electric,,x,assault laser,20,hasTool,30,,,,,,fighting,1,1s
+ss165,0,drifloon,,50,psychic,,p,expand,10,defend,20,,,,,,electric,1,1s
+ss166,0,mespirit,,70,psychic,,ppp,supreme blast,,,,,,,,,dark,1,1s
+ss167,0,giratina,,120,psychic,levitate,ppx,spooky shot,70,,,,,,,,dark,3,1s
+ss168,0,cresselia,,110,psychic,,pp,moonlight gain,50,heal,20,,,,,,dark,2,1s
+ss169,2,rhyperior,rhydon,160,fighting,,fffx,mountain swing,150,discard-self,3,,,,,,grass,4,1s
+ss170,1,lucario,riolu,100,fighting,fighting coach,ff,subarine blow,40,,,,,,,,psychic,2,1s
+ss171,0,hippopotas,,80,fighting,,ffx,rolling tackle,60,,,,,,,,grass,3,1s
+ss172,0,spiritomb,,80,dark,,x,swirling disaster,10,bTarget-all,10,,,,,,grass,1,1s
+ss173,0,croagunk,,60,dark,,dd,group beatdown,,,,,,,,,fighting,1,1s
+ss174,0,heatran,,120,metal,,mmm,steel tackle,110,recoil,20,,,,,,fire,3,1s
+ss175,2,garchomp,gabite,140,dragon,reckless shearing,wf,dragon claw,100,,,,,,,,,1,1s
+ss176,2,staraptor,staravia,140,normal,,xxx,clutch,80,no retreat,,,,,,,electric,1,1s
+ss177,0,bidoof,,60,normal,,xx,super fang,,,,,,,,,fighting,2,1s
+ss178,0,glameow,,60,normal,,x,pose,0,coin-1,40,,,,,,fighting,1,1s
+ss179,0,regigigas,,140,normal,,xxxx,raging hammer,50,ownDamage,,,,,,,fighting,4,1s
+ss180,1,yanmega EX,yanma,140,grass,,xxx-*,air slash,120,,,,,,,,electric,1,2s
+ss181,2,infernape EX,monferno,170,fire,,rr-[r],flare blitz,140,,,,,,,,water,0,2s
+ss182,0,palkia EX,,150,water,,w,slash,30,,,wwwx-www,dimensional storm,150,bTarget-all,20,electric,2,2s
+ss183,0,pachirisu EX,,120,electric,,ee,sparking gadget,40,hasTool,40,,,,,,fighting,1,2s
+ss184,1,mismagius EX,misdreavus,140,psychic,,pp,magical delusion,70,confused,,,,,,,dark,1,2s
+ss185,2,gallade EX,kirlia,170,fighting,,ff,energized blade,70,energy,20,,,,,,psychic,1,2s
+ss186,1,weavile EX,sneasel,140,dark,,d,scratching nails,30,damaged,40,,,,,,grass,1,2s
+ss187,0,darkrai EX,,140,dark,,ddx,dark prism,80,,,,,,,,grass,2,2s
+ss188,0,dialga EX,,150,metal,,mm,metallic turbo,,,,mmxx,heavy impact,100,,,fire,2,2s
+ss189,1,lickilicky EX,lickitung,160,normal,,xxxx,licking fury,100,allCoins,40,,,,,,fighting,4,2s
+ss196,1,yanmega EX,yanma,140,grass,,xxx-*,air slash,120,,,,,,,,electric,1,2s
+ss197,2,infernape EX,monferno,170,fire,,rr-[r],flare blitz,140,,,,,,,,water,0,2s
+ss198,0,pachirisu EX,,120,electric,,ee,sparking gadget,40,hasTool,40,,,,,,fighting,1,2s
+ss199,1,mismagius EX,misdreavus,140,psychic,,pp,magical delusion,70,confused,,,,,,,dark,1,2s
+ss200,2,gallade EX,kirlia,170,fighting,,ff,energized blade,70,energy,20,,,,,,psychic,1,2s
+ss201,1,weavile EX,sneasel,140,dark,,d,scratching nails,30,damaged,40,,,,,,grass,1,2s
+ss202,0,darkrai EX,,140,dark,,ddx,dark prism,80,,,,,,,,grass,2,2s
+ss203,1,lickilicky EX,lickitung,160,normal,,xxxx,licking fury,100,allCoins,40,,,,,,fighting,4,2s
+ss204,0,palkia EX,,150,water,,w,slash,30,,,wwwx-www,dimensional storm,150,bTarget-all,20,electric,2,2s
+ss205,0,dialga EX,,150,metal,,mm,metallic turbo,,,,mmxx,heavy impact,100,,,fire,2,2s
+ss206,0,palkia EX,,150,water,,w,slash,30,,,wwwx-www,dimensional storm,150,bTarget-all,20,electric,2,crown
+ss207,0,dialga EX,,150,metal,,mm,metallic turbo,,,,mmxx,heavy impact,100,,,fire,2,crown
+pA9,0,pikachu,,60,electric,,e,gnaw,20,,,,,,,,fighting,1,promo
+pA10,0,mewtwo,,120,psychic,,ppxx-pp,power blast,120,,,,,,,,dark,2,promo
+pA11,0,chancey,,120,normal,,xxx,gentle slap,60,,,,,,,,fighting,3,promo
+pA12,0,meowth,,60,normal,,x,pay day,10,draw,1,,,,,,fighting,1,promo
+pA13,2,butterfree,metapod,120,grass,powder heal,gxx,gust,60,,,,,,,,fire,1,promo
+pA14,0,lapras EX,,140,water,,wwx,bubble drain,80,heal,20,,,,,,electric,3,promo
+pA15,0,pikachu,,60,electric,,e,gnaw,20,,,,,,,,fighting,1,promo
+pA16,0,clefairy,,60,psychic,,p,slap,20,,,,,,,,metal,1,promo
+pA17,0,mankey,,50,fighting,,f,reckless charge,30,recoil,10,,,,,,psychic,1,promo
+pA18,2,venusaur,ivysaur,160,grass,,ggxx,mega drain,80,heal,30,,,,,,fire,3,promo
+pA19,2,greninja,frogadier,120,water,water shuriken,wx,mist slash,60,,,,,,,,electric,1,promo
+pA20,1,haunter,gastly,70,psychic,,p,surprise attack,0,coin-1,50,,,,,,dark,1,promo
+pA21,0,onix,,110,fighting,,fff,land crush,70,,,,,,,,grass,4,promo
+pA22,0,jigglypuff,,50,normal,,x,sing,0,sleep,,,,,,,fighting,1,promo
+pA23,0,bulbasaur,,70,grass,,gx,vine whip,40,,,,,,,,fire,1,promo
+pA24,0,magnemite,,60,electric,,e,lightning ball,20,,,,,,,,fighting,1,promo
+pA25,0,moltres EX,,140,fire,,r,inferno dance,,,,rxx,heat blast,70,,,electric,2,promo
+pA26,0,pikachu,,60,electric,,e,gnaw,20,,,,,,,,fighting,1,promo
+pA27,0,snivy,,60,grass,,g,tackle,20,,,,,,,,fire,1,promo
+pA28,1,volcarona,larvesta,120,fire,,rrx-rr,volcanic ash,0,free,80,,,,,,water,2,promo
+pA29,2,blastoise,wartortle,150,water,,wwx,hydro pump,80,water-2,60,,,,,,electric,3,promo
+pA30,0,eevee,,60,normal,,x,growl,0,defend,20,,,,,,fighting,1,promo
+pA31,1,cinccino,minccino,90,normal,,xxx,do the wave,0,bench-all,30,,,,,,fighting,1,promo
+pA32,0,charmander,,60,fire,,r-r,ember,30,,,,,,,,water,1,promo
+pA33,0,squirtle,,60,water,,w,water gun,20,,,,,,,,electric,1,promo
+pA34,0,piplup,,60,water,,x,nap,0,heal,20,,,,,,electric,1,promo
+pA35,1,electivire,electabuzz,120,electric,,ee,exciting voltage,40,electric-2,80,,,,,,fighting,3,promo
+pA36,0,cresselia EX,,140,psychic,lunar plumage,ppx,psychic flash,80,,,,,,,,dark,2,promo
+pA37,0,misdreavus,,60,psychic,,p,confuse ray,0,confused,,,,,,,dark,1,promo
+pA38,0,skarmory,,80,metal,,m,metal arms,20,hasTool,30,,,,,,electric,1,promo
+pA39,0,chimchar,,60,fire,,r,scratch,20,,,,,,,,water,1,promo
+pA40,0,togepi,,50,psychic,,p,pound,20,,,,,,,,metal,1,promo

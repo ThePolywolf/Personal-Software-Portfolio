@@ -1,0 +1,71 @@
+## Types <<< pk type >>>
+[
+    grass       g
+    fire        r
+    water       w
+    electric    e
+    psychic     p
+    fighting    f
+    dark        d
+    metal       m
+    normal      x
+]
+
+## Energy Dictionary <<< energy dict >>>
+key:    <<< pk type >>>
+value   int count
+
+## Pokemon Card Data <<< pkmn >>>
+{
+    name        : str                   : pokemon name
+    stage       : int                   : enum[ 0, 1, 2 ] --> [ basic, stage 1, stage 2 ]
+    from        : str                   : name of pre-evolution, or None/np.nan
+    id          : int                   : card id (for df lookup)
+    hp          : int                   : current health
+    max_hp      : int                   : max health
+    type        : <<< pk type >>>
+    ability     : str                   : ability name. Dictionary lookup with function pointer
+    weakness    : <<< pk type >>>       : +20 damage from type
+    retreat     : int                   : retreat cost
+    rarity      : str                   : enum[ 1d, 2d, 3d, 4d, 1s, 2s, 3s, crown ]
+    uid         : int                   : unique card identifier
+    status      : list[ str ]           : list of all current pokemon status conditions
+    move1       : <<< move data >>>
+    move2       : <<< move data >>>
+    energy      : <<< energy dict >>>   : currently attached energy
+}
+
+## Move Data <<< move data >>>
+{
+    name    : str                   : move name
+    cost    : <<< energy dict >>>   : required energy to use move
+    loss    : <<< energy dict >>>   : energy lost after using move
+    damage  : int                   : flat damage to defender when used, or None
+    bonus   : dict                  : all additional effects from attack
+}
+
+## Player State <<< player >>>
+{
+    active          : <<< pkmn >>>              : active pokemon
+    bench           : list[ <<< pkmn >>> ]      : all benched pokemon. 3 slots, empty slots are None
+    energy_pool     : list[ <<< pk type >>>]    : pool of valid energy
+    next_energy     : <<< pk type >>>           : next energy for attachment. Pulled randomly from the energy pool
+    status          : list[ str ]               : all full-player status (status not tied to a single pokemon)
+    hand            : list[ <<< card >>> ]      : all card in the player's hand
+    *skipped_cards  : list[ <<< card >>> ]      : temp. All cards skipped/unusable while playing cards during turn
+    *evolved_uids   : list[ int ]               : temp. uids of pokemon evolved during the turn
+    *abilities_used : list[ int ]               : temp. uids of pokmeon whose abilities have already been used durign the turn
+}
+
+## Game State
+{
+    p2      : <<< player >>>
+    p1      : <<< player >>>
+    turn    : int               : turn number. p1 on odd, p2 on even
+}
+
+## Card <<< card >>>
+{
+    type    : enum[ pokemon, item, supporter, tool ]
+    data    : <<< raw card data >>>
+}

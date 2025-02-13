@@ -1,27 +1,14 @@
-import pandas as pd
-from pokemon_moves import *
-import numpy as np
+from file_loader import get_pokemon, is_nan
+import random as r
 
-TCG_DATA_FILE_NAME = 'pokemon-tcg.csv'
-pokemon = pd.read_csv(TCG_DATA_FILE_NAME)
 uid_counter = 0
 
-# def new_pokemon(p_id, health):
-#     return {
-#         'p_id'  : p_id,
-#         'hp'    : health,
-#         'status': [],
-#     }
-
-# def add_status(pokemon, status):
-#     if status in pokemon['status']:
-#         return
-    
-#     pokemon['status'] += [status]
-    
-#     if 'paralysis' in pokemon['status']:
-#         if 'sleep' in pokemon['status']:
-#             pokemon['status'].remove['sleep']
+def coin_flip():
+    """
+    flips a coin and returns the result
+    {0: tails, 1: heads}
+    """
+    return r.choice([0, 1])
 
 energy_short_to_full = {
     'g' : 'grass',
@@ -32,10 +19,90 @@ energy_short_to_full = {
     'f' : 'fighting',
     'd' : 'dark',
     'm' : 'metal',
-    'x' : 'normal'
+    'x' : 'normal',
+    '*' : 'random'
 }
 
 energy_names = [energy_short_to_full[name] for name in energy_short_to_full]
+
+def pkmn_data(pkmn_id):
+    """
+    Returns a new pokemon card from the given id
+    """
+    global uid_counter
+    uid_counter += 1
+
+    pkmn = get_pokemon(pkmn_id)
+
+
+    kept_fields = ['name', 'stage', 'from', 'id', 'hp', 'type', 'ability', 'weakness', 'retreat', 'rarity']
+    pkmn_data = {key : pkmn[key] for key in kept_fields}
+    pkmn_data |= {
+        'max_hp'    : pkmn['hp'],
+        'uid'       : uid_counter,
+        'status'    : [],
+        'move1'     : move_data(pkmn, 1),
+        'move2'     : move_data(pkmn, 2),
+        'energy'    : {}
+    }
+
+    if is_nan(pkmn_data['from']):
+        pkmn_data['from'] = None
+
+    return pkmn_data
+
+def evolve_pkmn(pre_evo, pkmn):
+    """
+    Evolves/replaces the pre-evolution pokemon with the new pkmn evolution
+    """
+    # check evolution is valid
+    if not pre_evo['name'] == pkmn['from']:
+        note = f'Pre-evolution does not evolve into new pokemon {pre_evo['name']} --> {pkmn['name']}. Needs {pkmn['from']}'
+        raise Exception(note)
+
+    # new pokemon carries over health from pre-evolution
+    health_delta = pkmn['max_hp'] - pre_evo['max_hp']
+    pkmn['hp'] = pre_evo['hp'] + health_delta
+
+    # keep uid
+    pkmn['uid'] = pre_evo['uid']
+
+    # clear status
+    pkmn['status'] = []
+
+    # keep energy
+    pkmn['energy'] = pre_evo['energy']
+
+    # since pass by reference, reassign pre_evo values
+    # replace pre-evolution with new pokemon
+    for key in pre_evo:
+        pre_evo[key] = pkmn[key]
+
+def move_data(pkmn, move_id):
+    if move_id == 1:
+        if is_nan(pkmn['a1name']):
+            return None
+        cost, loss = move_cost_split(pkmn['a1cost'])
+        return {
+            'name'      : pkmn['a1name'],
+            'cost'      : cost,
+            'loss'      : loss,
+            'damage'    : None if is_nan(pkmn['a1damage']) else int(pkmn['a1damage']),
+            'bonus'     : move_bonus_breakdown(pkmn['a1bonus'], pkmn['a1bonusDmg'])
+        }
+    elif move_id == 2:
+        if is_nan(pkmn['a2name']):
+            return None
+        cost, loss = move_cost_split(pkmn['a2cost'])
+        return {
+            'name'      : pkmn['a2name'],
+            'cost'      : cost,
+            'loss'      : loss,
+            'damage'    : None if is_nan(pkmn['a2damage']) else int(pkmn['a2damage']),
+            'bonus'     : move_bonus_breakdown(pkmn['a2bonus'], pkmn['a2bonusDmg'])
+        }
+    else:
+        return None
 
 def move_cost_split(raw_cost: str):
     parts = raw_cost.split('-')
@@ -59,10 +126,12 @@ def move_cost_split(raw_cost: str):
     return cost_dict, loss_dict
 
 def move_bonus_breakdown(raw_bonus: str, raw_bonus_dmg):
-    if raw_bonus is np.nan:
+    # TODO refactor to make this better for simulation
+
+    if is_nan(raw_bonus):
         return None
     
-    bonus_value = None if np.isnan(raw_bonus_dmg) else int(raw_bonus_dmg)
+    bonus_value = None if is_nan(raw_bonus_dmg) else int(raw_bonus_dmg)
 
     splits = raw_bonus.split('-')
     b_type = splits[0]
@@ -192,70 +261,52 @@ def move_bonus_breakdown(raw_bonus: str, raw_bonus_dmg):
     
     raise KeyError(f"unrecognized b_type `{b_type}`")
 
-def move_data(pkmn, move_id):
-    if move_id == 1:
-        if pkmn['a1name'] is None:
-            return None
-        cost, loss = move_cost_split(pkmn['a1cost'])
-        return {
-            'name'      : pkmn['a1name'],
-            'cost'      : cost,
-            'loss'      : loss,
-            'damage'    : None if np.isnan(pkmn['a1damage']) else int(pkmn['a1damage']),
-            'bonus'     : move_bonus_breakdown(pkmn['a1bonus'], pkmn['a1bonusDmg'])
-        }
-    elif move_id == 2:
-        if pkmn['a2name'] is None:
-            return None
-        cost, loss = move_cost_split(pkmn['a2cost'])
-        return {
-            'name'      : pkmn['a2name'],
-            'cost'      : cost,
-            'loss'      : loss,
-            'damage'    : None if np.isnan(pkmn['a2damage']) else int(pkmn['a2damage']),
-            'bonus'     : move_bonus_breakdown(pkmn['a2bonus'], pkmn['a2bonusDmg'])
-        }
-    else:
-        return None
+def damage_pokemon(defender, damage):
+    defender['hp'] -= damage
 
-def pkmn_data(pkmn_id):
-    pkmn = pokemon[pokemon['id'] == pkmn_id]
-    if pkmn.shape[1] == 0:
-        return None
-    pkmn = pkmn.iloc[0]
+    if defender['hp'] < 0:
+        defender['hp'] = 0
 
-    uid_counter =+ 1
+def pkmn_feinted(pokemon):
+    return pokemon['hp'] <= 0
 
-    kept_fields = ['name', 'id', 'hp', 'type', 'ability', 'weakness', 'retreat', 'rarity']
-    pkmn_data = {key : pkmn[key] for key in kept_fields}
-    pkmn_data |= {
-        'uid'       : uid_counter,
-        'status'    : [],
-        'move1'     : move_data(pkmn, 1),
-        'move2'     : move_data(pkmn, 2),
-    }
-    return pkmn_data
+def heal_pokemon(target, health):
+    target['hp'] += health
+    if target['hp'] > target['max_hp']:
+        target['hp'] = target['max_hp']
 
-def print_dict(d, indent=4):
-    for key in d:
-        if (isinstance(d[key], dict)):
-            print(f'{'':>{indent}}{key:<13}:')
-            print_dict(d[key], indent+4)
-            continue
-        
-        print(f'{'':>{indent}}{key:<13}: {d[key]}')
+def pkmn_handle_status_turn_start(pkmn):
+    """
+    Handles all of the pokemon status from the start of a turn
+    
+    STATUS - EFFECT
+    - sleep - flip to cure
+    - burn - 20 dmg, flip to cure
+    - poison - 10 dmg
+    - invulnerable - cure
+    - defend - cure
+    """
 
+    if 'sleep' in pkmn['status']:
+        if coin_flip() == 1:
+            pkmn['status'].remove('sleep')
+    
+    if 'burn' in pkmn['status']:
+        damage_pokemon(pkmn, 20)
+        if coin_flip() == 1:
+            pkmn['status'].remove('burn')
 
-def main():
+    if 'poison' in pkmn['status']:
+        damage_pokemon(pkmn, 10)
 
-    # battle_state = {
-    #     'turn'      : 1,
-    #     'p1_active' : None,
-    #     'p1_bench'  : [],
-    #     'p2_active' : None,
-    #     'p2_bench'  : [],
-    # }
-    print_dict(pkmn_data('ss49'))
+    if 'invulnerable' in pkmn['status']:
+        pkmn['status'].remove('invulnerable')
+    
+    if 'defend' in pkmn:
+        pkmn.pop('defend')
 
-if __name__ == '__main__':
-    main()
+def pkmn_attach_energy(pkmn, energy):
+    if not energy in pkmn['energy']:
+        pkmn['energy'][energy] = 0
+    
+    pkmn['energy'][energy] += 1

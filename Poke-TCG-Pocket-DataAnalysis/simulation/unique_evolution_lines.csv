@@ -1,0 +1,309 @@
+,basic,stage1,stage2,basic_name,stage1_name,stage2_name
+0,ga25,,,scyther,,
+1,ga26,,,pinsir,,
+2,ga46,,,moltres,,
+3,ga47,,,moltres EX,,
+4,ga48,,,heatmor,,
+5,ga79,,,lapras,,
+6,ga83,,,articuno,,
+7,ga84,,,articuno EX,,
+8,ga90,,,pyukumuku,,
+9,ga91,,,bruxish,,
+10,ga96,,,pikachu EX,,
+11,ga103,,,zapdos,,
+12,ga104,,,zapdos EX,,
+13,ga112,,,pincurchin,,
+14,ga126,,,mr. mime,,
+15,ga127,,,jynx,,
+16,ga128,,,mewtwo,,
+17,ga129,,,mewtwo EX,,
+18,ga150,,,onix,,
+19,ga154,,,hitmonlee,,
+20,ga155,,,hitmonchan,,
+21,ga178,,,mawile,,
+22,ga198,,,farfech'd,,
+23,ga202,,,chancey,,
+24,ga203,,,kangaskhan,,
+25,ga204,,,tauros,,
+26,ga205,,,ditto,,
+27,ga211,,,snorlax,,
+28,ga283,,,mew,,
+29,mi3,,,celebi EX,,
+30,mi9,,,dhelmise,,
+31,mi24,,,cramorant,,
+32,mi30,,,dedenne,,
+33,mi32,,,mew EX,,
+34,mi33,,,sigilyph,,
+35,mi47,,,marshadow,,
+36,mi48,,,stonejourner,,
+37,mi56,,,druddigon,,
+38,mi60,,,tauros,,
+39,mi62,,,chatot,,
+40,ss19,,,carnivine,,
+41,ss21,,,mow rotom,,
+42,ss22,,,shaymin,,
+43,ss30,,,heat rotom,,
+44,ss34,,,regice,,
+45,ss47,,,wash rotom,,
+46,ss48,,,frost rotom,,
+47,ss49,,,palkia EX,,
+48,ss50,,,manaphy,,
+49,ss61,,,pachirisu EX,,
+50,ss62,,,rotom,,
+51,ss75,,,uxie,,
+52,ss76,,,mespirit,,
+53,ss77,,,azelf,,
+54,ss78,,,giratina,,
+55,ss79,,,cresselia,,
+56,ss85,,,himontop,,
+57,ss87,,,regirock,,
+58,ss104,,,spiritomb,,
+59,ss109,,,darkrai,,
+60,ss110,,,darkrai EX,,
+61,ss111,,,skarmory,,
+62,ss112,,,registeel,,
+63,ss119,,,dialga EX,,
+64,ss120,,,heatran,,
+65,ss141,,,chatot,,
+66,ss142,,,fan rotom,,
+67,ss143,,,regigigas,,
+68,pA14,,,lapras EX,,
+69,pA36,,,cresselia EX,,
+70,ga14,ga15,,paras,parasect,
+71,ga16,ga17,,venonat,venomoth,
+72,ga21,ga22,,exeggute,exeggutor,
+73,mi1,ga22,,exeggute,exeggutor,
+74,ga21,ga23,,exeggute,exeggutor EX,
+75,mi1,ga23,,exeggute,exeggutor EX,
+76,ga27,ga28,,cottonee,whimsicott,
+77,ga29,ga30,,petilil,lilligant,
+78,ga31,ga32,,skiddo,gogoat,
+79,ga37,ga38,,vulpix,ninetales,
+80,ga39,ga40,,growlithe,arcanine,
+81,ga39,ga41,,growlithe,arcanine EX,
+82,ga43,ga43,,rapidash,rapidash,
+83,mi11,ga43,,rapidash,rapidash,
+84,ga206,ga45,,eevee,flareon,
+85,mi61,ga45,,eevee,flareon,
+86,ss126,ga45,,eevee,flareon,
+87,pA30,ga45,,eevee,flareon,
+88,ga49,ga50,,salandit,slazzle,
+89,mi15,ga50,,salandit,slazzle,
+90,ga51,ga52,,sizzlipede,centiskorch,
+91,ga57,ga58,,psyduck,golduck,
+92,ga62,ga63,,tentacool,tentacruel,
+93,ga64,ga65,,seel,dewgong,
+94,ga66,ga67,,shellder,cloyster,
+95,ga68,ga69,,krabby,kingler,
+96,ga70,ga71,,horsea,seadra,
+97,ga72,ga73,,goldeen,seaking,
+98,ga74,ga75,,staryu,starmie,
+99,ga74,ga76,,staryu,starmie EX,
+100,ga77,ga78,,magikarp,gyarados,
+101,mi17,ga78,,magikarp,gyarados,
+102,ga206,ga80,,eevee,vaporeon,
+103,mi61,ga80,,eevee,vaporeon,
+104,ss126,ga80,,eevee,vaporeon,
+105,pA30,ga80,,eevee,vaporeon,
+106,ga85,ga86,,ducklett,swanna,
+107,ga92,ga93,,snom,frosmoth,
+108,ga94,ga95,,pikachu,raichu,
+109,mi25,ga95,,pikachu,raichu,
+110,ga99,ga100,,voltorb,electrode,
+111,ss54,ga100,,voltorb,electrode,
+112,ga206,ga102,,eevee,jolteon,
+113,mi61,ga102,,eevee,jolteon,
+114,ss126,ga102,,eevee,jolteon,
+115,pA30,ga102,,eevee,jolteon,
+116,ga105,ga106,,blitzle,zebstrika,
+117,ga110,ga111,,helioptile,heliolisk,
+118,ga113,ga114,,clefairy,clefable,
+119,ga118,ga119,,slowpoke,slowbro,
+120,ga124,ga125,,drowzee,hypno,
+121,ga133,ga134,,woobat,swoobat,
+122,ga135,ga136,,golett,golurk,
+123,ga137,ga138,,sandshrew,sandslash,
+124,ga139,ga140,,diglett,dugtrio,
+125,ga141,ga142,,mankey,primape,
+126,mi41,ga142,,mankey,primape,
+127,pA17,ga142,,mankey,primape,
+128,ga151,ga152,,cubone,marowak,
+129,ga151,ga153,,cubone,marowak EX,
+130,ga160,ga161,,mienfoo,mienshao,
+131,ga162,ga163,,clobbopus,grapploct,
+132,ga164,ga165,,ekans,arbok,
+133,ga172,ga173,,zubat,golbat,
+134,ga174,ga175,,grimer,muk,
+135,ga176,ga177,,koffing,weezing,
+136,mi49,ga177,,koffing,weezing,
+137,ga179,ga180,,pawniard,bisharp,
+138,ga181,ga182,,meltan,melmetal,
+139,ga189,ga190,,rattata,raticate,
+140,ga191,ga192,,spearow,fearow,
+141,ga193,ga194,,jigglypuff,wigglytuff,
+142,pA22,ga194,,jigglypuff,wigglytuff,
+143,ga193,ga195,,jigglypuff,wigglytuff EX,
+144,pA22,ga195,,jigglypuff,wigglytuff EX,
+145,ga196,ga197,,meowth,persian,
+146,ga199,ga200,,doduo,dodrio,
+147,ga218,ga210,,old amber,aerodactyl,
+148,ga212,ga213,,minccino,cinccino,
+149,ga214,ga215,,wooloo,dubwool,
+150,ga151,ga263,,cubone,marowak EX,
+151,ga21,mi2,,exeggute,exeggutor,
+152,mi1,mi2,,exeggute,exeggutor,
+153,mi7,mi8,,morellul,shiinotic,
+154,ga42,mi11,,ponyta,rapidash,
+155,mi10,mi11,,ponyta,rapidash,
+156,mi13,mi14,,larvesta,volcarona,
+157,ga49,mi16,,salandit,salazzle,
+158,mi15,mi16,,salandit,salazzle,
+159,ga77,mi18,,magikarp,gyarados EX,
+160,mi17,mi18,,magikarp,gyarados EX,
+161,ga206,mi19,,eevee,vaporeon,
+162,mi61,mi19,,eevee,vaporeon,
+163,ss126,mi19,,eevee,vaporeon,
+164,pA30,mi19,,eevee,vaporeon,
+165,mi20,mi21,,finneon,lumineon,
+166,ss42,mi21,,finneon,lumineon,
+167,mi22,mi23,,chewtle,drednaw,
+168,ga94,mi26,,pikachu,raichu,
+169,mi25,mi26,,pikachu,raichu,
+170,mi28,mi29,,joltik,galvantula,
+171,mi34,mi35,,elgyem,beheeyem,
+172,mi39,mi40,,swirlix,slurpuff,
+173,ga141,mi42,,mankey,primape,
+174,mi41,mi42,,mankey,primape,
+175,pA17,mi42,,mankey,primape,
+176,ga218,mi46,,old amber,aerodactyl EX,
+177,ga176,mi50,,koffing,weezing,
+178,mi49,mi50,,koffing,weezing,
+179,mi51,mi52,,purrloin,liepard,
+180,ga24,ss5,,tangela,tangrowth,
+181,ss4,ss5,,tangela,tangrowth,
+182,ss6,ss7,,yanma,yanmega EX,
+183,ss8,ss9,,roselia,roserade,
+184,ss13,ss14,,kricketot,kricketune,
+185,ss15,ss16,,burmy,wormadam,
+186,ss17,ss18,,combee,vespiqueen,
+187,ga206,ss20,,eevee,leafeon,
+188,mi61,ss20,,eevee,leafeon,
+189,ss126,ss20,,eevee,leafeon,
+190,pA30,ss20,,eevee,leafeon,
+191,ga44,ss24,,magmar,magmortar,
+192,mi12,ss24,,magmar,magmortar,
+193,ss23,ss24,,magmar,magmortar,
+194,ss25,ss26,,slugma,magcargo,
+195,ss38,ss39,,buizel,floatzel,
+196,ss40,ss41,,shellos,gastrodon,
+197,mi20,ss43,,finneon,lumineon,
+198,ss42,ss43,,finneon,lumineon,
+199,ss44,ss45,,snover,abomasnow,
+200,ga206,ss46,,eevee,glaceon,
+201,mi61,ss46,,eevee,glaceon,
+202,ss126,ss46,,eevee,glaceon,
+203,pA30,ss46,,eevee,glaceon,
+204,ga99,ss55,,voltorb,electrode,
+205,ss54,ss55,,voltorb,electrode,
+206,ga101,ss57,,electabuzz,electivire,
+207,mi27,ss57,,electabuzz,electivire,
+208,ss56,ss57,,electabuzz,electivire,
+209,ss66,ss67,,misdreavus,mismagius EX,
+210,pA37,ss67,,misdreavus,mismagius EX,
+211,ss73,ss74,,drifloon,drifblim,
+212,ss83,ss84,,gligar,gliscor,
+213,ss15,ss90,,burmy,wormadam,
+214,ss91,ss92,,riolu,lucario,
+215,ss93,ss94,,hippopotas,hippowdon,
+216,ss96,ss97,,murkrow,honchcrow,
+217,ss98,ss99,,sneasel,weavile EX,
+218,ss100,ss101,,poochyena,mightyena,
+219,ss102,ss103,,stunky,skuntank,
+220,ss105,ss106,,skorupi,drapion,
+221,ss107,ss108,,croagunk,toxicroak,
+222,ss15,ss115,,burmy,wormadam,
+223,ss116,ss117,,bronzor,bronzong,
+224,ss86,ss118,,nosepass,probopass,
+225,ga201,ss125,,lickitung,lickilicky EX,
+226,ss124,ss125,,lickitung,lickilicky EX,
+227,ss130,ss131,,aipom,ambipom,
+228,ss135,ss136,,bidoof,bibarel,
+229,ss137,ss138,,buneary,lopunny,
+230,ss139,ss140,,glameow,purugly,
+231,ga1,ga2,ga3,bulbasaur,ivysaur,venusaur
+232,ga1,ga2,ga4,bulbasaur,ivysaur,venusaur EX
+233,ga5,ga6,ga7,caterpie,metapod,butterfree
+234,ga8,ga9,ga10,weedle,kakuna,beedrill
+235,ga11,ga12,ga13,oddish,gloom,vileplume
+236,ss1,ga12,ga13,oddish,gloom,vileplume
+237,ga11,ss2,ga13,oddish,gloom,vileplume
+238,ss1,ss2,ga13,oddish,gloom,vileplume
+239,ga18,ga19,ga20,bellsprout,weepinbell,victreebel
+240,ga33,ga34,ga35,charmander,charmeleon,charizard
+241,ga33,ga34,ga36,charmander,charmeleon,charizard EX
+242,ga53,ga54,ga55,squirtle,wartortle,blastoise
+243,ga53,ga54,ga56,squirtle,wartortle,blastoise EX
+244,ga59,ga60,ga61,poliwag,poliwhirl,poliwrath
+245,ga216,ga81,ga82,helix fossil,omanyte,omastar
+246,ga87,ga88,ga89,froakie,frogadier,greninja
+247,ga107,ga108,ga109,tynamo,eelektrik,eelektross
+248,ga115,ga116,ga117,abra,kadabra,alakazam
+249,ga120,ga121,ga122,gastly,haunter,gengar
+250,ga120,pA20,ga122,gastly,haunter,gengar
+251,ga120,ga121,ga123,gastly,haunter,gengar EX
+252,ga120,pA20,ga123,gastly,haunter,gengar EX
+253,ga130,ga131,ga132,ralts,kirlia,gardevoir
+254,ss68,ga131,ga132,ralts,kirlia,gardevoir
+255,ga143,ga144,ga145,machop,machoke,machamp
+256,ga143,ga144,ga146,machop,machoke,machamp EX
+257,ga147,ga148,ga149,geodude,graveler,golem
+258,mi43,ga148,ga149,geodude,graveler,golem
+259,ga147,mi44,ga149,geodude,graveler,golem
+260,mi43,mi44,ga149,geodude,graveler,golem
+261,ga217,ga158,ga159,dome fossil,kabuto,kabutops
+262,ga166,ga167,ga168,nidoran f,nidorina,nidoqueen
+263,ga169,ga170,ga171,nidoran m,nidorino,nidoking
+264,ga183,ga184,ga185,dratini,dragonair,dragonite
+265,ga186,ga187,ga188,pidgey,pidgeotto,pidgeot
+266,mi57,ga187,ga188,pidgey,pidgeotto,pidgeot
+267,ga186,mi58,ga188,pidgey,pidgeotto,pidgeot
+268,mi57,mi58,ga188,pidgey,pidgeotto,pidgeot
+269,mi4,mi5,mi6,snivy,servine,serperior
+270,pA27,mi5,mi6,snivy,servine,serperior
+271,mi36,mi37,mi38,flabebe,florette,florges
+272,ga147,ga148,mi45,geodude,graveler,golem
+273,mi43,ga148,mi45,geodude,graveler,golem
+274,ga147,mi44,mi45,geodude,graveler,golem
+275,mi43,mi44,mi45,geodude,graveler,golem
+276,mi53,mi54,mi55,venipede,whirlipede,scolipede
+277,ga186,ga187,mi59,pidgey,pidgeotto,pidgeot EX
+278,mi57,ga187,mi59,pidgey,pidgeotto,pidgeot EX
+279,ga186,mi58,mi59,pidgey,pidgeotto,pidgeot EX
+280,mi57,mi58,mi59,pidgey,pidgeotto,pidgeot EX
+281,ga11,ga12,ss3,oddish,gloom,bellossom
+282,ss1,ga12,ss3,oddish,gloom,bellossom
+283,ga11,ss2,ss3,oddish,gloom,bellossom
+284,ss1,ss2,ss3,oddish,gloom,bellossom
+285,ss10,ss11,ss12,turtwig,grotle,torterra
+286,ss27,ss28,ss29,chimchar,monferno,infernape EX
+287,ss31,ss32,ss33,swinub,piloswine,mamoswine
+288,ss35,ss36,ss37,piplup,prinplup,empoleon
+289,ga97,ga98,ss53,magnemite,magneton,magnezone
+290,ss51,ga98,ss53,magnemite,magneton,magnezone
+291,ga97,ss52,ss53,magnemite,magneton,magnezone
+292,ss51,ss52,ss53,magnemite,magneton,magnezone
+293,ss58,ss59,ss60,shinx,luxio,luxray
+294,ss63,ss64,ss65,togepi,togetic,togekiss
+295,ss70,ss71,ss72,duskull,dusclops,dusknoir
+296,ga156,ga157,ss82,rhyhorn,rhydon,rhyperior
+297,ss80,ga157,ss82,rhyhorn,rhydon,rhyperior
+298,ga156,ss81,ss82,rhyhorn,rhydon,rhyperior
+299,ss80,ss81,ss82,rhyhorn,rhydon,rhyperior
+300,ss144,ss88,ss89,skull fossil,cranidos,rampardos
+301,ga130,ga131,ss95,ralts,kirlia,gallade EX
+302,ss68,ga131,ss95,ralts,kirlia,gallade EX
+303,ss145,ss113,ss114,armor fossil,shieldon,bastidon
+304,ss121,ss122,ss123,gible,gabite,garchomp
+305,ga209,ss128,ss129,porygon,porygon-2,porygon-Z
+306,ss127,ss128,ss129,porygon,porygon-2,porygon-Z
+307,ss132,ss133,ss134,starly,staravia,staraptor

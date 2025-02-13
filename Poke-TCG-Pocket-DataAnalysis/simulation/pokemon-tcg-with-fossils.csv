@@ -161,7 +161,7 @@ ga159,2,kabutops,kabuto,140,fighting,,f,leech life,,,,,,,,,grass,1,3d
 ga160,0,mienfoo,,60,fighting,,x,pound,20,,,,,,,,psychic,1,1d
 ga161,1,mienshao,mienfoo,80,fighting,,x,spiral kick,40,,,,,,,,psychic,1,2d
 ga162,0,clobbopus,,80,fighting,,fx,knuckle punch,30,,,,,,,,psychic,2,1d
-ga163,1,grapploct,clobbobus,130,fighting,,ffx,knock back,,,,,,,,,psychic,3,2d
+ga163,1,grapploct,clobbopus,130,fighting,,ffx,knock back,,,,,,,,,psychic,3,2d
 ga164,0,ekans,,60,dark,,d,bite,20,,,,,,,,fighting,1,1d
 ga165,1,arbok,ekans,100,dark,,dx,corner,60,no retreat,,,,,,,fighting,2,2d
 ga166,0,nidoran f,,60,dark,,d,call for family,,,,,,,,,fighting,1,1d
@@ -363,7 +363,7 @@ ss17,0,combee,,50,grass,,x,call for family,,,,,,,,,fire,1,1d
 ss18,1,vespiqueen,combee,100,grass,,gg,pierce,70,,,,,,,,fire,2,2d
 ss19,0,carnivine,,90,grass,,ggx,flog,40,coin-1,50,,,,,,fire,1,2d
 ss20,1,leafeon,eevee,90,grass,,gx,leafy cyclone,90,attackLock,,,,,,,fire,1,3d
-ss21,0,mow rotom,,80,grass,,gx,energy cutoff,30,\discard energy,,,,,,,fire,1,1d
+ss21,0,mow rotom,,80,grass,,gx,energy cutoff,30,\energy discard,,,,,,,fire,1,1d
 ss22,0,shaymin,,60,grass,fragrant flower garden,gx,flop,30,,,,,,,,fire,1,3d
 ss23,0,magmar,,80,fire,,r+r,stoke,0,,,,,,,,water,2,1d
 ss24,1,magmortar,magmar,130,fire,,rrrr,bursting inferno,100,burn,,,,,,,water,3,3d
@@ -564,3 +564,9 @@ pA37,0,misdreavus,,60,psychic,,p,confuse ray,0,confused,,,,,,,dark,1,promo
 pA38,0,skarmory,,80,metal,,m,metal arms,20,hasTool,30,,,,,,electric,1,promo
 pA39,0,chimchar,,60,fire,,r,scratch,20,,,,,,,,water,1,promo
 pA40,0,togepi,,50,psychic,,p,pound,20,,,,,,,,metal,1,promo
+ga216,0,helix fossil,,40,fossil,fossil,,,,,,,,,,,,0,1d
+ga217,0,dome fossil,,40,fossil,fossil,,,,,,,,,,,,0,1d
+ga218,0,old amber,,40,fossil,fossil,,,,,,,,,,,,0,1d
+mi63,0,old amber,,40,fossil,fossil,,,,,,,,,,,,0,1d
+ss144,0,skull fossil,,40,fossil,fossil,,,,,,,,,,,,0,1d
+ss145,0,armor fossil,,40,fossil,fossil,,,,,,,,,,,,0,1d

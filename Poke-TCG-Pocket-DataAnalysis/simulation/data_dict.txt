@@ -62,10 +62,62 @@ value   int count
     p2      : <<< player >>>
     p1      : <<< player >>>
     turn    : int               : turn number. p1 on odd, p2 on even
+    attacks : list[tuple]       : last two attacks (for abilities)
+                (attacker uid, attack name, bool ko)
 }
 
 ## Card <<< card >>>
 {
     type    : enum[ pokemon, item, supporter, tool ]
     data    : <<< raw card data >>>
+}
+
+## Move bonus
+{
+    heal_target     str     [self, all] who to cast healing to
+    heal            int     amount to heal
+
+    status          str     status to add to opp. active
+
+    recoil          int     damage self
+    recoil_special  str     [ko] only recoil on opp. ko
+
+    defend          int     amount to defend next attack by
+
+    damage          int     damage (application varies by other map values)
+
+    coin_count      int     number of coins to flip
+                    str     endless         flip until tails
+                            << energy >>>   flip for energy type attached
+
+    target          str     any     any opponent pkmn
+                            bench   bench only
+                            random  random target
+    target_count    int     number of targets
+                    str     [all] every target
+
+    energy_bonus    str     [<<<energy name>>>] energy to count
+    energy_required int     bonus energy needed for damage
+
+    bench_energy_count str  count of self benched pokemon of specified type
+
+    bench_count     str     [all, opp] self or opponent bench
+
+    bench_pkmn_count   str  count pkmn with given name on bench
+
+    special_damage  str     special case to get bonus damage
+                            [hurt, poisoned, hasTool, energy, ex, damaged, ko]
+
+    discard_count   int     cards to discard
+    discard_target  str     [self, opp]
+
+    other [
+        chance          flip coin for bonus to occur
+        invulnerable    (self) no damage next turn
+        draw            draw a card
+        shuffle         shuffle opp. active into their deck
+        random energy   random energy discard from game (self and opp)
+        show hand       opp. reveal hand to you
+        attackLock      can't use same attack next turn
+    ]
 }

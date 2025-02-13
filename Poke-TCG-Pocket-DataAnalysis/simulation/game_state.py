@@ -1,4 +1,4 @@
-from pokemon_state import pkmn_handle_status_turn_start, pkmn_attach_energy, pkmn_data, evolve_pkmn
+import pokemon_state as pk
 import random as r
 
 def new_game_state(p1_evo_line: list[str], p2_evo_line: list[str]) -> dict[str, any]:
@@ -9,7 +9,8 @@ def new_game_state(p1_evo_line: list[str], p2_evo_line: list[str]) -> dict[str, 
     return {
         'p1': player_setup_from_evo_line(p1_evo_line),
         'p2': player_setup_from_evo_line(p2_evo_line),
-        'turn' : 1
+        'turn' : 1,
+        'attacks' : [None, None]
     }
 
 def get_energy_pool(all_pkmn: list[dict]):
@@ -44,18 +45,18 @@ def player_setup_from_evo_line(evo_line: list[str]):
     Returns the player setup dictionary given their starter
     """
     # make sure evolution line starts with a basic pokemon
-    starter = pkmn_data(evo_line[0])
+    starter = pk.pkmn_data(evo_line[0])
     if starter['stage'] != 0: raise Exception(f"Starter is not a basic Pokemon")
 
     # add full evolution line set to hand
-    hand = [pkmn_data(evo_id) for evo_id in evo_line]
+    hand = [pk.pkmn_data(evo_id) for evo_id in evo_line]
 
     # get energy pool from evo-line
     energy_pool = get_energy_pool(hand)
 
     # add remainder of second set of evolution line
     if len(evo_line) > 1:
-        hand += [pkmn_data(evo_id) for evo_id in evo_line[1:]]
+        hand += [pk.pkmn_data(evo_id) for evo_id in evo_line[1:]]
     
     return {
         'active' : starter,
@@ -142,7 +143,7 @@ def player_turn_start(player: dict):
     Handles the start of a player's turn, returns current player energy for attachment
     """
 
-    pkmn_handle_status_turn_start(player)
+    pk.pkmn_handle_status_turn_start(player)
     current_energy = player['next_energy']
     player_next_energy(player)
     # draw card
@@ -175,7 +176,7 @@ def player_turn_actions(player: dict, opponent: dict, current_energy: str, first
     while True:
         # attach energy once per turn
         if 'attach_energy' in player_actions:
-            pkmn_attach_energy(player['active'], current_energy)
+            pk.pkmn_attach_energy(player['active'], current_energy)
             player_actions.remove('attach_energy')
             continue
 
@@ -252,7 +253,84 @@ def player_try_play_pokemon(player: dict, pkmn: dict) -> bool:
 
         if target_is_pre_evo and not target_evolved_this_turn:
             player['evolved_uids'] += [target['uid']]
-            evolve_pkmn(target, pkmn)
+            pk.evolve_pkmn(target, pkmn)
             return True
 
     return False
+
+def player_attack(player: dict, opponent: dict, last_player_atk: tuple) -> tuple:
+    """
+    Handles an attack from the player active to the opponent
+    """
+    # handle non-attack status
+    for disqualifying_status in ['no-attack']:
+        if disqualifying_status in player['active']['status']:
+            return
+
+    # get best valid attack
+    attacks = pk.attack_list(player['active'])
+    current_energy = player['active']['energy']
+
+    attack = None
+    for atk in attacks:
+        # attack lock
+        if 'attackLock' in atk['bonus']['other']:
+            if last_player_atk[1] == atk['name']:
+                continue
+        
+        if pk.enough_energy(atk, current_energy):
+            attack = atk
+
+    if attack is None:
+        return
+
+    # TODO handle special attacks (Damage is None)
+
+    target = 'self'
+    if 'target' in attack['bonus']:
+        target = attack['target']
+
+    #   confused:   flip for no attack
+    #   smokescreen:    flip for no attack
+
+    # opponent status:
+    #   invulnerable:   no damage dealt to opp. active
+    #   defend: reduced damage
+
+    # damage (flat, coin, bonus)
+    damage = pk.attack_damage()
+
+    # bonus:
+    #   ex - if opp is EX
+    #   active - if opp. active is -type
+    #   bTarget - deal bonus to 1 opp. bench
+    #       -count: to count opp. bench
+    #       -all:   all opp.bench
+    #   bench:  bonus per count
+    #       -type:  count type on bench
+    #       -all:   all bench
+    #       -opp:   opp. all bench
+    #       -pkmn_name: count of name on self bench
+    #   type-count: bonus damage if extra of type attached beyond required
+    #   energy: energy attached to opp. active
+    #   hasTool:    bonus if tool attached
+    #   hurt:   bonus if self hurt
+    #   ko: bonus if pkmn ko'd last turn
+    #   ownDamage:  bonus equal to total damage taken
+    #   poisoned:   bonus if opp. active poisoned
+    #   usedLast:   bonus if attack used last
+
+    # outcomes:
+    #   apply status (self and opp)
+    #   discard energy: discard random opp. energy
+    #   discard:    discard opp cards
+    #       -self:  own cards
+    #   shuffle:    opp shuffles deck
+    #   draw:   draw self
+    #   heal:   heal self
+    #   heal all:   heal all own pkmn
+    #   random energy:  discard any random energy from any pkmn (self and opp.)
+    #   recoil: damage self
+    #       -ko: only on active ko
+
+    ...

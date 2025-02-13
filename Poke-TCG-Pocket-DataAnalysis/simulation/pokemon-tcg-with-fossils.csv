@@ -76,7 +76,7 @@ ga74,0,staryu,,50,water,,w,smack,20,,,,,,,,electric,1,1d
 ga75,1,starmie,staryu,90,water,,w,wave splash,40,,,,,,,,electric,0,2d
 ga76,1,starmie EX,staryu,130,water,,ww,hydro pump,90,,,,,,,,electric,0,4d
 ga77,0,magikarp,,30,water,,x,splash,10,,,,,,,,electric,1,1d
-ga78,1,gyarados,magikarp,150,water,,wwww,hyper beam,100,energy discard,,,,,,,electric,4,3d
+ga78,1,gyarados,magikarp,150,water,,wwww,hyper beam,100,random energy,,,,,,,electric,4,3d
 ga79,0,lapras,,100,water,,w,hydro pump,20,water-3,70,,,,,,electric,2,3d
 ga80,1,vaporeon,eevee,130,water,,wxx,bubble drain,60,heal,30,,,,,,electric,2,3d
 ga81,1,omanyte,helix fossil,90,water,,w,water gun,40,,,,,,,,electric,1,2d

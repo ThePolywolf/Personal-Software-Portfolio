@@ -1,0 +1,7 @@
+AttackLock = 'attack lock'
+Invulnerable = 'invulnerable'
+Draw = 'draw'
+Shuffle = 'shuffle'
+RandomEnergy = 'random energy'
+ShowHand = 'show hand'
+Chance = 'chance'

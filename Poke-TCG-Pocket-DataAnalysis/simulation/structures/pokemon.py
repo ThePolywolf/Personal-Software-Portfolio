@@ -22,6 +22,8 @@ class Pokemon:
         self.energy:EnergyPool = EnergyPool({})
         self.move1:Attack = Attack.generate(raw, 1)
         self.move2:Attack = Attack.generate(raw, 2)
+        self.__defense: int = 0
+        self.__pre_evos: list[str] = []
 
     @staticmethod
     def none_or_value(item) -> any:
@@ -72,51 +74,106 @@ class Pokemon:
             result.merge(atk.cost.as_set())
         return result
     
-    def has_status(self, status: str) -> bool:
+    def has_status(self, status: (str | list[str])) -> bool:
         """
         Returns if this Pokemon has the given status condition
         """
+        if isinstance(status, list):
+            for stat in status:
+                if stat in self.status: return True
+            return False
+
         return status in self.status
+
+    def add_status(self, s: str):
+        """
+        Gives the pokemon the new status
+        """
+        # TODO override status' (ex. paralysis > sleep override)
+        self.status += [s]
+
+    def clear_status(self):
+        """
+        Clears all pokemon's status'
+        """
+        self.status = []
     
     def damage(self, damage: int):
         self.hp -= damage
         if self.hp < 0:
             self.hp = 0
 
+    def is_koed(self):
+        return self.hp <= 0
+
     def heal(self, heal: int):
         self.hp += heal
         if self.hp > self.max_hp:
             self.hp = self.max_hp
+
+    def defend(self, damage: int) -> int:
+        """
+        Defends agaist the given damage, and returns the new damage
+        """
+        if self.__defense >= damage: return 0
+        return damage - self.__defense
+    
+    def add_defense(self, defense: int):
+        self.__defense += defense
+
+    def reset_defense(self):
+        self.__defense = 0
 
     def is_ex(self) -> bool:
         """
         Checks if this pokemon is an EX type
         """
         return self.name[-2:].lower() == 'ex'
+    
+    def get_card_stack(self) -> list[str]:
+        return self.__pre_evos + [self.id]
 
     def handle_status_turn_start(self):
         """
         Handles all of the start-of-turn status effects
         """
-
-        if status.Sleep in self.status:
+        if self.has_status(status.Sleep):
             if Pokemon.flip_heads():
                 self.status.remove(status.Sleep)
         
-        if status.Burned in self.status:
+        if self.has_status(status.Burned):
             self.damage(20)
             if Pokemon.flip_heads():
                 self.status.remove(status.Burned)
 
-        if status.Poisoned in self.status:
+        if self.has_status(status.Poisoned):
             self.damage(10)
 
-        if status.Invulnerable in self.status:
+        if self.has_status(status.Invulnerable):
             self.status.remove(status.Invulnerable)
         
-        # TODO handle defense
-        # if 'defend' in self:
-        #     self.pop('defend')
+        self.reset_defense()
+
+    def handle_status_turn_end(self):
+        """
+        Handles all of the end-of-turn status effects
+        """
+        if self.has_status(status.Sleep):
+            if Pokemon.flip_heads():
+                self.status.remove(status.Sleep)
+        
+        if self.has_status(status.Burned):
+            self.damage(20)
+            if Pokemon.flip_heads():
+                self.status.remove(status.Burned)
+
+        if self.has_status(status.Poisoned):
+            self.damage(10)
+
+        to_cure = [status.Paralysis, status.Smokescreen, status.NoAttack, status.NoSupport]
+        for s in to_cure:
+            if self.has_status(s):
+                self.status.remove(s)
 
     def evolve(self, evolution):
         """
@@ -129,6 +186,8 @@ class Pokemon:
         if not self.name == evolution.pre_evo:
             note = f'{evolution.name} does not evolve into {self.name}, needs {evolution.pre_evo}'
             raise Exception(note)
+
+        self.__pre_evos += [self.id]
 
         # new pokemon carries over health from pre-evolution
         health_delta = evolution.max_hp - self.max_hp

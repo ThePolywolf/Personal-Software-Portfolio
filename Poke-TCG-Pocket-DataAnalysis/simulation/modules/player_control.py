@@ -1,9 +1,12 @@
 from structures.attack_sequence import AttackSequence, AttackData
 from structures.pokemon import Pokemon
 from structures.player import Player
+from structures.attack import Attack
 import structures.status as status
 import structures.attack_trait as trait
 import modules.attacker as attacker
+
+from random import randint, choice
 
 def add_to_bench(player: Player, pokemon: Pokemon):
     """
@@ -34,7 +37,10 @@ def switch_active(player: Player):
     # swap bench and active
     old_active = player.active
     player.active = player.bench[index]
-    player.bench[index] = old_active
+    
+    # None if koed or other
+    if not old_active is None:
+        player.bench[index] = old_active
 
 def try_play_pokemon(player: Player, pokemon: Pokemon) -> bool:
     """
@@ -79,7 +85,7 @@ def start_turn(player: Player):
 
     # draw card
 
-def turn_actions(player: Player, opponent, first_turn:bool=False):
+def turn_actions(player: Player, opponent: Player, first_turn:bool=False):
     """
     Uses every available pre-attack action
     """
@@ -154,7 +160,7 @@ def try_play_cards(player: Player) -> bool:
 
     return False
 
-def attack(player: Player, opponent, sequence: AttackSequence) -> (None | AttackData):
+def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None | AttackData):
     """
     Handles an attack from the player active to the opponent
     """
@@ -163,7 +169,8 @@ def attack(player: Player, opponent, sequence: AttackSequence) -> (None | Attack
         raise Exception("Opponent must by a Player type")
 
     # handle non-attack status
-    for disqualifying_status in [status.NoAttack]:
+    # TODO switch NoAttack status as a removable status when benched
+    for disqualifying_status in [status.NoAttack, status.Paralysis]:
         if disqualifying_status in player.active.status:
             return None
 
@@ -184,52 +191,147 @@ def attack(player: Player, opponent, sequence: AttackSequence) -> (None | Attack
 
     # TODO handle special attacks (Damage is None)
 
-    # target = 'self'
-    # if 'target' in attack['bonus']:
-    #     target = attack['target']
+    # attack-prevention status' | Coin flip to attack at all
+    if opponent.active.has_status([status.Confused, status.Smokescreen]) and choice([0, 1]) == 0:
+        return None
 
-    #   confused:   flip for no attack
-    #   smokescreen:    flip for no attack
-
-    # opponent status:
-    #   invulnerable:   no damage dealt to opp. active
-    #   defend: reduced damage
-
-    # damage (flat, coin, bonus)
+    # damage (direct opponent damage)
     damage = attacker.damage(attack, player, opponent, sequence)
+    
+    if attack.has_bonus('target') and attack.get_bonus('target') == 'any':
+        damage = attack_any(damage, player, opponent)
+    else:
+        damage += attack_bench(attack, player)
 
-    # bonus:
-    #   ex - if opp is EX
-    #   active - if opp. active is -type
-    #   bTarget - deal bonus to 1 opp. bench
-    #       -count: to count opp. bench
-    #       -all:   all opp.bench
-    #   bench:  bonus per count
-    #       -type:  count type on bench
-    #       -all:   all bench
-    #       -opp:   opp. all bench
-    #       -pkmn_name: count of name on self bench
-    #   type-count: bonus damage if extra of type attached beyond required
-    #   energy: energy attached to opp. active
-    #   hasTool:    bonus if tool attached
-    #   hurt:   bonus if self hurt
-    #   ko: bonus if pkmn ko'd last turn
-    #   ownDamage:  bonus equal to total damage taken
-    #   poisoned:   bonus if opp. active poisoned
-    #   usedLast:   bonus if attack used last
+    damage = attacker.type_bonus(damage, player.active, opponent)
 
-    # outcomes:
-    #   apply status (self and opp)
-    #   discard energy: discard random opp. energy
-    #   discard:    discard opp cards
-    #       -self:  own cards
-    #   shuffle:    opp shuffles deck
-    #   draw:   draw self
-    #   heal:   heal self
-    #   heal all:   heal all own pkmn
-    #   random energy:  discard any random energy from any pkmn (self and opp.)
-    #   recoil: damage self
-    #       -ko: only on active ko
+    # opponent status
+    if opponent.active.has_status(status.Invulnerable):
+        damage = 0
+    else:
+        damage = opponent.active.defend(damage)
 
-    kod = False
-    return AttackData(attack.name, player.active.uid, kod)
+    # apply damage to active
+    attacker.attack(damage, player.active, opponent.active)
+
+    # chance outcome
+    do_outcome = True
+    if attack.has_trait('chance') and choice([0, 1]) == 0:
+        do_outcome = False
+    
+    if do_outcome:
+        attacker.outcome(attack, player, opponent)
+
+    # TODO handle KO removal in post-attack actions
+    koed = False if opponent.active is None else opponent.active.is_koed()
+
+    return AttackData(attack.name, player.active.uid, koed)
+
+def attack_bench(attack: Attack, opponent: Player) -> int:
+    """
+    Attacks all bench targets, and returns bonus damage to the active pokemon
+    """
+    if not attack.has_bonus('target'):
+        return 0
+    
+    target = attack.get_bonus('target')
+
+    # any target handled previously
+    if target == 'any':
+        return 0
+    
+    # vars
+    target_count = attack.get_bonus('target_count')
+    damage = attack.get_bonus('damage')
+
+    if target_count == 'all':
+        target_count = 3
+
+    # apply target
+    if target == 'random':
+        return damage_random(target_count, damage, opponent)
+    
+    if target == 'bench':
+        opp_bench = opponent.bench_pokemon()
+        # TODO sort bench by hp (min to max)
+        for i in range(len(opp_bench)):
+            if i >= target_count: break
+            opp_bench[i].damage(damage)
+
+def damage_random(target_count: int, damage: int, opponent: Player) -> int:
+    """
+    Damages random random opponent targets, and returns the damage to the active pokemon
+    """
+    damages = [0] * len(opponent.all_pokemon())
+    for _ in range(target_count):
+        damages[randint(0, len(damage) - 1)] += damage
+
+    active_damage = damages[0]
+
+    opp_bench = opponent.bench_pokemon()
+    for i in range(opp_bench):
+        opp_bench[i].damage(damages[i + 1])
+
+    return active_damage
+
+def attack_any(damage: int, player: Player, opponent: Player):
+    """
+    Chooses a target to damage, then returns damage dealt to active
+    """
+    # only damage active if no bench pokemon
+    if opponent.bench_count() == 0:
+        return damage
+    
+    # FIRST | attack active if KO
+    active_damage = attacker.type_bonus(damage, player.active, opponent)
+    active_damage = opponent.active.defend(active_damage)
+
+    if not opponent.active.has_status(status.Invulnerable):
+        if attacker.will_ko(active_damage, player.active, opponent.active):
+            return damage
+    
+    # SECOND | attack bench if KO
+    for pkmn in opponent.bench_pokemon():
+        if attacker.will_ko(damage, player.active, opponent.active):
+            attacker.attack(damage, player.active, pkmn)
+            return 0
+
+    # THIRD | default attack active
+    return damage
+
+def end_turn(player: Player, opponent: Player):
+    """
+    End of turn processing for player and opponent
+    """
+    player.active.handle_status_turn_end()
+
+    ko_points(player, opponent)
+    ko_points(opponent, player)
+
+def ko_points(player: Player, opponent: Player):
+    """
+    Gives points from koed player pokemon to the opponent, and removes koed pokemon
+    """
+    points = 0
+
+    for pkmn in player.bench_pokemon():
+        if pkmn.is_koed():
+            points += 2 if pkmn.is_ex() else 1
+
+    player.remove_ko_from_bench()
+    
+    if player.active is None:
+        if player.bench_count() is None:
+            opponent.give_points(points)
+            return
+        
+        switch_active(player)
+
+    if player.active.is_koed():
+        points += 2 if player.active.is_ex() else 1
+        player.active = None
+
+        if player.bench_count() > 0:
+            switch_active(player)
+
+    opponent.give_points(points)

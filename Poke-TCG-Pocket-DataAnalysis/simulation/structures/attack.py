@@ -1,6 +1,9 @@
 from structures.energy_pool import EnergyPool, full_energy_name, is_short_energy_name, energy_names
 from file_loader import is_nan
 import structures.attack_trait as trait
+import structures.attack_bonus as bonus
+import structures.attack_bonus_special as bonusSpecial
+import structures.status as status
 from random import choice
 
 class Attack:
@@ -51,23 +54,23 @@ class Attack:
         Requires active_energy for energy-based coin flips (see Celebi EX)
         """
         # Zero damage if no coin bonus
-        if not self.has_coin_bonus():
+        coin_count = self.try_get_bonus(bonus.Coins)
+        if coin_count is None:
             return 0
         
-        coin_count = self.__bonus['coin_count']
         bonus_damage = self.bonus_damage()
-
-        # numeric coin count
-        if isinstance(coin_count, int):
-            heads = sum([choice[0, 1] for _ in range(coin_count)])
-            return heads * bonus_damage
         
         # endless coin count (flip until tails)
-        if coin_count == 'endless':
+        if self.has_trait(trait.EndlessCoins):
             heads = 0
             while True:
                 if choice[0, 1] == 0: break
                 heads += 1
+            return heads * bonus_damage
+
+        # numeric coin count
+        if isinstance(coin_count, int):
+            heads = sum([choice[0, 1] for _ in range(coin_count)])
             return heads * bonus_damage
 
         # unrecognized type
@@ -87,8 +90,8 @@ class Attack:
         if not self.has_energy_bonus():
             return 0
 
-        bonus_type: str = self.__bonus['energy_bonus']
-        bonus_count: int = self.__bonus['energy_required']
+        bonus_type: str = self.__bonus[bonus.EnergyBonusType]
+        bonus_count: int = self.__bonus[bonus.EnergyBonusCount]
         bonus_damage: int = self.bonus_damage()
 
         #check active has bonus type
@@ -114,18 +117,21 @@ class Attack:
         return self.__bonus[b]
     
     def try_get_bonus(self, b: str) -> any:
+        """
+        Trys to get the bonus by name, returns None if there is no bonus with the given name
+        """
         if not self.has_bonus(b): return None
         return self.get_bonus(b)
     
     def has_coin_bonus(self) -> bool:
-        return 'coin_damage' in self.__bonus
+        return bonus.Coins in self.__bonus
     
     def has_energy_bonus(self) -> bool:
-        return 'energy_bonus' in self.__bonus
+        return bonus.EnergyBonusType in self.__bonus
     
     def bonus_damage(self) -> int:
-        if not self.has_bonus['damage']: return 0
-        return self.__bonus['damage']
+        if not self.has_bonus(bonus.Damage): return 0
+        return self.__bonus[bonus.Damage]
     
     def print_short(self, indent=0):
         dmg = "None" if self.damage is None else f"{self.damage} dmg"
@@ -174,113 +180,138 @@ class Attack:
             traits.add(trait.Chance)
             b_type = b_type[1:]
 
-        if b_type in [trait.AttackLock, trait.Invulnerable, trait.Draw, trait.Shuffle, trait.RandomEnergy, trait.ShowHand]:
-            traits.add(b_type)
+        # TODO change AttackLock to a status instead of a trait
+        trait_dict = {
+            "attackLock" : trait.AttackLock, 
+            "invulnerable" : trait.Invulnerable, 
+            "draw" : trait.Draw, 
+            "shuffle" : trait.ShufflePokemon, 
+            "random energy" : trait.RandomEnergy, 
+            "show hand" : trait.ShowHand, 
+            "energy discard" : trait.EnergyDiscard
+        }
+        if b_type in trait_dict:
+            traits.add(trait_dict[b_type])
             return traits, dict()
 
         # healing
         if b_type == 'heal':
-            return traits, {
-                'heal'          : bonus_value,
-                'heal_target'   : 'self'
-            }
+            return traits, {bonus.Heal: bonus_value}
         
         if b_type == 'healAll':
-            return traits, {
-                'heal'          : bonus_value,
-                'heal_target'   : 'all'
-            }
+            traits.add(trait.HealAll)
+            return traits, {bonus.Heal: bonus_value}
 
         # status'
-        if b_type in ['sleep', 'poison', 'no attack', 'no support', 'paralysis', 'no retreat', 'smokescreen', 'confused']:
-            return traits, {'status': b_type}
+        status_dict = {
+            'sleep': status.Sleep, 
+            'poison': status.Poisoned, 
+            'burn': status.Burned, 
+            'no attack': status.NoAttack, 
+            'no support': status.NoSupport, 
+            'paralysis': status.Paralysis, 
+            'no retreat': status.NoRetreat, 
+            'smokescreen': status.Smokescreen, 
+            'confused': status.Confused
+        }
+        if b_type in status_dict:
+            return traits, {bonus.Status: status_dict[b_type]}
         
         # recoil and defense
         if b_type == 'recoil':
-            output = {'recoil': bonus_value}
+            output = {bonus.Recoil: bonus_value}
             if len(splits) > 1: 
-                output |= {'recoil_special': splits[1]}
+                traits.add(trait.RecoilOnKo)
             return traits, output
         
         if b_type == 'defend':
-            return traits, {'defend': bonus_value}
+            return traits, {bonus.Defend: bonus_value}
         
         # coin-based
         if b_type == 'coin':
             return traits, {
-                'coin_count'    : 
+                bonus.Coins: 
                     int(splits[1])
                         if isinstance(splits[1], (int, float)) 
                     else full_energy_name(splits[1]),
-                'damage'   : bonus_value
+                bonus.Damage: bonus_value
             }
         
         if b_type == 'allCoins':
+            traits.add(trait.EndlessCoins)
             return traits, {
-                'coin_count'    : 'endless',
-                'damage'        : bonus_value
+                bonus.Coins: 0,
+                bonus.Damage: bonus_value
             }
         
         # targeting
         if b_type == 'free':
-            return traits, {'target': 'any'}
+            traits.add(trait.FreeTarget)
+            return traits, dict()
 
         if b_type == 'bTarget':
             return traits, {
-                'target'        : 'bench', 
-                'target_count'  : 'all' if splits[1] == 'all' else int(splits[1]), 
-                'damage'        : bonus_value
+                bonus.Target:       'bench', 
+                bonus.TargetCount:  3 if splits[1] == 'all' else int(splits[1]), 
+                bonus.Damage:       bonus_value
             }
 
         if b_type == 'random':
             return traits, {
-                'target'        : 'random',
-                'target_count'  : int(splits[1]),
-                'damage'        : bonus_value
+                bonus.Target:       'random',
+                bonus.TargetCount:  int(splits[1]),
+                bonus.Damage:       bonus_value
             }
         
         # multipliers
         if b_type in energy_names:
             return traits, {
-                'energy_bonus'      : b_type,
-                'energy_required'   : int(splits[1]),
-                'damage'            : bonus_value
+                bonus.EnergyBonusType:      b_type,
+                bonus.EnergyBonusCount:   int(splits[1]),
+                bonus.Damage:           bonus_value
             }
 
         if b_type == 'bench':
             if is_short_energy_name(splits[1]):
+                traits.add(trait.BenchCountType)
                 return traits, {
-                    'damage': bonus_value,
-                    'bench_energy_count': full_energy_name(splits[1])
+                    bonus.BenchCount: full_energy_name(splits[1]),
+                    bonus.Damage: bonus_value
                 }
             
             if splits[1] in ['all', 'opp']:
                 return traits, {
-                    'damage': bonus_value,
-                    'bench_count': splits[1]
+                    bonus.BenchCount: splits[1],
+                    bonus.Damage: bonus_value
                 }
             
+            traits.add(trait.BenchCountPokemon)
             return traits, {
-                'damage': bonus_value,
-                'bench_pkmn_count': splits[1]
+                bonus.BenchCount: splits[1],
+                bonus.Damage: bonus_value
             }
         
-        if b_type in ['hurt', 'poisoned', 'hasTool', 'energy', 'ex', 'damaged', 'ko']:
+        bonus_special_dict = {
+            'hurt': bonusSpecial.Hurt, 
+            'poisoned': bonusSpecial.Poisoned, 
+            'hasTool': bonusSpecial.HasTool, 
+            'energy': bonusSpecial.OppEnergy, 
+            'ex': bonusSpecial.OppIsEX, 
+            'damaged': bonusSpecial.OppDamaged, 
+            'ko': bonusSpecial.OppJustKoed,
+            'usedLast': bonusSpecial.RepeatAttack
+        }
+        if b_type in bonus_special_dict:
             return traits, {
-                'special_damage'    : b_type,
-                'damage'            : bonus_value
-            }
-
-        if b_type == 'used last':
-            return traits, {
-                'special_damage'    : 'usedLast',
-                'damage'            : bonus_value
+                bonus.Special: bonus_special_dict[b_type],
+                bonus.Damage: bonus_value
             }
 
         if b_type == 'discard':
+            if len(splits) > 1:
+                traits.add(trait.SelfDiscard)
             return traits, {
-                'discard_count'     : bonus_value,
-                'discard_target'    : 'self' if len(splits) > 1 else 'opp'
+                bonus.Discard: bonus_value,
             }
         
         raise KeyError(f"unrecognized b_type `{b_type}`")

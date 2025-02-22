@@ -21,6 +21,9 @@ class AttackData:
         Returns the name of the attack
         """
         return self.__attack
+    
+    def __str__(self):
+        return f"Attack: {self.__attack} by {self.__user}; did{"" if self.__ko else " not"} ko"
 
 class AttackSequence:
     def __init__(self):

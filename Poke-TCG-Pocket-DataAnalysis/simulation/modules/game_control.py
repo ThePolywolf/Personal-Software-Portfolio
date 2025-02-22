@@ -20,15 +20,27 @@ def automated_take_turn(game: Game):
     attack = p_control.attack(player, opponent, game.sequence)
     if not attack is None:
         game.sequence.add_attack(attack)
+    
+    print(attack)
 
     ## TURN END
-    # status
-    #   sleep       - flip to cure
-    #   paralysis   - cure
-    #   burn        - 20 dmg, flip to cure
-    #   poison      - 10 dmg
-    #   smokescreen - cure
-    #   no-attack   - cure
-    #   no-support  - cure
+    p_control.end_turn(player, opponent)
     
     game.turn += 1
+
+def game_over(game: Game) -> (int | None):
+    turn = game.turn % 2
+    if turn == 0:
+        player = game.p1
+        opponent = game.p2
+    else:
+        player = game.p2
+        opponent = game.p1
+
+    if opponent.has_won() or player.has_lost():
+        return turn
+    
+    if player.has_won() or opponent.has_lost():
+        return (turn + 1) % 2
+    
+    return None

@@ -40,7 +40,45 @@ class Player:
         self.__evolved_uids: set[int] = set()
 
         # # TODO deck
-        # # TODO add prize points
+        self.__points:int = 0
+
+    def give_points(self, pts: int):
+        self.__points += pts
+
+    def has_won(self) -> bool:
+        """
+        Checks if this player has won from points
+        """
+        return self.__points >= 3
+    
+    def has_lost(self) -> bool:
+        """
+        Checks if this player has lost from no-more pokemon
+        """
+        return self.active is None and self.bench_count() == 0
+
+    def has_status(self, status: (str | list[str])) -> bool:
+        """
+        Returns if this Player has the given status condition
+        """
+        if isinstance(status, list):
+            for stat in status:
+                if stat in self.status: return True
+            return False
+
+        return status in self.status
+    
+    def add_status(self, s: str):
+        """
+        Gives the Player the new status s
+        """
+        self.status += [s]
+
+    def clear_status(self):
+        """
+        Clears all player status'
+        """
+        self.status = []
 
     def all_pokemon(self) -> list[Pokemon]:
         """
@@ -119,6 +157,17 @@ class Player:
         """
         return self.bench_count() == 3
     
+    def remove_ko_from_bench(self):
+        """
+        Replaces koed pokemon on the bench with None
+        """
+        for i in range(3):
+            if self.bench[i] is None:
+                continue
+
+            if self.bench[i].is_koed():
+                self.bench[i] = None
+    
     def first_empty_bench_index(self) -> (int | None):
         """
         Returns the index of the first empty bench slot.
@@ -180,7 +229,11 @@ class Player:
                 status += f"{s.title()}, "
             status = status[:-2]
 
-        self.active.print_short(prefix="Active: ", indent=indent)
+        if self.active is None:
+            print(f"{"":>{indent}}Active: None")
+        else:
+            self.active.print_short(prefix="Active: ", indent=indent)
+            print(f"{"":>{indent}}        {str(self.active.energy)}")
         
         print(f"{"":>{indent}}Bench:")
         for pkmn in self.bench:

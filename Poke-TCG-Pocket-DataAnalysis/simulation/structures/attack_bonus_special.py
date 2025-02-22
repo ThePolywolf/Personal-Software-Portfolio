@@ -1,0 +1,8 @@
+Hurt = 'hurt'
+Poisoned = 'poisoned'
+HasTool = 'hasTool'
+OppEnergy = 'opp energy'
+OppIsEX = 'ex'
+OppDamaged = 'damaged'
+OppJustKoed = 'ko'
+RepeatAttack = 'repeat attack'

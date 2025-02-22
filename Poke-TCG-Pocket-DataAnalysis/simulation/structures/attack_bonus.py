@@ -1,0 +1,13 @@
+Damage = 'damage'               # bonus damage (depends on bonus type)
+Heal = 'heal'                   # heal amount
+Status = 'status'               # status condition to give
+Recoil = 'recoil'               # recoil damage to self
+Defend = 'defend'               # defense bonus till next turn
+Coins = 'coin count'            # number of coins to flip
+Target = 'target'               # target of attack
+TargetCount = 'target count'    # number of targets
+EnergyBonusType = 'energy bonus'    # energy type for bonus
+EnergyBonusCount = 'energy required'  # number of energy required to get bonus damage
+BenchCount = 'bench count'      # what to count
+Special = 'special'             # special attack affectors
+Discard = 'discard'             # number of cards to discard

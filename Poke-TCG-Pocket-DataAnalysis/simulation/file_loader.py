@@ -14,7 +14,7 @@ def total_evolution_count():
     """
     return evo_lines_df.shape[0]
 
-def get_evolution_line(index):
+def get_evolution_line(index) -> list[str]:
     """
     returns the stage progression at the given index as an ordered list from [basic, stage2]
     """

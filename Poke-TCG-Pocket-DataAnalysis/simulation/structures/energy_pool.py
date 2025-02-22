@@ -1,4 +1,4 @@
-from random import choice
+from random import choice, randint
 
 __energy_short_to_full = {
     'g' : 'grass',
@@ -99,7 +99,7 @@ class EnergySet:
 
 class EnergyPool:
     def __init__(self, data: dict[str, int] = {}):
-        self.__energy = data
+        self.__energy:dict[str, int] = data
 
     def as_set(self) -> EnergySet:
         return EnergySet(set([name for name, _ in self.__energy.items()]))
@@ -123,6 +123,9 @@ class EnergyPool:
         """
         return EnergyPool(self.__energy.copy())
     
+    def get_energy(self) -> dict[str, int]:
+        return self.__energy.copy()
+    
     def add(self, energy: str, count:int=1):
         if not energy in self.__energy:
             self.__energy[energy] = 0
@@ -138,6 +141,66 @@ class EnergyPool:
         
         return self.__energy[energy] >= count
     
+    def drop_random(self):
+        """
+        Removes a random energy from the pool
+        """
+        total = self.total()
+        if total  == 0: return
+
+        index = randint(1, total)
+        for energy, count in self.__energy.items():
+            index -= count
+            if index <= 0:
+                self.__energy[energy] -= 1
+                break
+
+        self.clean_energy()
+
+    def remove(self, cost):
+        """
+        Removes all energy equal to cost
+        """
+        if not isinstance(cost, EnergyPool): raise Exception("cost must be an EnergyPool")
+        if not cost.compare(self): raise Exception("This set does not countain full cost")
+
+        normal = 0
+        for energy, count in cost.get_energy().items():
+            if energy == 'normal':
+                normal = count
+                continue
+
+            self.__energy[energy] -= count
+
+        for energy in self.__energy:
+            if normal == 0:
+                break
+
+            if self.__energy[energy] < normal:
+                normal -= self.__energy[energy]
+                self.__energy[energy] = 0
+                continue
+
+            self.__energy[energy] -= normal
+            normal = 0
+
+        if normal != 0:
+            raise Exception("Something went wrong when removing normal energy")
+        
+        self.clean_energy()
+
+    def clean_energy(self):
+        """
+        Cleans up pool to remove 0 values
+        """
+        zeroed = []
+        for energy in self.__energy:
+            if self.__energy[energy] <= 0:
+                zeroed.append(energy)
+
+        for energy in zeroed:
+            self.__energy.pop(energy)
+    
     def total(self) -> int:
         """
         Returns the total count of energy in the pool
@@ -146,10 +209,10 @@ class EnergyPool:
 
     def compare(self, target):
         """
-        Checks if the set a contains at least the contents of this set. Counts normals as wild values
+        Checks if the target set a contains at least the contents of this set. Counts normals as wild values
         """
         if not isinstance(target, EnergyPool):
-            raise Exception("Can only compare energy pools to each other")
+            raise Exception("Can only compare EnergyPools to each other")
         
         for energy, count in self.__energy.items():
             # skip normal

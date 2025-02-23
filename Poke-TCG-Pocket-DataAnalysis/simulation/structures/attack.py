@@ -264,7 +264,7 @@ class Attack:
         # targeting
         if b_type == 'free':
             traits.add(trait.FreeTarget)
-            return traits, dict()
+            return traits, {bonus.Damage: bonus_value}
 
         if b_type == 'bTarget':
             return traits, {

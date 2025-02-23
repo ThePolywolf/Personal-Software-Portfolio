@@ -4,6 +4,8 @@ from structures.player import Player
 from structures.attack import Attack
 import structures.status as status
 import structures.attack_trait as trait
+import structures.attack_bonus as bonus
+import structures.attack_bonus_special as bonusSpecial
 import modules.attacker as attacker
 
 from random import randint, choice
@@ -199,9 +201,10 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
     # damage (direct opponent damage)
     damage = attacker.damage(attack, player, opponent, sequence)
     
-    if attack.has_bonus('target') and attack.get_bonus('target') == 'any':
-        damage = attack_any(damage, player, opponent)
-    else:
+    if attack.has_trait(trait.FreeTarget):
+        damage = attack_any(damage + attack.get_bonus(bonus.Damage), player, opponent)
+
+    if attack.has_bonus(bonus.Target):
         damage += attack_bench(attack, player)
 
     damage = attacker.type_bonus(damage, player.active, opponent)
@@ -217,8 +220,9 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
 
     # chance outcome
     do_outcome = True
-    if attack.has_trait('chance') and choice([0, 1]) == 0:
-        do_outcome = False
+    if attack.has_trait(trait.Chance):
+        if choice([0, 1]) == 0:
+            do_outcome = False
     
     if do_outcome:
         attacker.outcome(attack, player, opponent)
@@ -236,21 +240,13 @@ def attack_bench(attack: Attack, opponent: Player) -> int:
     """
     Attacks all bench targets, and returns bonus damage to the active pokemon
     """
-    if not attack.has_bonus('target'):
+    target = attack.try_get_bonus(bonus.Target)
+    if target is None:
         return 0
-    
-    target = attack.get_bonus('target')
 
-    # any target handled previously
-    if target == 'any':
-        return 0
-    
     # vars
-    target_count = attack.get_bonus('target_count')
-    damage = attack.get_bonus('damage')
-
-    if target_count == 'all':
-        target_count = 3
+    target_count = attack.get_bonus(bonus.TargetCount)
+    damage = attack.get_bonus(bonus.Damage)
 
     # apply target
     if target == 'random':

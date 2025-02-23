@@ -206,7 +206,7 @@ class genome_hacking:
         move = None
 
         for t_move in opponent.active.moves():
-            if move in ['genome hacking', 'copy anything']:
+            if t_move.name in ['genome hacking', 'copy anything']:
                 continue
 
             move = t_move

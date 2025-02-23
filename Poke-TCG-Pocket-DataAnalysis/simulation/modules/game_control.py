@@ -12,6 +12,9 @@ def automated_take_turn(game: Game):
 
     ## TURN START
     p_control.start_turn(player)
+    p_control.ko_points(player, opponent)
+    if not game_over(game) is None:
+        return
     
     ## BATTLE ACTIONS
     p_control.turn_actions(player, opponent, first_turn=(game.turn <= 1))
@@ -40,9 +43,9 @@ def game_over(game: Game) -> (int | None):
         opponent = game.p1
 
     if opponent.has_won() or player.has_lost():
-        return turn
+        return (turn + 1) % 2
     
     if player.has_won() or opponent.has_lost():
-        return (turn + 1) % 2
+        return turn
     
     return None

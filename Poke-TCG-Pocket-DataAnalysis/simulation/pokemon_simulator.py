@@ -21,8 +21,9 @@ def take_turns(game: Game) -> int:
             return None
 
 def main():
-    # player_lines = [get_evolution_line(100), get_evolution_line(304)] # magmortar and luxray
-    player_lines = [get_evolution_line(159), get_evolution_line(33)]
+    # player_lines = [get_evolution_line(100), get_evolution_line(304)] # gyarados EX and Garchomp
+    # player_lines = [get_evolution_line(159), get_evolution_line(26)] # gyarados EX and ditto
+    player_lines = [get_evolution_line(29), get_evolution_line(33)] # celebi EX and mew EX
 
     for i in range(len(player_lines)):
         print(f"\n Player {i + 1} Pokemon")
@@ -36,7 +37,9 @@ def main():
 
     winner = take_turns(game)
     if not winner is None:
-        print(f"Winner: {winner}")
+        print(f"Winner: {pk.pkmn_from_data(player_lines[winner][-1]).name}")
+    else:
+        print("Tie")
 
     game.print()
 

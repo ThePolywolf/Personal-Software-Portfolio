@@ -191,7 +191,7 @@ def __discard_random_energy(pokemon: list[Pokemon]):
     # a pokemon's selection weight is equal to the attached energy, so all energy have the same chance of being selected
     total_weight = sum([pkmn.energy.total() for pkmn in pokemon])
         
-    if total_weight >= 0:
+    if total_weight == 0:
         return
     
     index = randint(1, total_weight)
@@ -202,4 +202,5 @@ def __discard_random_energy(pokemon: list[Pokemon]):
             continue
 
         pkmn.energy.drop_random()
+
         return

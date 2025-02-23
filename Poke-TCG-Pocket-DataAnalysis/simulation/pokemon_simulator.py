@@ -22,7 +22,7 @@ def take_turns(game: Game) -> int:
 
 def main():
     # player_lines = [get_evolution_line(100), get_evolution_line(304)]
-    player_lines = [get_evolution_line(293), get_evolution_line(193)]
+    player_lines = [get_evolution_line(193), get_evolution_line(293)]
 
     for i in range(len(player_lines)):
         print(f"\n Player {i + 1} Pokemon")

@@ -8,6 +8,8 @@ import structures.attack_bonus as bonus
 import structures.attack_bonus_special as bonusSpecial
 import modules.attacker as attacker
 
+from pokemon_moves import special_move
+
 from random import randint, choice
 
 def add_to_bench(player: Player, pokemon: Pokemon):
@@ -181,25 +183,30 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
     attacks = player.active.moves()
 
     attack = None
+    attack_id = 0
+    curr_atk_id = 0
     for atk in attacks:
+        curr_atk_id += 1
         if atk.has_trait(trait.AttackLock):
             if sequence.last_attack().attack_name == atk.name:
                 continue
         
         if atk.cost.compare(player.active.energy):
             attack = atk
+            attack_id = curr_atk_id
 
     if attack is None:
         return None
     
-    # TODO handle special attacks (Damage is None)
-
     # attack-prevention status' | Coin flip to attack at all
     if opponent.active.has_status([status.Confused, status.Smokescreen]) and choice([0, 1]) == 0:
         return None
 
     # damage (direct opponent damage)
-    damage = attacker.damage(attack, player, opponent, sequence)
+    if attack.damage is None:
+        damage = special_move(player.active.id, attack_id, player, opponent)
+    else:
+        damage = attacker.damage(attack, player, opponent, sequence)
     
     if attack.has_trait(trait.FreeTarget):
         damage = attack_any(damage + attack.get_bonus(bonus.Damage), player, opponent)
@@ -225,7 +232,7 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
             do_outcome = False
     
     if do_outcome:
-        attacker.outcome(attack, player, opponent)
+        attacker.outcome(damage, attack, player, opponent)
 
     # loss and gain
     player.active.energy.add_pool(attack.add)

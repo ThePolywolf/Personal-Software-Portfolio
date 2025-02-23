@@ -112,7 +112,7 @@ def attack(damage: int, user: Pokemon, taker: Pokemon):
 
     taker.damage(damage)
 
-def outcome(attack: Attack, player: Player, opponent: Player):
+def outcome(damage: int, attack: Attack, player: Player, opponent: Player):
     """
     Handles post-attack outcomes
     """
@@ -135,6 +135,8 @@ def outcome(attack: Attack, player: Player, opponent: Player):
         if attack.has_trait(trait.HealAll):
             for target in player.all_pokemon():
                 target.heal(heal)
+        elif attack.has_trait(trait.HealDamageDealt):
+            player.active.heal(damage)
         else:
             player.active.heal(heal)
     

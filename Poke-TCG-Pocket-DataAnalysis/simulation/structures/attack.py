@@ -212,8 +212,12 @@ class Attack:
             return traits, dict()
 
         # healing
-        if b_type == 'heal':
+        if splits[0] == 'heal':
             return traits, {bonus.Heal: bonus_value}
+        
+        if b_type == 'healDealt':
+            traits.add(trait.HealDamageDealt)
+            return traits, {bonus.Heal: 0}
         
         if b_type == 'healAll':
             traits.add(trait.HealAll)

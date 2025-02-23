@@ -13,3 +13,4 @@ FreeTarget = 'free target'          # attack can target any of your opponent's p
 SelfDiscard = 'self discard'        # discard target is self instead of opponent
 BenchCountPokemon = 'bench count pokemon'   # bonus.BenchCount is a pokemon name to count
 BenchCountType = 'bench count type'         # bonus.BenchCount is an energy type to count
+HealDamageDealt = 'heal dmg dealt'          # healing equal to total dealt damage to active pokemon

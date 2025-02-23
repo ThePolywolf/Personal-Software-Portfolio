@@ -157,7 +157,7 @@ ga155,0,hitmonchan,,80,fighting,,f,jab,30,,,,,,,,psychic,1,1d
 ga156,0,rhyhorn,,80,fighting,,ffx,tackle,60,,,,,,,,grass,3,1d
 ga157,1,rhydon,rhyhorn,120,fighting,,fffx,horn drill,100,,,,,,,,grass,4,2d
 ga158,1,kabuto,dome fossil,90,fighting,,f,shell attack,40,,,,,,,,grass,1,2d
-ga159,2,kabutops,kabuto,140,fighting,,f,leech life,,,,,,,,,grass,1,3d
+ga159,2,kabutops,kabuto,140,fighting,,f,leech life,50,healDealt,,,,,,,grass,1,3d
 ga160,0,mienfoo,,60,fighting,,x,pound,20,,,,,,,,psychic,1,1d
 ga161,1,mienshao,mienfoo,80,fighting,,x,spiral kick,40,,,,,,,,psychic,1,2d
 ga162,0,clobbopus,,80,fighting,,fx,knuckle punch,30,,,,,,,,psychic,2,1d

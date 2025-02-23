@@ -161,7 +161,7 @@ ga159,2,kabutops,kabuto,140,fighting,,f,leech life,50,healDealt,,,,,,,grass,1,3d
 ga160,0,mienfoo,,60,fighting,,x,pound,20,,,,,,,,psychic,1,1d
 ga161,1,mienshao,mienfoo,80,fighting,,x,spiral kick,40,,,,,,,,psychic,1,2d
 ga162,0,clobbopus,,80,fighting,,fx,knuckle punch,30,,,,,,,,psychic,2,1d
-ga163,1,grapploct,clobbopus,130,fighting,,ffx,knock back,,,,,,,,,psychic,3,2d
+ga163,1,grapploct,clobbopus,130,fighting,,ffx,knock back,70,oppToBench,,,,,,,psychic,3,2d
 ga164,0,ekans,,60,dark,,d,bite,20,,,,,,,,fighting,1,1d
 ga165,1,arbok,ekans,100,dark,,dx,corner,60,no retreat,,,,,,,fighting,2,2d
 ga166,0,nidoran f,,60,dark,,d,call for family,,,,,,,,,fighting,1,1d
@@ -268,7 +268,7 @@ ga285,0,pikachu EX,,120,electric,,ee,circle circuit,0,bench-e,30,,,,,,fighting,1
 ga286,0,mewtwo EX,,150,psychic,,px,psychic sphere,50,,,ppxx-pp,psyshot,150,,,dark,2,crown
 mi1,0,exeggute,,50,grass,,x+g,growth spurt,0,,,,,,,,fire,1,1d
 mi2,1,exeggutor,exeggute,130,grass,,gxxx,psychic,80,energy,20,,,,,,fire,3,2d
-mi3,0,celebi EX,,130,grass,,gx,powerful bloom,0,coin-g,50,,,,,,fire,1,4d
+mi3,0,celebi EX,,130,grass,,gx,powerful bloom,0,coin-energy,50,,,,,,fire,1,4d
 mi4,0,snivy,,70,grass,,gx,vine whip,40,,,,,,,,fire,1,1d
 mi5,1,servine,snivy,80,grass,,gx,vine whip,50,,,,,,,,fire,1,2d
 mi6,2,serperior,servine,110,grass,jungle totem,gxxx,solar beam,70,,,,,,,,fire,2,3d
@@ -334,14 +334,14 @@ mi71,0,salandit,,60,fire,,x,venoshock,10,poisoned,40,,,,,,water,1,1s
 mi72,1,vaporeon,eevee,120,water,wash out,wxx,wave splash,60,,,,,,,,electric,2,1s
 mi73,0,dedenne,,60,electric,,e,thunder shock,10,\paralysis,,,,,,,fighting,1,1s
 mi74,0,marshadow,,80,fighting,,fx,revenge,40,ko,60,,,,,,psychic,1,1s
-mi75,0,celebi EX,,130,grass,,gx,powerful bloom,0,coin-g,50,,,,,,fire,1,2s
+mi75,0,celebi EX,,130,grass,,gx,powerful bloom,0,coin-energy,50,,,,,,fire,1,2s
 mi76,1,gyarados EX,magikarp,180,water,,wwwx,rampaging whirlpool,140,random energy,,,,,,,electric,3,2s
 mi77,0,mew EX,,130,psychic,,p,psyshot,20,,,xxx,genome hacking,,,,dark,1,2s
 mi78,1,aerodactyl EX,old amber,140,fighting,primeval law,fx,land crush,80,,,,,,,,electric,1,2s
 mi79,2,pidgeot EX,pidgeotto,170,normal,,xxx,scattering cyclone,80,bench-opp,20,,,,,,electric,1,2s
 mi83,0,mew EX,,130,psychic,,p,psyshot,20,,,xxx,genome hacking,,,,dark,1,2s
 mi84,1,aerodactyl EX,old amber,140,fighting,primeval law,fx,land crush,80,,,,,,,,electric,1,2s
-mi85,0,celebi EX,,130,grass,,gx,powerful bloom,0,coin-g,50,,,,,,fire,1,3s
+mi85,0,celebi EX,,130,grass,,gx,powerful bloom,0,coin-energy,50,,,,,,fire,1,3s
 mi86,0,mew EX,,130,psychic,,p,psyshot,20,,,xxx,genome hacking,,,,dark,1,crown
 ss1,0,oddish,,60,grass,,g,blot,10,heal,10,,,,,,fire,1,1d
 ss2,1,gloom,oddish,80,grass,,g,razor leaf,30,,,,,,,,fire,2,1d

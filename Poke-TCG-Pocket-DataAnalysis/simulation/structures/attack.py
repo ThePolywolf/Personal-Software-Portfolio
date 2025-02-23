@@ -79,12 +79,12 @@ class Attack:
             heads = sum([choice[0, 1] for _ in range(coin_count)])
             return heads * bonus_damage
 
-        # unrecognized type
-        if not coin_count in energy:
+        # unrecognized coin count type
+        if not coin_count == 'energy':
             return 0
         
         # energy-based coins
-        count = energy.count(coin_count)
+        count = energy.total()
         heads = sum([choice[0, 1] for _ in range(count)])
         return heads * bonus_damage
 
@@ -259,7 +259,7 @@ class Attack:
                 bonus.Coins: 
                     int(splits[1])
                         if isinstance(splits[1], (int, float)) 
-                    else full_energy_name(splits[1]),
+                    else 'energy',
                 bonus.Damage: bonus_value
             }
         

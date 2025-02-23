@@ -183,28 +183,37 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
     attacks = player.active.moves()
 
     attack = None
-    attack_id = 0
-    curr_atk_id = 0
     for atk in attacks:
-        curr_atk_id += 1
         if atk.has_trait(trait.AttackLock):
             if sequence.last_attack().attack_name == atk.name:
                 continue
         
         if atk.cost.compare(player.active.energy):
             attack = atk
-            attack_id = curr_atk_id
+    
+    return __use_attack(attack, player, opponent, sequence)
 
+def __use_attack(attack: Attack, player: Player, opponent: Player, sequence: AttackSequence, ignore_cost:bool=False) -> (None | AttackData):
+    """
+    Handles using an attack from the player active to the opponent
+    """
     if attack is None:
         return None
     
+    print(f"{player.active.name} is using {attack.name}")
+
     # attack-prevention status' | Coin flip to attack at all
     if opponent.active.has_status([status.Confused, status.Smokescreen]) and choice([0, 1]) == 0:
         return None
 
     # damage (direct opponent damage)
-    if attack.damage is None:
-        damage = special_move(player.active.id, attack_id, player, opponent)
+    if attack.has_trait(trait.Special):
+        special = special_move(player.active.id, player, opponent)
+        is_attack = isinstance(special, Attack)
+        if is_attack:
+            ignore_cost = attack.name == 'genome hacking'
+            return __use_attack(special, player, opponent, sequence, ignore_cost=ignore_cost)
+        damage = special
     else:
         damage = attacker.damage(attack, player, opponent, sequence)
     
@@ -236,7 +245,13 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
 
     # loss and gain
     player.active.energy.add_pool(attack.add)
-    player.active.energy.remove_pool(attack.loss)
+    if not ignore_cost: player.active.energy.remove_pool(attack.loss)
+
+    if attack.has_trait(trait.SwitchToBench):
+        switch_active(player)
+
+    if attack.has_trait(trait.OppSwitchToBench):
+        switch_active(opponent)
 
     # TODO handle KO removal in post-attack actions
     koed = False if opponent.active is None else opponent.active.is_koed()

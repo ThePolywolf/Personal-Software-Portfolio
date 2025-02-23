@@ -16,6 +16,9 @@ class Attack:
         self.__traits:set[str] = data['traits']
         self.__bonus:dict[str, any] = data['bonus']
 
+        if self.damage is None: 
+            self.__traits.add(trait.Special)
+
     @staticmethod
     def generate(pk_raw:dict[str, any], a_num:int):
         if a_num == 1:
@@ -205,7 +208,9 @@ class Attack:
             "shuffle" : trait.ShufflePokemon, 
             "random energy" : trait.RandomEnergy, 
             "show hand" : trait.ShowHand, 
-            "energy discard" : trait.EnergyDiscard
+            "energy discard" : trait.EnergyDiscard,
+            "toBench" : trait.SwitchToBench,
+            'oppToBench' : trait.OppSwitchToBench
         }
         if b_type in trait_dict:
             traits.add(trait_dict[b_type])
@@ -222,7 +227,7 @@ class Attack:
         if b_type == 'healAll':
             traits.add(trait.HealAll)
             return traits, {bonus.Heal: bonus_value}
-
+        
         # status'
         status_dict = {
             'sleep': status.Sleep, 

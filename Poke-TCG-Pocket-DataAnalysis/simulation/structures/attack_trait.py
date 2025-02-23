@@ -1,3 +1,4 @@
+Special = 'SPECIAL'                 # flag for a special attack with custom rules
 AttackLock = 'attack lock'          # can't use same attack next turn
 Invulnerable = 'invulnerable'       # doesn't take damage
 Draw = 'draw'                       # draw 1 card; can be changed to bonus if >1 draw added
@@ -14,3 +15,5 @@ SelfDiscard = 'self discard'        # discard target is self instead of opponent
 BenchCountPokemon = 'bench count pokemon'   # bonus.BenchCount is a pokemon name to count
 BenchCountType = 'bench count type'         # bonus.BenchCount is an energy type to count
 HealDamageDealt = 'heal dmg dealt'          # healing equal to total dealt damage to active pokemon
+SwitchToBench = 'switch to bench'           # switches the current pokemon to the bench after attack
+OppSwitchToBench = 'opp switch to bench'    # switches the opponent's pokemon to the bench after attack

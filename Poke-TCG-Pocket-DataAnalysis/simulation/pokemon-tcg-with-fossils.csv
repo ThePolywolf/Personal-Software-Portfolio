@@ -113,7 +113,7 @@ ga111,1,heliolisk,helioptile,90,electric,,xx,quick attack,40,coin-1,40,,,,,,figh
 ga112,0,pincurchin,,70,electric,,ee,thunder shock,30,\paralysis,,,,,,,fighting,1,1d
 ga113,0,clefairy,,60,psychic,,p,slap,20,,,,,,,,metal,1,1d
 ga114,1,clefable,clefairy,100,psychic,,p,magical shot,40,,,,,,,,metal,1,2d
-ga115,0,abra,,60,psychic,,x,teleport,,,,,,,,,dark,1,1d
+ga115,0,abra,,60,psychic,,x,teleport,0,toBench,,,,,,,dark,1,1d
 ga116,1,kadabra,abra,80,psychic,,pxx,super psy bolt,60,,,,,,,,dark,1,2d
 ga117,2,alakazam,kadabra,130,psychic,,pxx,psychic,60,energy,30,,,,,,dark,2,3d
 ga118,0,slowpoke,,70,psychic,,px,tail whap,30,,,,,,,,dark,2,1d
@@ -282,7 +282,7 @@ mi13,0,larvesta,,80,fire,,rx,combustion,30,,,,,,,,water,2,1d
 mi14,1,volcarona,larvesta,120,fire,,rrx-rr,volcanic ash,0,free,80,,,,,,water,2,3d
 mi15,0,salandit,,60,fire,,x,venoshock,10,poisoned,40,,,,,,water,1,1d
 mi16,1,salazzle,salandit,80,fire,,r,poison claws,30,poison,,,,,,,water,1,1d
-mi17,0,magikarp,,30,water,,w,leap out,,,,,,,,,electric,1,1d
+mi17,0,magikarp,,30,water,,w,leap out,0,toBench,,,,,,,electric,1,1d
 mi18,1,gyarados EX,magikarp,180,water,,wwwx,rampaging whirlpool,140,random energy,,,,,,,electric,3,4d
 mi19,1,vaporeon,eevee,120,water,wash out,wxx,wave splash,60,,,,,,,,electric,2,3d
 mi20,0,finneon,,60,water,,w,water gun,20,,,,,,,,electric,1,1d
@@ -410,7 +410,7 @@ ss64,1,togetic,togepi,80,psychic,,p,fairy wind,40,,,,,,,,metal,1,2d
 ss65,2,togekiss,togetic,140,psychic,,pp,overdrive smash,60,usedLast,60,,,,,,metal,1,3d
 ss66,0,misdreavus,,60,psychic,,p,mumble,20,,,,,,,,dark,1,1d
 ss67,1,mismagius EX,misdreavus,140,psychic,,pp,magical delusion,70,confused,,,,,,,dark,1,4d
-ss68,0,ralts,,60,psychic,,x,teleport,,,,,,,,,dark,1,1d
+ss68,0,ralts,,60,psychic,,x,teleport,0,toBench,,,,,,,dark,1,1d
 ss69,1,kirlia,,80,psychic,,x,slap,20,,,,,,,,dark,1,1d
 ss70,0,duskull,,60,psychic,,p,will-o-wisp,20,,,,,,,,dark,1,1d
 ss71,1,dusclops,duskull,90,psychic,,pxx,psypunch,50,,,,,,,,dark,2,2d

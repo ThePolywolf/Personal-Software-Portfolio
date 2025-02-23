@@ -138,7 +138,10 @@ class Attack:
     
     def print_short(self, indent=0):
         dmg = "None" if self.damage is None else f"{self.damage} dmg"
-        print(f"{"":>{indent}}Attack: {self.name.title()} {dmg} | {str(self.cost)}")
+        cost = str(self.cost)
+        gain = "" if self.add is None else f" + {self.add}" if self.add.total() > 0 else ""
+        loss = "" if self.loss is None else f" - {self.loss}" if self.loss.total() > 0 else ""
+        print(f"{"":>{indent}}Attack: {self.name.title()} {dmg} | {cost}{gain}{loss}")
 
     @staticmethod
     def none_or_value(item) -> (str | None):
@@ -149,7 +152,7 @@ class Attack:
         parts = raw_cost.split('-')
         cost = parts[0]
 
-        add_dict = dict()
+        add_dict = None
         if '+' in cost:
             add = cost.split('+')[1]
             cost = cost.split('+')[0]
@@ -168,7 +171,7 @@ class Attack:
 
         loss = parts[1]
         if loss[0].startswith('['):
-            return cost_dict, loss[1], add_dict
+            return cost_dict, full_energy_name(loss[1]), add_dict
 
         loss_dict = {
             full_energy_name(key) : loss.count(key)

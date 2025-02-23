@@ -14,7 +14,7 @@ class Pokemon:
         self.hp:int = raw['hp']
         self.max_hp:int = raw['hp']
         self.type:str = raw['type']
-        self.ability:str = Pokemon.none_or_value(raw['type'])
+        self.ability:str = Pokemon.none_or_value(raw['ability'])
         self.weakness:str = Pokemon.none_or_value(raw['weakness'])
         self.retreat:int = Pokemon.none_or_value(raw['retreat'])
         self.rarity:str = Pokemon.rarity_string(raw['rarity'])

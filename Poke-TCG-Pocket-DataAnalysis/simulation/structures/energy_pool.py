@@ -99,21 +99,35 @@ class EnergySet:
 
 class EnergyPool:
     def __init__(self, data: dict[str, int] = {}):
-        self.__energy:dict[str, int] = data
+        if isinstance(data, str):
+            self.__all = data
+            self.__energy = dict()
+        else:
+            self.__energy:dict[str, int] = dict() if data is None else data
+            self.__all: str = None
+
+    def is_all(self) -> bool:
+        return not self.__all is None
 
     def as_set(self) -> EnergySet:
+        if self.is_all():
+            return EnergySet(set([self.__all]))
         return EnergySet(set([name for name, _ in self.__energy.items()]))
 
     def has_energy(self, name: str) -> bool:
         """
         Checks if the pool contains the given energy type
         """
+        if self.is_all():
+            return self.__all == name
         return name in self.__energy
     
     def count(self, name: str) -> int:
         """
         Returns the count of the given energy type
         """
+        if self.is_all():
+            return 0 if self.__all != name else 1
         if not self.has_energy(name): return 0
         return self.__energy[name]
     
@@ -121,12 +135,18 @@ class EnergyPool:
         """
         Returns a copy of the energy pool
         """
+        if self.is_all():
+            return EnergyPool(self.__all)
         return EnergyPool(self.__energy.copy())
     
     def get_energy(self) -> dict[str, int]:
+        if self.is_all():
+            return {self.__all: 1}
         return self.__energy.copy()
     
     def add(self, energy: str, count:int=1):
+        if self.is_all(): raise Exception("All-type pool can't add")
+
         if not energy in self.__energy:
             self.__energy[energy] = 0
 
@@ -136,6 +156,9 @@ class EnergyPool:
         """
         Returns wether or not the pool contains enough of the specified energy type
         """
+        if self.is_all():
+            return self.__all == energy
+
         if not energy in self.__energy:
             return False
         
@@ -145,6 +168,8 @@ class EnergyPool:
         """
         Removes a random energy from the pool
         """
+        if self.is_all(): raise Exception('All-type pool can\'t drop random')
+
         total = self.total()
         if total  == 0: return
 
@@ -162,6 +187,8 @@ class EnergyPool:
         Adds all energy from the gain set
         """
         if not isinstance(gain, EnergyPool): raise Exception("gain must be an EnergyPool")
+        if self.is_all(): raise Exception('All-type pool can\'t add')
+        if gain.is_all(): raise Exception('All-type pool can\'t be added')
 
         for energy, count in gain.get_energy().items():
             self.add(energy, count)
@@ -170,8 +197,16 @@ class EnergyPool:
         """
         Removes all energy equal to cost
         """
+        if self.is_all(): raise Exception("All-type pool can't remove")
         if not isinstance(cost, EnergyPool): raise Exception("cost must be an EnergyPool")
-        if not cost.compare(self): raise Exception("This set does not countain full cost")
+        if not cost.is_all() and not cost.compare(self): raise Exception("This set does not countain full cost")
+
+        # Removing all of a single type
+        if cost.is_all():
+            energy = [key for key in cost.get_energy()][0]
+            if energy in self.__energy:
+                self.__energy.pop(energy)
+            return
 
         normal = 0
         for energy, count in cost.get_energy().items():
@@ -202,6 +237,8 @@ class EnergyPool:
         """
         Cleans up pool to remove 0 values
         """
+        if self.is_all(): return
+
         zeroed = []
         for energy in self.__energy:
             if self.__energy[energy] <= 0:
@@ -214,6 +251,7 @@ class EnergyPool:
         """
         Returns the total count of energy in the pool
         """
+        if self.is_all(): return 1
         return sum([count for _, count in self.__energy.items()])
 
     def compare(self, target):
@@ -222,6 +260,9 @@ class EnergyPool:
         """
         if not isinstance(target, EnergyPool):
             raise Exception("Can only compare EnergyPools to each other")
+        
+        if self.is_all(): raise Exception('All-type pool can\'t be compared to target')
+        if target.is_all(): raise Exception('All-type pool can\'t be compared')
         
         for energy, count in self.__energy.items():
             # skip normal
@@ -237,6 +278,9 @@ class EnergyPool:
         return True
     
     def __str__(self):
+        if self.is_all():
+            return f"All-{self.__all.title()}"
+
         if len(self.__energy) == 0:
             return "None"
         

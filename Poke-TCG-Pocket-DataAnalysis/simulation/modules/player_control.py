@@ -225,7 +225,7 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
 
     # loss and gain
     player.active.energy.add_pool(attack.add)
-    player.active.energy.remove_pool(attack.add)
+    player.active.energy.remove_pool(attack.loss)
 
     # TODO handle KO removal in post-attack actions
     koed = False if opponent.active is None else opponent.active.is_koed()

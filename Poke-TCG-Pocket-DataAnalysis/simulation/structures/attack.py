@@ -11,6 +11,7 @@ class Attack:
         self.name:str = data['name']
         self.cost:EnergyPool = EnergyPool(data['cost'])
         self.loss:EnergyPool = EnergyPool(data['loss'])
+        self.add: EnergyPool = EnergyPool(data['add'])
         self.damage:int = Attack.none_or_value(data['damage'])
         self.__traits:set[str] = data['traits']
         self.__bonus:dict[str, any] = data['bonus']
@@ -20,12 +21,13 @@ class Attack:
         if a_num == 1:
             if is_nan(pk_raw['a1name']):
                 return None
-            cost, loss = Attack.move_cost_split(pk_raw['a1cost'])
+            cost, loss, add = Attack.move_cost_split(pk_raw['a1cost'])
             traits, bonus = Attack.move_bonus_breakdown(pk_raw['a1bonus'], pk_raw['a1bonusDmg'])
             return Attack({
                 'name'      : pk_raw['a1name'],
                 'cost'      : cost,
                 'loss'      : loss,
+                'add'       : add,
                 'damage'    : None if is_nan(pk_raw['a1damage']) else int(pk_raw['a1damage']),
                 'traits'    : traits,
                 'bonus'     : bonus
@@ -33,12 +35,13 @@ class Attack:
         elif a_num == 2:
             if is_nan(pk_raw['a2name']):
                 return None
-            cost, loss = Attack.move_cost_split(pk_raw['a2cost'])
+            cost, loss, add = Attack.move_cost_split(pk_raw['a2cost'])
             traits, bonus = Attack.move_bonus_breakdown(pk_raw['a2bonus'], pk_raw['a2bonusDmg'])
             return Attack({
                 'name'      : pk_raw['a2name'],
                 'cost'      : cost,
                 'loss'      : loss,
+                'add'       : add,
                 'damage'    : None if is_nan(pk_raw['a2damage']) else int(pk_raw['a2damage']),
                 'traits'    : traits,
                 'bonus'     : bonus
@@ -145,23 +148,34 @@ class Attack:
     def move_cost_split(raw_cost: str):
         parts = raw_cost.split('-')
         cost = parts[0]
+
+        add_dict = dict()
+        if '+' in cost:
+            add = cost.split('+')[1]
+            cost = cost.split('+')[0]
+            add_dict = {
+                full_energy_name(key) : add.count(key)
+                for key in set([c for c in add])
+            }
+
         cost_dict = {
             full_energy_name(key) : cost.count(key) 
             for key in set([c for c in cost])
         }
         
         if len(parts) < 2:
-            return cost_dict, None
+            return cost_dict, None, add_dict
 
         loss = parts[1]
         if loss[0].startswith('['):
-            return cost_dict, loss[1]
+            return cost_dict, loss[1], add_dict
 
         loss_dict = {
             full_energy_name(key) : loss.count(key)
             for key in set([c for c in loss])
         }
-        return cost_dict, loss_dict
+
+        return cost_dict, loss_dict, add_dict
 
     @staticmethod
     def move_bonus_breakdown(raw_bonus: str, raw_bonus_dmg) -> tuple[set[str], dict[str, any]]:

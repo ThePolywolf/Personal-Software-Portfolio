@@ -157,7 +157,16 @@ class EnergyPool:
 
         self.clean_energy()
 
-    def remove(self, cost):
+    def add_pool(self, gain):
+        """
+        Adds all energy from the gain set
+        """
+        if not isinstance(gain, EnergyPool): raise Exception("gain must be an EnergyPool")
+
+        for energy, count in gain.get_energy().items():
+            self.add(energy, count)
+
+    def remove_pool(self, cost):
         """
         Removes all energy equal to cost
         """

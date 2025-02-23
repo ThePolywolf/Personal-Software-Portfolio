@@ -19,7 +19,7 @@ class Pokemon:
         self.retreat:int = Pokemon.none_or_value(raw['retreat'])
         self.rarity:str = Pokemon.rarity_string(raw['rarity'])
         self.status:list[str] = []
-        self.energy:EnergyPool = EnergyPool({})
+        self.energy:EnergyPool = EnergyPool(dict())
         self.move1:Attack = Attack.generate(raw, 1)
         self.move2:Attack = Attack.generate(raw, 2)
         self.__defense: int = 0

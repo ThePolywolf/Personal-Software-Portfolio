@@ -39,7 +39,9 @@ def switch_active(player: Player):
     player.active = player.bench[index]
     
     # None if koed or other
-    if not old_active is None:
+    if old_active is None:
+        player.bench[index] = None
+    else:
         player.bench[index] = old_active
 
 def try_play_pokemon(player: Player, pokemon: Pokemon) -> bool:
@@ -164,7 +166,6 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
     """
     Handles an attack from the player active to the opponent
     """
-
     if not isinstance(opponent, Player):
         raise Exception("Opponent must by a Player type")
 
@@ -183,12 +184,12 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
             if sequence.last_attack().attack_name == atk.name:
                 continue
         
-        if player.active.energy.compare(atk.cost):
+        if atk.cost.compare(player.active.energy):
             attack = atk
 
     if attack is None:
         return None
-
+    
     # TODO handle special attacks (Damage is None)
 
     # attack-prevention status' | Coin flip to attack at all
@@ -221,6 +222,10 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
     
     if do_outcome:
         attacker.outcome(attack, player, opponent)
+
+    # loss and gain
+    player.active.energy.add_pool(attack.add)
+    player.active.energy.remove_pool(attack.add)
 
     # TODO handle KO removal in post-attack actions
     koed = False if opponent.active is None else opponent.active.is_koed()
@@ -314,23 +319,19 @@ def ko_points(player: Player, opponent: Player):
     """
     points = 0
 
+    if player.active != None and player.active.is_koed():
+        points += 2 if player.active.is_ex() else 1
+        player.active = None
+        if player.bench_count() > 0:
+            switch_active(player)
+
     for pkmn in player.bench_pokemon():
         if pkmn.is_koed():
             points += 2 if pkmn.is_ex() else 1
 
     player.remove_ko_from_bench()
-    
-    if player.active is None:
-        if player.bench_count() is None:
-            opponent.give_points(points)
-            return
-        
-        switch_active(player)
 
-    if player.active.is_koed():
-        points += 2 if player.active.is_ex() else 1
-        player.active = None
-
+    if player.active == None:
         if player.bench_count() > 0:
             switch_active(player)
 

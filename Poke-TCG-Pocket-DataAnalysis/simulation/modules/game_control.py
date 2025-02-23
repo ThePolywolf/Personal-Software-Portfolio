@@ -18,8 +18,7 @@ def automated_take_turn(game: Game):
 
     ## HANDLE ATTACK
     attack = p_control.attack(player, opponent, game.sequence)
-    if not attack is None:
-        game.sequence.add_attack(attack)
+    game.sequence.add_attack(attack)
     
     print(attack)
 

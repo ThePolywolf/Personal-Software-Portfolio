@@ -20,10 +20,10 @@ def damage(attack: Attack, user: Player, opponent: Player, sequence: AttackSeque
     active = user.active
 
     # coin bonus
-    damage += attack.coin_damage(user.energy_set)
+    damage += attack.coin_damage(user.active.energy)
 
     # energy bonus
-    damage += attack.energy_damage(user.energy_set)
+    damage += attack.energy_damage(user.active.energy)
     
     # bench type bonus
     if attack.has_trait(trait.BenchCountType):

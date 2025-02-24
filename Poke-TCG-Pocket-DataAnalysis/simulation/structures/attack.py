@@ -70,13 +70,13 @@ class Attack:
         if self.has_trait(trait.EndlessCoins):
             heads = 0
             while True:
-                if choice[0, 1] == 0: break
+                if choice([0, 1]) == 0: break
                 heads += 1
             return heads * bonus_damage
 
         # numeric coin count
         if isinstance(coin_count, int):
-            heads = sum([choice[0, 1] for _ in range(coin_count)])
+            heads = sum([choice([0, 1]) for _ in range(coin_count)])
             return heads * bonus_damage
 
         # unrecognized coin count type
@@ -85,7 +85,7 @@ class Attack:
         
         # energy-based coins
         count = energy.total()
-        heads = sum([choice[0, 1] for _ in range(count)])
+        heads = sum([choice([0, 1]) for _ in range(count)])
         return heads * bonus_damage
 
     def energy_damage(self, energy: EnergyPool) -> int:

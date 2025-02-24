@@ -23,6 +23,7 @@ def take_turns(game: Game) -> int:
 def main():
     # player_lines = [get_evolution_line(100), get_evolution_line(304)] # gyarados EX and Garchomp
     # player_lines = [get_evolution_line(159), get_evolution_line(26)] # gyarados EX and ditto
+    # player_lines = [get_evolution_line(193), get_evolution_line(293)] # magmortar and luxray
     player_lines = [get_evolution_line(29), get_evolution_line(33)] # celebi EX and mew EX
 
     for i in range(len(player_lines)):

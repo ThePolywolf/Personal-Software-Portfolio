@@ -77,7 +77,7 @@ class EnergySet:
         """
         Returns the total energy count
         """
-        return sum([count for _, count in self.__energy])
+        return sum([count for _, count in self.__energy.items()])
     
     def add(self, to_add: str):
         """

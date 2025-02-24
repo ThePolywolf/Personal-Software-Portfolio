@@ -7,7 +7,7 @@ import structures.status as status
 import structures.attack_bonus_special as bonusSpecial
 import structures.attack_bonus as bonus
 import structures.attack_trait as trait
-import pokemon_state as pk
+import pokemon_loader as pk
 
 from random import randint
 

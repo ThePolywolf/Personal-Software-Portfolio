@@ -1,7 +1,7 @@
 from structures.player import Player
 from structures.game import Game
 from structures.card import Card
-import pokemon_state as pk
+import pokemon_loader as pk
 import random as r
 
 def new_game_state(p1_evo_line: list[str], p2_evo_line: list[str]) -> Game:

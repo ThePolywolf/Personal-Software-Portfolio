@@ -1,9 +1,11 @@
-from structures.energy_pool import EnergyPool, full_energy_name, is_short_energy_name, energy_names
+from structs.energy_pool import EnergyPool, full_energy_name, is_short_energy_name, energy_names
 from file_loader import is_nan
-import structures.attack_trait as trait
-import structures.attack_bonus as bonus
-import structures.attack_bonus_special as bonusSpecial
-import structures.status as status
+from structs.data import (
+    attack_trait as trait, 
+    attack_bonus as bonus, 
+    attack_bonus_special as bonusSpecial, 
+    status as status
+)
 from random import choice
 
 class Attack:

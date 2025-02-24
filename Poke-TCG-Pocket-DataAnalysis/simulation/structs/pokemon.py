@@ -1,6 +1,6 @@
-from structures.energy_pool import EnergyPool, EnergySet
-from structures.attack import Attack
-import structures.status as status
+from structs.energy_pool import EnergyPool, EnergySet
+from structs.attack import Attack
+import structs.data.status as status
 from file_loader import is_nan
 from random import choice
 

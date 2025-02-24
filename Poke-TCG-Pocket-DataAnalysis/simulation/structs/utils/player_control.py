@@ -1,12 +1,13 @@
-from structures.attack_sequence import AttackSequence, AttackData
-from structures.pokemon import Pokemon
-from structures.player import Player
-from structures.attack import Attack
-import structures.status as status
-import structures.attack_trait as trait
-import structures.attack_bonus as bonus
-import structures.attack_bonus_special as bonusSpecial
-import modules.attacker as attacker
+from structs.attack_sequence import AttackSequence, AttackData
+from structs.pokemon import Pokemon
+from structs.player import Player
+from structs.attack import Attack
+from structs.data import (
+    attack_trait as trait, 
+    attack_bonus as bonus, 
+    status as status
+)
+import structs.utils.attacker as attacker
 
 from pokemon_moves import special_move
 

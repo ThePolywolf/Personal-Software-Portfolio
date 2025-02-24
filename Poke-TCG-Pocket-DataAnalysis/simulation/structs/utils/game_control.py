@@ -1,5 +1,5 @@
-from structures.game import Game
-import modules.player_control as p_control
+from structs.game import Game
+import structs.utils.player_control as p_control
 
 def automated_take_turn(game: Game):
     turn = game.turn % 2

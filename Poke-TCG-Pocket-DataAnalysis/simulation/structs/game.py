@@ -1,5 +1,5 @@
-from structures.player import Player
-from structures.attack_sequence import AttackSequence
+from structs.player import Player
+from structs.attack_sequence import AttackSequence
 
 class Game:
     def __init__(self, p1: Player, p2: Player, turn:int=0):

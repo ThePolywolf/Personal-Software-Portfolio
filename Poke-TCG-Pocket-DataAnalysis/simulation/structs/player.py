@@ -1,6 +1,6 @@
-from structures.card import Card
-from structures.energy_pool import EnergySet
-from structures.pokemon import Pokemon
+from structs.card import Card
+from structs.energy_pool import EnergySet
+from structs.pokemon import Pokemon
 
 class Player:
     @staticmethod

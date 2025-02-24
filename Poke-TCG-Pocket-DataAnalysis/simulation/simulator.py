@@ -1,5 +1,5 @@
 from file_loader import get_evolution_line #, total_evolution_count
-from game_state import *
+from game_loader import *
 import modules.game_control as game_control
 import pokemon_loader as pk
 

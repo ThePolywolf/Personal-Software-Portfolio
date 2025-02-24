@@ -1,7 +1,8 @@
-from structs.energy_pool import EnergyPool, EnergySet
-from structs.attack import Attack
-import structs.data.status as status
-from file_loader import is_nan
+from .energy_pool import EnergyPool, EnergySet
+from .attack import Attack
+from .data import status as status
+from ..file_loader import is_nan
+
 from random import choice
 
 class Pokemon:

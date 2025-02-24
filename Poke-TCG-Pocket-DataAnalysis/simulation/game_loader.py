@@ -1,7 +1,8 @@
-from structs.player import Player
-from structs.game import Game
-from structs.card import Card
-import pokemon_loader as pk
+from .structs.player import Player
+from .structs.game import Game
+from .structs.card import Card
+from . import pokemon_loader as pk
+
 import random as r
 
 def new_game_state(p1_evo_line: list[str], p2_evo_line: list[str]) -> Game:

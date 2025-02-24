@@ -1,15 +1,14 @@
-from structs.attack_sequence import AttackSequence, AttackData
-from structs.pokemon import Pokemon
-from structs.player import Player
-from structs.attack import Attack
-from structs.data import (
+from ..attack_sequence import AttackSequence, AttackData
+from ..pokemon import Pokemon
+from ..player import Player
+from ..attack import Attack
+from ..data import (
     attack_trait as trait, 
     attack_bonus as bonus, 
     status as status
 )
-import structs.utils.attacker as attacker
-
-from pokemon_moves import special_move
+from . import attacker as attacker
+from ...pokemon_moves import special_move
 
 from random import randint, choice
 

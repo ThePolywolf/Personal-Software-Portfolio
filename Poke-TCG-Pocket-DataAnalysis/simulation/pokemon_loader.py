@@ -1,5 +1,5 @@
-from structs.pokemon import Pokemon
-from file_loader import get_pokemon
+from .structs.pokemon import Pokemon
+from .file_loader import get_pokemon
 import random as r
 
 uid_counter = 0

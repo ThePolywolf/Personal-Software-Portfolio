@@ -1,4 +1,4 @@
-from structs.pokemon import Pokemon
+from .pokemon import Pokemon
 
 class Card:
     def __init__(self, card):

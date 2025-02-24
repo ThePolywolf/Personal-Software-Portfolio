@@ -1,6 +1,6 @@
-from structs.energy_pool import EnergyPool, full_energy_name, is_short_energy_name, energy_names
-from file_loader import is_nan
-from structs.data import (
+from .energy_pool import EnergyPool, full_energy_name, is_short_energy_name, energy_names
+from ..file_loader import is_nan
+from .data import (
     attack_trait as trait, 
     attack_bonus as bonus, 
     attack_bonus_special as bonusSpecial, 

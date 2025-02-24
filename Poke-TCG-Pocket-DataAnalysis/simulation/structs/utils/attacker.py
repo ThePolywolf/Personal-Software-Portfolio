@@ -1,15 +1,15 @@
-from structs.card import Card
-from structs.attack import Attack
-from structs.player import Player
-from structs.pokemon import Pokemon
-from structs.attack_sequence import AttackSequence
-from structs.data import (
+from ..card import Card
+from ..attack import Attack
+from ..player import Player
+from ..pokemon import Pokemon
+from ..attack_sequence import AttackSequence
+from ..data import (
     attack_trait as trait, 
     attack_bonus as bonus, 
     attack_bonus_special as bonusSpecial, 
     status as status
 )
-import pokemon_loader as pk
+from ... import pokemon_loader as pk
 
 from random import randint
 

@@ -1,6 +1,7 @@
-from structs.player import Player
-from structs.attack import Attack
-import structs.data.status as status
+from .structs.player import Player
+from .structs.attack import Attack
+from .structs.data import status as status
+
 import random as r
 import json
 

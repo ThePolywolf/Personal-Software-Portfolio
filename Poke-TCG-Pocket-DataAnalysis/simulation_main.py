@@ -1,4 +1,4 @@
-import simulator as sim
+import simulation.simulator as sim
 
 def main():
     # evos = [193, 293]   # magmortar and luxray

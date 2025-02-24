@@ -1,7 +1,7 @@
-from file_loader import get_evolution_line #, total_evolution_count
-from game_loader import *
-import structs.utils.game_control as game_control
-import pokemon_loader as pk
+from .file_loader import get_evolution_line #, total_evolution_count
+from .game_loader import *
+from .structs.utils import game_control as game_control
+from . import pokemon_loader as pk
 
 def take_turns(game: Game) -> int:
     turn_count = 0

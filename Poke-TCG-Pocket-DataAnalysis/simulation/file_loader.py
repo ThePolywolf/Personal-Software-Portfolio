@@ -2,11 +2,13 @@
 Module to load all csv files and gather data
 """
 
+import os
 import pandas as pd
 import numpy as np
 
-evo_lines_df = pd.read_csv('data/unique_evolution_lines.csv')
-pokemon = pd.read_csv('data/pokemon-tcg-with-fossils.csv')
+curr_path = os.path.dirname(os.path.abspath(__file__))
+evo_lines_df = pd.read_csv(os.path.join(curr_path, './data/unique_evolution_lines.csv'))
+pokemon = pd.read_csv(os.path.join(curr_path, './data/pokemon-tcg-with-fossils.csv'))
 
 def total_evolution_count():
     """

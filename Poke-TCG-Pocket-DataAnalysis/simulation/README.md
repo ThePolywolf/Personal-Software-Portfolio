@@ -4,7 +4,7 @@ This project is based on the pre-existing dataset of cards from the Pokemon TCG 
 
 The purpose of this project was to work on scalable simulation using a data-driven approach with a clear seperation of data access and manipulation throught he struct-module design pattern. This approach makes this software more scaleable as it is easy to add additional data access and manipulation to expand the feature set.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/y0J6oQmcvNs)
 
 # Development Environment
 

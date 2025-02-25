@@ -41,8 +41,8 @@ def _give_status(target: (Pokemon | Player), status: str):
 def _give_active_energy(target: Player, energy:str, count:int=1):
     target.active.energy.add(energy, count)
 
-def _active_is_type(target: Player, types: list[str]) -> bool:
-    return target.active.type in types
+def _is_type(target: Pokemon, types: list[str]) -> bool:
+    return target.type in types
 
 def _remove_all_status(target: Player):
     target.active.clear_status()
@@ -121,12 +121,12 @@ nightmare_aura =    { trigger.EnergyGiven: lambda energy_type, _c, _p, opponent:
 
 lunar_plumage =     { trigger.EnergyAttached: lambda energy_type, caller, _p, _o: _on_energy('psychic', energy_type, _heal, caller, 20) }
 
-shell_armor =       { trigger.Defend: lambda _c, _p, _o: 10 }
-hard_coat =         { trigger.Defend: lambda _c, _p, _o: 20 }
-thick_fat_piloswine = { trigger.Defend: lambda _c, _p, opponent: 20 if _active_is_type(opponent, ['fire', 'water']) else 0 }
-thick_fat_mamoswine = { trigger.Defend: lambda _c, _p, opponent: 20 if _active_is_type(opponent, ['fire', 'water']) else 0 }
-exoskeleton =       { trigger.Defend: lambda _c, _p, _o: 20 }
-guarded_grill =     { trigger.Defend: lambda _c, _p, _o: on_heads(lambda: 100) }
+shell_armor =       { trigger.Defend: lambda _c, _o_a: 10 }
+hard_coat =         { trigger.Defend: lambda _c, _o_a: 20 }
+thick_fat_piloswine = { trigger.Defend: lambda _c, o_active: 20 if _is_type(o_active, ['fire', 'water']) else 0 }
+thick_fat_mamoswine = { trigger.Defend: lambda _c, o_active: 20 if _is_type(o_active, ['fire', 'water']) else 0 }
+exoskeleton =       { trigger.Defend: lambda _c, _o_a: 20 }
+guarded_grill =     { trigger.Defend: lambda _c, _o_a: on_heads(lambda: 100) }
 
 levitate =          { trigger.Retreat: lambda caller, _p, _o: 0 if caller.energy.total() >= 0 else None }
 
@@ -195,6 +195,8 @@ id_abilities = {
     'ss144': fossil,
     'ss145': fossil,
 }
+
+# TODO magneton ability
 
 def get_ability(id: str):
     return id_abilities[id]

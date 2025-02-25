@@ -1,16 +1,16 @@
 # Call with ability(caller: Pokemon, player: Player, opponent: Player)
 Action = 'action'       # an action that can be taken
-Attacked = 'damaged'    # when damaged
+Attacked = 'damaged'    # when damaged by the opponent active pokemon
 OpponentTurn = 'opp turn'   # once at the start of the opponent's turn
 PlayerTurn = 'player turn'  # once at the start of the player's turn
 
-# Call with ability(caller: Pokemon, player: Player, opponent: Player)
+# Call with ability(caller: Pokemon, opponent_active: Pokemon)
 # returns int defense to add to defense against attacks
 Defend = 'defend'       # adds defense when attacked
 
 # Call with ability(caller: Pokemon, player: Player, opponent: Player)
 # returns int or None (new retreat cost or no change)
-Retreat = 'retreat'     # alters retreat cost
+Retreat = 'retreat'     # alters retreat cost TODO
 
 # Call with ability(caller: Pokemon, player: Player, opponent: Player)
 # multi check must return true before multi action can be taken

@@ -2,14 +2,17 @@ from ..card import Card
 from ..attack import Attack
 from ..player import Player
 from ..pokemon import Pokemon
+from ..ability import Ability
 from ..attack_sequence import AttackSequence
 from ..data import (
     attack_trait as trait, 
     attack_bonus as bonus, 
     attack_bonus_special as bonusSpecial, 
-    status as status
+    status as status,
+    ability_trigger as trigger,
 )
 from ... import pokemon_loader as pk
+from ...abilities import get_ability
 
 from random import randint
 
@@ -25,7 +28,10 @@ def damage(attack: Attack, user: Player, opponent: Player, sequence: AttackSeque
     damage += attack.coin_damage(user.active.energy)
 
     # energy bonus
-    damage += attack.energy_damage(user.active.energy)
+    active_energy = user.active.energy.copy()
+    if user.has_status(status.JungleTotem):
+        active_energy.add('grass', user.active.energy.count('grass'))
+    damage += attack.energy_damage(active_energy)
     
     # bench type bonus
     if attack.has_trait(trait.BenchCountType):
@@ -94,6 +100,11 @@ def damage(attack: Attack, user: Player, opponent: Player, sequence: AttackSeque
     if attack.has_trait(trait.OwnDamageBonus):
         damage += user.active.max_hp - user.active.hp
 
+    #   fighting coach
+    # TODO change from a status to deal +40 for 2 fighting coach
+    if user.has_status(status.FightingCoach) and user.active.type == 'fighting':
+        damage += 20
+
     return damage
 
 def type_bonus(damage: int, active: Pokemon, opponent: Player):
@@ -105,8 +116,11 @@ def type_bonus(damage: int, active: Pokemon, opponent: Player):
     return damage
 
 def will_ko(damage: int, active: Pokemon, taker: Pokemon) -> bool:
-    # TODO ability modification
-
+    if taker.has_ability():
+        ability = Ability(get_ability(taker.id))
+        if ability.has_trigger(trigger.Defend):
+            damage -= ability.func(trigger.Defend)(active, taker)
+    
     if taker.hp <= damage:
         return True
     
@@ -116,10 +130,14 @@ def attack(damage: int, user: Pokemon, taker: Pokemon):
     """
     Damages the given pokemon based on the attacker and total damage
     """
-    if damage == 0:
-        return
+    if damage <= 0: return
 
-    # TODO abilities etc.
+    if taker.has_ability():
+        ability = Ability(get_ability(taker.id))
+        if ability.has_trigger(trigger.Defend):
+            damage -= ability.func(trigger.Defend)(user, taker)
+
+    if damage <= 0: return
 
     taker.damage(damage)
 
@@ -136,8 +154,8 @@ def outcome(damage: int, attack: Attack, player: Player, opponent: Player):
 
     # self status
     o_status = attack.try_get_bonus(bonus.Status)
-    if not o_status is None:
-        if o_status in status.active_status:
+    if not o_status == None:
+        if o_status in status.pokemon_status:
             player.active.add_status(o_status)
 
     # healing

@@ -2,13 +2,16 @@ from ..attack_sequence import AttackSequence, AttackData
 from ..pokemon import Pokemon
 from ..player import Player
 from ..attack import Attack
+from ..ability import Ability
 from ..data import (
     attack_trait as trait, 
     attack_bonus as bonus, 
-    status as status
+    status as status,
+    ability_trigger as trigger
 )
 from . import attacker as attacker
 from ...pokemon_moves import special_move
+from ...abilities import get_ability
 
 from random import randint, choice
 
@@ -52,7 +55,7 @@ def switch_active(player: Player):
     # reset status'
     old_active.status = []
 
-def try_play_pokemon(player: Player, pokemon: Pokemon) -> bool:
+def try_play_pokemon(player: Player, pokemon: Pokemon, opponent: Player) -> bool:
     """
     Attempts to play the given pokemon card.
 
@@ -69,18 +72,21 @@ def try_play_pokemon(player: Player, pokemon: Pokemon) -> bool:
         return True
     
     # check if active or bench contains pre-evolution
-    for target in player.all_pokemon():
+    all_pokemon = player.all_pokemon() if not player.has_status(status.NoActiveEvolution) else player.bench_pokemon()
+    for target in all_pokemon:
         target_is_pre_evo = target.name == pokemon.pre_evo
         target_already_evolved = player.already_evolved(target.uid)
 
         if target_is_pre_evo and not target_already_evolved:
             player.track_evolution(target.uid)
             target.evolve(pokemon)
+            player_turn_ability(pokemon, player, opponent)
+            player.reset_uid_ability(pokemon.uid)
             return True
 
     return False
 
-def start_turn(player: Player):
+def start_turn(player: Player, opponent: Player):
     """
     Handles the start of a player's turn.
     """
@@ -88,12 +94,26 @@ def start_turn(player: Player):
     # active status'
     player.active.handle_status_turn_start()
 
-    # TODO player status'
+    # player status'
+    player.clear_status()
+    for pokemon in player.all_pokemon():
+        player_turn_ability(pokemon, player, opponent)
+    for pokemon in opponent.all_pokemon():
+        if pokemon.has_ability():
+            ability = Ability(get_ability(pokemon.id))
+            if ability.has_trigger(trigger.OpponentTurn):
+                ability.func(trigger.OpponentTurn)(pokemon, opponent, player)
 
     # progress energy
     player.progress_energy()
 
-    # draw card
+    # TODO draw card
+
+def player_turn_ability(pokemon: Pokemon, player: Player, opponent: Player):
+    if pokemon.has_ability():
+        ability = Ability(get_ability(pokemon.id))
+        if ability.has_trigger(trigger.PlayerTurn):
+            ability.func(trigger.PlayerTurn)(pokemon, player, opponent)
 
 def turn_actions(player: Player, opponent: Player, first_turn:bool=False):
     """
@@ -120,17 +140,47 @@ def turn_actions(player: Player, opponent: Player, first_turn:bool=False):
 
     while True:
         # attach energy once per turn
-        if not player.current_energy is None:
+        if not player.current_energy == None:
             player.active.energy.add(player.current_energy)
+
+            if player.active.has_ability():
+                ability = Ability(get_ability(player.active.id))
+                if ability.has_trigger(trigger.EnergyAttached):
+                    ability.func(trigger.EnergyAttached)(player.current_energy, player.active, player, opponent)
+                if ability.has_trigger(trigger.EnergyGiven):
+                    ability.func(trigger.EnergyGiven)(player.current_energy, player.active, player, opponent)
             player.current_energy = None
             continue
 
         # TODO implement retreat
 
         # use abilities
+        used_ability = False
+        for pokemon in player.all_pokemon():
+            if not pokemon.has_ability():
+                continue
+
+            ability = Ability(get_ability(pokemon.id))
+            
+            if ability.has_trigger(trigger.Action) and not player.ability_used(pokemon.uid):
+                ability.func(trigger.Action)(pokemon, player, opponent)
+                used_ability = True
+                break
+
+            if ability.has_trigger(trigger.MultiAction):
+                if ability.func(trigger.MultiCheck)(pokemon, player, opponent):
+                    ability.func(trigger.MultiAction)(pokemon, player, opponent)
+                    used_ability = True
+                    break
+
+        if used_ability:
+            ko_points()
+            if player.has_won() or opponent.has_lost() or player.has_lost() or opponent.has_won():
+                return
+            continue
 
         # if any cards in hand, try to play them
-        if try_play_cards(player):
+        if try_play_cards(player, opponent):
             continue
 
         # print("Player Hand Empty")
@@ -142,7 +192,7 @@ def turn_actions(player: Player, opponent: Player, first_turn:bool=False):
     player.reset_evolutions()
     player.reset_abilities()
 
-def try_play_cards(player: Player) -> bool:
+def try_play_cards(player: Player, opponent: Player) -> bool:
     """
     Finds a card in hand that can be used. Removes the card from hand. \\
     Returns wether or not a a card was played.
@@ -152,7 +202,7 @@ def try_play_cards(player: Player) -> bool:
     for card in player.hand:
         # pokemon
         if card.is_pokemon():
-            played = try_play_pokemon(player, card.get_pokemon())
+            played = try_play_pokemon(player, card.get_pokemon(), opponent)
 
             if played:
                 player.hand.remove(card)
@@ -188,7 +238,10 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
 
     attack = None
     for atk in attacks:
-        if atk.cost.compare(player.active.energy):
+        player_energy = player.active.energy.copy()
+        if player.has_status(status.JungleTotem):
+            player_energy.add('grass', player.active.energy.count('grass'))
+        if atk.cost.compare(player_energy):
             attack = atk
     
     return __use_attack(attack, player, opponent, sequence)
@@ -259,8 +312,13 @@ def __use_attack(attack: Attack, player: Player, opponent: Player, sequence: Att
     if attack.has_trait(trait.OppSwitchToBench):
         if opponent.bench_count() > 0:
             switch_active(opponent)
+    
+    # opponent active On-Attack 
+    if opponent.active.has_ability():
+        ability = Ability(get_ability(opponent.active.id))
+        if ability.has_trigger(trigger.Attacked):
+            ability.func(trigger.Attacked)(player.active, player, opponent)
 
-    # TODO handle KO removal in post-attack actions
     koed = False if opponent.active is None else opponent.active.is_koed()
 
     return AttackData(attack.name, player.active.uid, koed)

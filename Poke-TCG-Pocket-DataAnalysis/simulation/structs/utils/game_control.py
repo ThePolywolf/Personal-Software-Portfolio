@@ -11,7 +11,7 @@ def automated_take_turn(game: Game, debug:bool=False):
         opponent = game.p1
 
     ## TURN START
-    p_control.start_turn(player)
+    p_control.start_turn(player, opponent)
     p_control.ko_points(player, opponent)
     if not game_over(game) is None:
         return

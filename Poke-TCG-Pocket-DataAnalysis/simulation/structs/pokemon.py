@@ -131,6 +131,9 @@ class Pokemon:
         """
         return self.name[-2:].lower() == 'ex'
     
+    def has_ability(self) -> bool:
+        return not self.ability is None
+    
     def get_card_stack(self) -> list[str]:
         return self.__pre_evos + [self.id]
 

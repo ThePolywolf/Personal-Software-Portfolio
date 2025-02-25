@@ -124,6 +124,12 @@ class Player:
         """
         if uid in self.__used_abilities:
             self.__used_abilities.remove(uid)
+
+    def ability_used(self, uid: int) -> bool:
+        """
+        Checks if the given UId has already used its ability
+        """
+        return uid in self.__used_abilities
     
     def progress_energy(self):
         """

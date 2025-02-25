@@ -131,7 +131,7 @@ class EnergyPool:
         """
         if self.is_all():
             return EnergyPool(self.__all)
-        return EnergyPool(self.__energy.copy())
+        return EnergyPool({key: val for key, val in self.__energy.items()})
     
     def get_energy(self) -> dict[str, int]:
         if self.is_all():

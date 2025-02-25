@@ -5,7 +5,7 @@ ga3,2,venusaur,ivysaur,160,grass,,ggxx,mega drain,80,heal,30,,,,,,fire,3,3d
 ga4,2,venusaur EX,ivysaur,190,grass,,gxx,razor leaf,60,,,ggxx,giant bloom,100,heal,30,fire,3,4d
 ga5,0,caterpie,,50,grass,,x,find a friend,,,,,,,,,fire,1,1d
 ga6,1,metapod,caterpie,80,grass,,xx,bug bite,30,,,,,,,,fire,2,1d
-ga7,2,butterfree,metapod,120,grass,powder hear,gxx,gust,60,,,,,,,,fire,1,3d
+ga7,2,butterfree,metapod,120,grass,powder heal,gxx,gust,60,,,,,,,,fire,1,3d
 ga8,0,weedle,,50,grass,,g,sting,20,,,,,,,,fire,1,1d
 ga9,1,kakuna,weedle,80,grass,,g,bug bite,30,,,,,,,,fire,2,2d
 ga10,2,beedrill,kakuna,120,grass,,g,sharp sting,70,,,,,,,,fire,1,3d
@@ -123,7 +123,7 @@ ga121,1,haunter,gastly,80,psychic,,p,will-o-wisp,30,,,,,,,,dark,1,2d
 ga122,2,gengar,haunter,130,psychic,,p,bother,50,no support,,,,,,,dark,2,3d
 ga123,2,gengar EX,haunter,170,psychic,shadowy spellbind,ppp,spooky shot,100,,,,,,,,dark,2,4d
 ga124,0,drowzee,,70,psychic,,px,mumble,30,,,,,,,,dark,2,1d
-ga125,1,hypno,drowzee,100,psychic,sleep pendelum,ppx,psypunch,50,,,,,,,,dark,2,3d
+ga125,1,hypno,drowzee,100,psychic,sleep pendulum,ppx,psypunch,50,,,,,,,,dark,2,3d
 ga126,0,mr. mime,,80,psychic,,px,barrier attack,30,defend,20,,,,,,dark,1,2d
 ga127,0,jynx,,80,psychic,,px,psychic,30,energy,20,,,,,,dark,1,1d
 ga128,0,mewtwo,,120,psychic,,ppxx-pp,power blast,120,,,,,,,,dark,2,3d
@@ -248,7 +248,7 @@ ga257,1,starmie EX,staryu,130,water,,ww,hydro pump,90,,,,,,,,electric,0,2s
 ga258,0,articuno EX,,140,water,,wx,ice wing,40,,,www,blizzard,80,bTarget-all,10,electric,2,2s
 ga259,0,pikachu EX,,120,electric,,eee,circle circuit,0,bench-e,30,,,,,,fighting,1,2s
 ga260,0,zapdos EX,,130,electric,,e,peck,20,,,eee,thundering hurricane,0,coin-4,50,electric,1,2s
-ga261,2,gengar EX,haunter,170,psychic,shadow spellbind,ppp,spooky shot,100,,,,,,,,dark,2,2s
+ga261,2,gengar EX,haunter,170,psychic,shadowy spellbind,ppp,spooky shot,100,,,,,,,,dark,2,2s
 ga262,0,mewtwo EX,,150,psychic,,px,psychic sphere,50,,,ppxx-pp,psyshot,150,,,dark,2,2s
 ga263,1,marowak EX,cubone,140,fighting,,ff,bonerang,0,coin-2,80,,,,,,grass,1,2s
 ga264,2,machamp EX,machoke,180,fighting,,fff,mega punch,120,,,,,,,,psychic,3,2s
@@ -256,7 +256,7 @@ ga265,1,wigglytuff EX,jigglypuff,140,normal,,xxx,sleepy song,80,sleep,,,,,,,figh
 ga274,0,moltres EX,,140,fire,,r,inferno dance,,,,rxx,heat blast,70,,,electric,2,2s
 ga275,0,articuno EX,,140,water,,wx,ice wing,40,,,www,blizzard,80,bTarget-all,10,electric,2,2s
 ga276,0,zapdos EX,,130,electric,,e,peck,20,,,eee,thundering hurricane,0,coin-4,50,electric,1,2s
-ga277,2,gengar EX,haunter,170,psychic,shadow spellbind,ppp,spooky shot,100,,,,,,,,dark,2,2s
+ga277,2,gengar EX,haunter,170,psychic,shadowy spellbind,ppp,spooky shot,100,,,,,,,,dark,2,2s
 ga278,2,machamp EX,machoke,180,fighting,,fff,mega punch,120,,,,,,,,psychic,3,2s
 ga279,1,wigglytuff EX,jigglypuff,140,normal,,xxx,sleepy song,80,sleep,,,,,,,fighting,2,2s
 ga280,2,charizard EX,charmeleon,180,fire,,rxx,slash,60,,,rrxx-rr,crimson storm,200,,,water,2,3s
@@ -452,7 +452,7 @@ ss106,1,drapion,skorupi,120,dark,,ddd,cross poison,,,,,,,,,fighting,3,2d
 ss107,0,croagunk,,60,dark,,dd,group beatdown,,,,,,,,,fighting,1,1d
 ss108,1,toxicroak,croagunk,90,dark,,dd,group beatdown,,,,,,,,,fighting,2,2d
 ss109,0,darkrai,,110,dark,,ddx,dark void,60,sleep,,,,,,,grass,2,3d
-ss110,0,darkrai EX,,140,dark,,ddx,dark prism,80,,,,,,,,grass,2,4d
+ss110,0,darkrai EX,,140,dark,nightmare aura,ddx,dark prism,80,,,,,,,,grass,2,4d
 ss111,0,skarmory,,80,metal,,m,metal arms,20,hasTool,30,,,,,,electric,1,2d
 ss112,0,registeel,,110,metal,,mmm,metal claw,90,,,,,,,,fire,2,2d
 ss113,1,shieldon,armor fossil,100,metal,,mx,headbutt,50,,,,,,,,fire,2,2d
@@ -517,7 +517,7 @@ ss183,0,pachirisu EX,,120,electric,,ee,sparking gadget,40,hasTool,40,,,,,,fighti
 ss184,1,mismagius EX,misdreavus,140,psychic,,pp,magical delusion,70,confused,,,,,,,dark,1,2s
 ss185,2,gallade EX,kirlia,170,fighting,,ff,energized blade,70,energy,20,,,,,,psychic,1,2s
 ss186,1,weavile EX,sneasel,140,dark,,d,scratching nails,30,damaged,40,,,,,,grass,1,2s
-ss187,0,darkrai EX,,140,dark,,ddx,dark prism,80,,,,,,,,grass,2,2s
+ss187,0,darkrai EX,,140,dark,nightmare aura,ddx,dark prism,80,,,,,,,,grass,2,2s
 ss188,0,dialga EX,,150,metal,,mm,metallic turbo,,,,mmxx,heavy impact,100,,,fire,2,2s
 ss189,1,lickilicky EX,lickitung,160,normal,,xxxx,licking fury,100,allCoins,40,,,,,,fighting,4,2s
 ss196,1,yanmega EX,yanma,140,grass,,xxx-*,air slash,120,,,,,,,,electric,1,2s
@@ -526,7 +526,7 @@ ss198,0,pachirisu EX,,120,electric,,ee,sparking gadget,40,hasTool,40,,,,,,fighti
 ss199,1,mismagius EX,misdreavus,140,psychic,,pp,magical delusion,70,confused,,,,,,,dark,1,2s
 ss200,2,gallade EX,kirlia,170,fighting,,ff,energized blade,70,energy,20,,,,,,psychic,1,2s
 ss201,1,weavile EX,sneasel,140,dark,,d,scratching nails,30,damaged,40,,,,,,grass,1,2s
-ss202,0,darkrai EX,,140,dark,,ddx,dark prism,80,,,,,,,,grass,2,2s
+ss202,0,darkrai EX,,140,dark,nightmare aura,ddx,dark prism,80,,,,,,,,grass,2,2s
 ss203,1,lickilicky EX,lickitung,160,normal,,xxxx,licking fury,100,allCoins,40,,,,,,fighting,4,2s
 ss204,0,palkia EX,,150,water,,w,slash,30,,,wwwx-www,dimensional storm,150,bTarget-all,20,electric,2,2s
 ss205,0,dialga EX,,150,metal,,mm,metallic turbo,,,,mmxx,heavy impact,100,,,fire,2,2s

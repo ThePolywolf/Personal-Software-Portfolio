@@ -176,6 +176,14 @@ class EnergyPool:
 
         self.clean_energy()
 
+    def remove_all(self, energy:str):
+        """
+        Removes all energy of the given type, and returns the number removed
+        """
+        if energy in self.__energy:
+            return self.__energy.pop(energy)
+        return 0
+
     def add_pool(self, gain):
         """
         Adds all energy from the gain set

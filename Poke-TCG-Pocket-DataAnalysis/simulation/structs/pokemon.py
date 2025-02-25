@@ -171,10 +171,15 @@ class Pokemon:
         if self.has_status(status.Poisoned):
             self.damage(10)
 
-        to_cure = [status.Paralysis, status.Smokescreen, status.NoAttack, status.NoSupport]
+        to_cure = [status.Paralysis, status.Smokescreen, status.NoAttack, status.NoSupport, status.AttackLock]
         for s in to_cure:
             if self.has_status(s):
                 self.status.remove(s)
+
+        # attack lock start transitions to second state to last through next turn
+        if self.has_status(status.AttackLockStart):
+            self.status.remove(status.AttackLockStart)
+            self.status.append(status.AttackLock)
 
     def evolve(self, evolution):
         """

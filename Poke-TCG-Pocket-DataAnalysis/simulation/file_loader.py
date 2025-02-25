@@ -16,6 +16,19 @@ def total_evolution_count():
     """
     return evo_lines_df.shape[0]
 
+def get_evo_name(evo_id: int) -> str:
+    """
+    Returns the name of a given evolution line
+    """
+    name = "None"
+    columns = ['basic_name', 'stage1_name', 'stage2_name']
+    for col in columns:
+        cell = evo_lines_df.loc[evo_id, col]
+        if isinstance(cell, float) and np.isnan(cell):
+            return name
+        name = str(cell)
+    return name.title()
+
 def get_evolution_line(index) -> list[str]:
     """
     returns the stage progression at the given index as an ordered list from [basic, stage2]

@@ -18,7 +18,7 @@ class leaf_supply:
         pkmn = player.bench_pokemon()
 
         # TODO smart choice
-        if len(pkmn) >= 0:
+        if len(pkmn) > 0:
             r.choice(pkmn).energy.add('grass', 1)
 
         return 50
@@ -32,7 +32,7 @@ class inferno_dance:
             return 0
         
         # TODO smart choice
-        fire_energy = sum([r.choice[0, 1] for _ in range(3)])
+        fire_energy = sum([r.choice([0, 1]) for _ in range(3)])
         for _ in range(fire_energy):
             r.choice(pkmn).energy.add('fire', 1)
 
@@ -66,6 +66,8 @@ class copy_anything:
         # copy opponent's move with enough energy
         move_out = None
         for move in opponent.active.moves():
+            if move.name in ['genome hacking', 'copy anything']:
+                continue
             if move.cost.compare(player.active.energy):
                 move_out = move
 
@@ -210,58 +212,58 @@ class genome_hacking:
             if t_move.name in ['genome hacking', 'copy anything']:
                 continue
 
+            # if (0 if t_move.damage is None else t_move.damage) + t_move.bonus_damage() == 0:
+            #     continue
+
             move = t_move
 
-        if not move is None:
-            return move
-
-        return 0
+        return move
 
 moves = {
-    'ga5'     : find_a_friend,
-    'ga30'    : leaf_supply,
-    'ga47'    : inferno_dance,
-    'ga69'    : ko_crab,
-    'ga101'   : thunder_punch,
-    'ga166'   : nidoran_call_for_family,
-    'ga205'   : copy_anything,
-    'ga247'   : copy_anything,
-    'ga255'   : inferno_dance,
-    'ga274'   : inferno_dance,
-    'mi49'    : division,
-    'mi62'    : mimic,
-    'ss17'    : combee_call_for_family,
-    'ss50'    : oceanic_gift,
-    'ss75'    : mind_boost,
-    'ss76'    : supreme_blast,
-    'ss106'   : cross_poison,
-    'ss107'   : croagunk_group_beatdown,
-    'ss108'   : toxicroak_group_beatdown,
-    'ss119'   : metallic_turbo,
-    'ss129'   : buggy_beam,
-    'ss132'   : pluck,
-    'ss135'   : super_fang,
-    'ss140'   : interrupt,
-    'ss157'   : combee_call_for_family,
-    'ss162'   : oceanic_gift,
-    'ss166'   : supreme_blast,
-    'ss173'   : croagunk_group_beatdown,
-    'ss177'   : super_fang,
-    'ss188'   : metallic_turbo,
-    'ss205'   : metallic_turbo,
-    'ss207'   : metallic_turbo,
-    'pA25'    : inferno_dance,
-    'mi32'    : genome_hacking,
-    'mi77'    : genome_hacking,
-    'mi83'    : genome_hacking,
-    'mi86'    : genome_hacking,
+    'ga5.1'     : find_a_friend,
+    'ga30.1'    : leaf_supply,
+    'ga47.1'    : inferno_dance,
+    'ga69.1'    : ko_crab,
+    'ga101.1'   : thunder_punch,
+    'ga166.1'   : nidoran_call_for_family,
+    'ga205.1'   : copy_anything,
+    'ga247.1'   : copy_anything,
+    'ga255.1'   : inferno_dance,
+    'ga274.1'   : inferno_dance,
+    'mi49.1'    : division,
+    'mi62.1'    : mimic,
+    'ss17.1'    : combee_call_for_family,
+    'ss50.1'    : oceanic_gift,
+    'ss75.1'    : mind_boost,
+    'ss76.1'    : supreme_blast,
+    'ss106.1'   : cross_poison,
+    'ss107.1'   : croagunk_group_beatdown,
+    'ss108.1'   : toxicroak_group_beatdown,
+    'ss119.1'   : metallic_turbo,
+    'ss129.1'   : buggy_beam,
+    'ss132.1'   : pluck,
+    'ss135.1'   : super_fang,
+    'ss140.1'   : interrupt,
+    'ss157.1'   : combee_call_for_family,
+    'ss162.1'   : oceanic_gift,
+    'ss166.1'   : supreme_blast,
+    'ss173.1'   : croagunk_group_beatdown,
+    'ss177.1'   : super_fang,
+    'ss188.1'   : metallic_turbo,
+    'ss205.1'   : metallic_turbo,
+    'ss207.1'   : metallic_turbo,
+    'pA25.1'    : inferno_dance,
+    'mi32.2'    : genome_hacking,
+    'mi77.2'    : genome_hacking,
+    'mi83.2'    : genome_hacking,
+    'mi86.2'    : genome_hacking,
 }
 
-def special_move(card_id: str, player: Player, opponent: Player) -> (int | Attack):
+def special_move(attack: Attack, player: Player, opponent: Player) -> (int | Attack):
     """
     Returns the damage from a special move, or a new move to run instead
     """
-    move_name = f"{card_id}"
+    move_name = f"{attack.special_id}"
     if not move_name in moves:
         return 0
     

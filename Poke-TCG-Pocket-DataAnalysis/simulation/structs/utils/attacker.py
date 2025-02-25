@@ -31,12 +31,14 @@ def damage(attack: Attack, user: Player, opponent: Player, sequence: AttackSeque
     if attack.has_trait(trait.BenchCountType):
         bench_energy = attack.get_bonus(bonus.BenchCount)
         damage += user.count_bench_type(bench_energy) * attack.bonus_damage()
+    
     # bench pokemon bonus
-    elif attack.has_trait(trait.BenchCountPokemon):
+    if attack.has_trait(trait.BenchCountPokemon):
         bench_pokemon = attack.get_bonus(bonus.BenchCount)
         damage += user.count_bench_pkmn(bench_pokemon) * attack.bonus_damage()
+    
     # bench count bonus
-    elif attack.has_bonus(bonus.BenchCount):
+    if attack.has_bonus(bonus.BenchCount):
         bench_count_target = attack.get_bonus(bonus.BenchCount)
         target = opponent if bench_count_target == 'opp' else user
         damage += target.bench_count() * attack.bonus_damage()
@@ -59,7 +61,7 @@ def damage(attack: Attack, user: Player, opponent: Player, sequence: AttackSeque
 
         # bonus per opp. active energy attached
         if special == bonusSpecial.OppEnergy:
-            damage += opponent.energy_set.total() * attack.bonus_damage()
+            damage += opponent.active.energy.total() * attack.bonus_damage()
 
         # bonus against EX
         if special == bonusSpecial.OppIsEX:
@@ -73,17 +75,24 @@ def damage(attack: Attack, user: Player, opponent: Player, sequence: AttackSeque
 
         # if own pokemon was koed last opp. turn
         if special == bonusSpecial.OppJustKoed:
-            if sequence.opponent_last_attack().was_kod() == True:
+            opp_last_attack = sequence.opponent_last_attack()
+            if not opp_last_attack is None and opp_last_attack.was_kod() == True:
                 damage += attack.bonus_damage()
 
         # repeat attack bonus
         if special == bonusSpecial.RepeatAttack:
             last_attack = sequence.last_attack()
-            if last_attack.attack_name() == attack.name and last_attack.same_user(user.active.uid):
+            if not last_attack is None and last_attack.attack_name() == attack.name and last_attack.same_user(user.active.uid):
                 damage += attack.bonus_damage()
 
     #   active - if opp. active is -type
-    #   ownDamage:  bonus equal to total damage taken
+    if attack.has_bonus(bonus.ActiveType):
+        if opponent.active.type == attack.get_bonus(bonus.ActiveType):
+            damage += attack.bonus_damage()
+    
+    #   ownDamage
+    if attack.has_trait(trait.OwnDamageBonus):
+        damage += user.active.max_hp - user.active.hp
 
     return damage
 
@@ -159,6 +168,10 @@ def outcome(damage: int, attack: Attack, player: Player, opponent: Player):
                 player.active.damage(recoil)
         else:
             player.active.damage(recoil)
+
+    # attack lock
+    if attack.has_trait(trait.AttackLock):
+        player.active.add_status(status.AttackLockStart)
 
 def __opponent_outcome(attack: Attack, opponent: Player):
     # status

@@ -17,3 +17,4 @@ BenchCountType = 'bench count type'         # bonus.BenchCount is an energy type
 HealDamageDealt = 'heal dmg dealt'          # healing equal to total dealt damage to active pokemon
 SwitchToBench = 'switch to bench'           # switches the current pokemon to the bench after attack
 OppSwitchToBench = 'opp switch to bench'    # switches the opponent's pokemon to the bench after attack
+OwnDamageBonus = 'own damage bonus'         # deal extra damage based on how damaged this pokemon is

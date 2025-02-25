@@ -17,6 +17,7 @@ class Attack:
         self.damage:int = Attack.none_or_value(data['damage'])
         self.__traits:set[str] = data['traits']
         self.__bonus:dict[str, any] = data['bonus']
+        self.special_id:str = data['move_id']
 
         if self.damage is None: 
             self.__traits.add(trait.Special)
@@ -35,7 +36,8 @@ class Attack:
                 'add'       : add,
                 'damage'    : None if is_nan(pk_raw['a1damage']) else int(pk_raw['a1damage']),
                 'traits'    : traits,
-                'bonus'     : bonus
+                'bonus'     : bonus,
+                'move_id'   : f"{pk_raw['id']}.{a_num}"
             })
         elif a_num == 2:
             if is_nan(pk_raw['a2name']):
@@ -49,7 +51,8 @@ class Attack:
                 'add'       : add,
                 'damage'    : None if is_nan(pk_raw['a2damage']) else int(pk_raw['a2damage']),
                 'traits'    : traits,
-                'bonus'     : bonus
+                'bonus'     : bonus,
+                'move_id'   : f"{pk_raw['id']}.{a_num}"
             })
         else:
             return None
@@ -103,10 +106,11 @@ class Attack:
         bonus_damage: int = self.bonus_damage()
 
         #check active has bonus type
-        if not bonus_type in energy:
+        if energy.count(bonus_type) < 0:
             return 0
         
         # if not enough energy with bonus, no bonus damage
+        # includes normal type in comparison
         bonus_cost = self.cost.copy()
         bonus_cost.add(bonus_type, bonus_count)
         if not bonus_cost.compare(energy):
@@ -202,7 +206,6 @@ class Attack:
             traits.add(trait.Chance)
             b_type = b_type[1:]
 
-        # TODO change AttackLock to a status instead of a trait
         trait_dict = {
             "attackLock" : trait.AttackLock, 
             "invulnerable" : trait.Invulnerable, 
@@ -212,7 +215,8 @@ class Attack:
             "show hand" : trait.ShowHand, 
             "energy discard" : trait.EnergyDiscard,
             "toBench" : trait.SwitchToBench,
-            'oppToBench' : trait.OppSwitchToBench
+            'oppToBench' : trait.OppSwitchToBench,
+            'ownDamage' : trait.OwnDamageBonus
         }
         if b_type in trait_dict:
             traits.add(trait_dict[b_type])
@@ -278,6 +282,19 @@ class Attack:
             return traits, {bonus.Damage: bonus_value}
 
         if b_type == 'bTarget':
+            if len(splits) == 1:
+                return traits, {
+                    bonus.Target:       'bench',
+                    bonus.TargetCount:  1,
+                    bonus.Damage:       bonus_value
+                }
+
+            if splits[1] == 'self':
+                return traits, {
+                    bonus.Target:   'self_bench',
+                    bonus.Damage:   bonus_value
+                }
+
             return traits, {
                 bonus.Target:       'bench', 
                 bonus.TargetCount:  3 if splits[1] == 'all' else int(splits[1]), 
@@ -288,6 +305,13 @@ class Attack:
             return traits, {
                 bonus.Target:       'random',
                 bonus.TargetCount:  int(splits[1]),
+                bonus.Damage:       bonus_value
+            }
+        
+        # active type bonus
+        if b_type == 'active':
+            return traits, {
+                bonus.ActiveType:   full_energy_name(splits[1]),
                 bonus.Damage:       bonus_value
             }
         

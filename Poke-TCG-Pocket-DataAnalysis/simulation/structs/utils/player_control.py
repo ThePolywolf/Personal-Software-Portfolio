@@ -45,8 +45,12 @@ def switch_active(player: Player):
     # None if koed or other
     if old_active is None:
         player.bench[index] = None
-    else:
-        player.bench[index] = old_active
+        return
+    
+    player.bench[index] = old_active
+
+    # reset status'
+    old_active.status = []
 
 def try_play_pokemon(player: Player, pokemon: Pokemon) -> bool:
     """
@@ -175,7 +179,7 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
 
     # handle non-attack status
     # TODO switch NoAttack status as a removable status when benched
-    for disqualifying_status in [status.NoAttack, status.Paralysis]:
+    for disqualifying_status in [status.NoAttack, status.Paralysis, status.AttackLock]:
         if disqualifying_status in player.active.status:
             return None
 
@@ -184,10 +188,6 @@ def attack(player: Player, opponent: Player, sequence: AttackSequence) -> (None 
 
     attack = None
     for atk in attacks:
-        if atk.has_trait(trait.AttackLock):
-            if sequence.last_attack().attack_name == atk.name:
-                continue
-        
         if atk.cost.compare(player.active.energy):
             attack = atk
     
@@ -199,20 +199,22 @@ def __use_attack(attack: Attack, player: Player, opponent: Player, sequence: Att
     """
     if attack is None:
         return None
-    
-    print(f"{player.active.name} is using {attack.name}")
 
     # attack-prevention status' | Coin flip to attack at all
-    if opponent.active.has_status([status.Confused, status.Smokescreen]) and choice([0, 1]) == 0:
+    if player.active.has_status([status.Confused, status.Smokescreen]) and choice([0, 1]) == 0:
         return None
 
     # damage (direct opponent damage)
     if attack.has_trait(trait.Special):
-        special = special_move(player.active.id, player, opponent)
+        special = special_move(attack, player, opponent)
+        if special is None:
+            if attack.name == player.active.move1.name:
+                return None
+            return __use_attack(player.active.move1, player, opponent, sequence, ignore_cost=ignore_cost)
         is_attack = isinstance(special, Attack)
         if is_attack:
             ignore_cost = attack.name == 'genome hacking'
-            return __use_attack(special, player, opponent, sequence, ignore_cost=ignore_cost)
+            return __use_attack(special, player, opponent, sequence, ignore_cost=True)
         damage = special
     else:
         damage = attacker.damage(attack, player, opponent, sequence)
@@ -221,7 +223,10 @@ def __use_attack(attack: Attack, player: Player, opponent: Player, sequence: Att
         damage = attack_any(damage + attack.get_bonus(bonus.Damage), player, opponent)
 
     if attack.has_bonus(bonus.Target):
-        damage += attack_bench(attack, player)
+        if attack.get_bonus(bonus.Target) == 'self_bench':
+            attack_own_bench(attack, player)
+        else:
+            damage += attack_bench(attack, opponent)
 
     damage = attacker.type_bonus(damage, player.active, opponent)
 
@@ -245,18 +250,29 @@ def __use_attack(attack: Attack, player: Player, opponent: Player, sequence: Att
 
     # loss and gain
     player.active.energy.add_pool(attack.add)
-    if not ignore_cost: player.active.energy.remove_pool(attack.loss)
+    if not ignore_cost: 
+        player.active.energy.remove_pool(attack.loss)
 
     if attack.has_trait(trait.SwitchToBench):
         switch_active(player)
 
     if attack.has_trait(trait.OppSwitchToBench):
-        switch_active(opponent)
+        if opponent.bench_count() > 0:
+            switch_active(opponent)
 
     # TODO handle KO removal in post-attack actions
     koed = False if opponent.active is None else opponent.active.is_koed()
 
     return AttackData(attack.name, player.active.uid, koed)
+
+def attack_own_bench(attack: Attack, player: Player):
+    """
+    Attacks own bench pokemon
+    """
+    opp_bench = player.bench_pokemon()
+    # TODO sort bench by hp (max to min) to avoid KO
+    if len(opp_bench) > 0:
+        opp_bench[0].damage(attack.get_bonus(bonus.Damage))
 
 def attack_bench(attack: Attack, opponent: Player) -> int:
     """
@@ -281,18 +297,20 @@ def attack_bench(attack: Attack, opponent: Player) -> int:
             if i >= target_count: break
             opp_bench[i].damage(damage)
 
+    return 0
+
 def damage_random(target_count: int, damage: int, opponent: Player) -> int:
     """
     Damages random random opponent targets, and returns the damage to the active pokemon
     """
     damages = [0] * len(opponent.all_pokemon())
     for _ in range(target_count):
-        damages[randint(0, len(damage) - 1)] += damage
+        damages[randint(0, len(damages) - 1)] += damage
 
     active_damage = damages[0]
 
     opp_bench = opponent.bench_pokemon()
-    for i in range(opp_bench):
+    for i in range(len(opp_bench)):
         opp_bench[i].damage(damages[i + 1])
 
     return active_damage
@@ -335,6 +353,7 @@ def ko_points(player: Player, opponent: Player):
     """
     Gives points from koed player pokemon to the opponent, and removes koed pokemon
     """
+    # TODO test ko point system to make sure handled correctly
     points = 0
 
     if player.active != None and player.active.is_koed():

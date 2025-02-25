@@ -11,3 +11,4 @@ EnergyBonusCount = 'energy required'  # number of energy required to get bonus d
 BenchCount = 'bench count'      # what to count
 Special = 'special'             # special attack affectors
 Discard = 'discard'             # number of cards to discard
+ActiveType = 'active'               # opp. active is of specified type

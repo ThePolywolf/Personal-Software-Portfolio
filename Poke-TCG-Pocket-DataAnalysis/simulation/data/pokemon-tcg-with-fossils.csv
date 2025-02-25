@@ -41,7 +41,7 @@ ga39,0,growlithe,,70,fire,,xx,bite,20,,,,,,,,water,1,1d
 ga40,1,arcanine,growlithe,130,fire,,rrx,heat tackle,100,recoil,20,,,,,,water,2,3d
 ga41,1,arcanine EX,growlithe,150,fire,,rrx,inferno onrush,120,recoil,20,,,,,,water,2,4d
 ga42,0,ponyta,,60,fire,,r,flare,20,,,,,,,,water,1,1d
-ga43,1,rapidash,rapidash,100,fire,,r,fire mane,40,,,,,,,,water,1,2d
+ga43,1,rapidash,ponyta,100,fire,,r,fire mane,40,,,,,,,,water,1,2d
 ga44,0,magmar,,80,fire,,rr,magma punch,50,,,,,,,,water,2,1d
 ga45,1,flareon,eevee,120,fire,,rxx-r,flamethrower,110,,,,,,,,water,2,3d
 ga46,0,moltres,,100,fire,,rxx,sky attack,0,coin-1,130,,,,,,electric,1,3d
@@ -218,7 +218,7 @@ ga227,0,bulbasaur,,70,grass,,gx,vine whip,40,,,,,,,,fire,1,1s
 ga228,1,gloom,oddish,80,grass,,gx,drool,40,,,,,,,,fire,2,1s
 ga229,0,pinsir,,90,grass,,gg,double horn,0,coin-2,50,,,,,,fire,2,1s
 ga230,0,charmander,,60,fire,,r-r,ember,30,,,,,,,,water,1,1s
-ga231,1,rapidash,rapidash,100,fire,,r,fire mane,40,,,,,,,,water,1,1s
+ga231,1,rapidash,ponyta,100,fire,,r,fire mane,40,,,,,,,,water,1,1s
 ga232,0,squirtle,,60,water,,w,water gun,20,,,,,,,,electric,1,1s
 ga233,1,gyarados,magikarp,150,water,,wwww,hyper beam,100,energy discard,,,,,,,electric,4,1s
 ga234,0,lapras,,100,water,,w,hydro pump,20,water-3,70,,,,,,electric,2,1s

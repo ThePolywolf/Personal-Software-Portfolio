@@ -73,12 +73,6 @@ class EnergySet:
         """
         return len(self.__energy)
     
-    def total(self) -> int:
-        """
-        Returns the total energy count
-        """
-        return sum([count for _, count in self.__energy.items()])
-    
     def add(self, to_add: str):
         """
         Add the given addition to the set
@@ -128,7 +122,7 @@ class EnergyPool:
         """
         if self.is_all():
             return 0 if self.__all != name else 1
-        if not self.has_energy(name): return 0
+        if not self.has_energy(name, 1): return 0
         return self.__energy[name]
     
     def copy(self):
@@ -204,6 +198,11 @@ class EnergyPool:
         # Removing all of a single type
         if cost.is_all():
             energy = [key for key in cost.get_energy()][0]
+
+            if energy == 'random':
+                self.__energy.pop(choice([name for name in self.__energy]))
+                return
+
             if energy in self.__energy:
                 self.__energy.pop(energy)
             return
@@ -212,6 +211,11 @@ class EnergyPool:
         for energy, count in cost.get_energy().items():
             if energy == 'normal':
                 normal = count
+                continue
+
+            if energy == 'random':
+                for i in range(count):
+                    self.drop_random()
                 continue
 
             self.__energy[energy] -= count
@@ -266,7 +270,7 @@ class EnergyPool:
         
         for energy, count in self.__energy.items():
             # skip normal
-            if energy == 'normal':
+            if energy in ['normal', 'random']:
                 continue
 
             if not target.has_energy(energy, count):

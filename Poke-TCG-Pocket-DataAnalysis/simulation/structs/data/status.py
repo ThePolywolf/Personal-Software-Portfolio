@@ -11,6 +11,7 @@ pokemon_status = [Sleep, Poisoned, Burned, Smokescreen, Confused, Paralysis, NoA
 
 
 Invulnerable = "invulnerable"
+AttackLockStart = "attack lock start"
 AttackLock = "attack lock"
 
 active_status = [Invulnerable, AttackLock]

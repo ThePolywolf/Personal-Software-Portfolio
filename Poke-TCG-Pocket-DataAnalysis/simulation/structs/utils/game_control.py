@@ -1,7 +1,7 @@
 from ..game import Game
 from . import player_control as p_control
 
-def automated_take_turn(game: Game):
+def automated_take_turn(game: Game, debug:bool=False):
     turn = game.turn % 2
     if turn == 0:
         player = game.p1
@@ -23,10 +23,11 @@ def automated_take_turn(game: Game):
     attack = p_control.attack(player, opponent, game.sequence)
     game.sequence.add_attack(attack)
     
-    if attack is None:
-        print("No attack")
-    else:
-        print(attack)
+    if debug:
+        if attack is None:
+            print("No attack")
+        else:
+            print(attack)
 
     ## TURN END
     p_control.end_turn(player, opponent)

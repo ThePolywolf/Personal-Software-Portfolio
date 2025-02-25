@@ -164,17 +164,19 @@ def turn_actions(player: Player, opponent: Player, first_turn:bool=False):
             
             if ability.has_trigger(trigger.Action) and not player.ability_used(pokemon.uid):
                 ability.func(trigger.Action)(pokemon, player, opponent)
+                player.use_ability(pokemon.uid)
                 used_ability = True
                 break
 
             if ability.has_trigger(trigger.MultiAction):
                 if ability.func(trigger.MultiCheck)(pokemon, player, opponent):
                     ability.func(trigger.MultiAction)(pokemon, player, opponent)
+                    player.use_ability(pokemon.uid)
                     used_ability = True
                     break
 
         if used_ability:
-            ko_points()
+            ko_points(player, opponent)
             if player.has_won() or opponent.has_lost() or player.has_lost() or opponent.has_won():
                 return
             continue
@@ -307,14 +309,15 @@ def __use_attack(attack: Attack, player: Player, opponent: Player, sequence: Att
         player.active.energy.remove_pool(attack.loss)
 
     if attack.has_trait(trait.SwitchToBench):
-        switch_active(player)
+        if player.bench_count() > 0:
+            switch_active(player)
 
     if attack.has_trait(trait.OppSwitchToBench):
         if opponent.bench_count() > 0:
             switch_active(opponent)
     
     # opponent active On-Attack 
-    if opponent.active.has_ability():
+    if not opponent.active is None and opponent.active.has_ability():
         ability = Ability(get_ability(opponent.active.id))
         if ability.has_trigger(trigger.Attacked):
             ability.func(trigger.Attacked)(player.active, player, opponent)

@@ -11,12 +11,14 @@ from random import choice
 def EMPTY(_c, _p, _o):
     ...
 
-def on_heads(function, *args):
+def on_heads(function, *args, tails=None):
     """
     Runs the given function with the given args on a successful coinflip
     """
     if choice([0, 1]) == 1:
         return function(*args)
+    
+    return tails
 
 def _heal(caller: Pokemon, amount: int):
     caller.heal(amount)
@@ -98,11 +100,11 @@ def _shadow_void_check(caller: Pokemon, player: Player, _o) -> bool:
 fragrant_flower_garden = { trigger.Action: lambda _c, player, _o: _heal_all(player, 10) }
 powder_heal =       { trigger.Action: lambda _c, player, _o: _heal_all(player, 20) }
 psy_shadow =        { trigger.Action: lambda _c, player, _o: _give_active_energy(player, 'psychic') }
-fragrance_trap =    { trigger.Action: lambda _c, _p, opponent: p_control.switch_active(opponent) }
+fragrance_trap =    { trigger.Action: lambda _c, _p, opponent: p_control.switch_active(opponent) if opponent.bench_count() > 0 else None }
 water_shuriken =    { trigger.Action: lambda _c, _p, opponent: _attack(opponent, 20) }
 sleep_pendulum =    { trigger.Action: lambda _c, _p, opponent: on_heads(_give_status, opponent.active, status.Sleep) }
 # TODO better drive-off (user's choice)
-drive_off =         { trigger.Action: lambda _c, _p, opponent: p_control.switch_active(opponent) }
+drive_off =         { trigger.Action: lambda _c, _p, opponent: p_control.switch_active(opponent) if opponent.bench_count() > 0 else None }
 # TODO implement systems and replace EMPTY calls
 data_scan =         { trigger.Action: EMPTY }
 reckless_shearing = { trigger.Action: EMPTY }
@@ -126,7 +128,7 @@ hard_coat =         { trigger.Defend: lambda _c, _o_a: 20 }
 thick_fat_piloswine = { trigger.Defend: lambda _c, o_active: 20 if _is_type(o_active, ['fire', 'water']) else 0 }
 thick_fat_mamoswine = { trigger.Defend: lambda _c, o_active: 20 if _is_type(o_active, ['fire', 'water']) else 0 }
 exoskeleton =       { trigger.Defend: lambda _c, _o_a: 20 }
-guarded_grill =     { trigger.Defend: lambda _c, _o_a: on_heads(lambda: 100) }
+guarded_grill =     { trigger.Defend: lambda _c, _o_a: on_heads(lambda: 100, tails=0) }
 
 levitate =          { trigger.Retreat: lambda caller, _p, _o: 0 if caller.energy.total() >= 0 else None }
 

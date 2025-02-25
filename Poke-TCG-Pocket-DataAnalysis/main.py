@@ -10,7 +10,7 @@ def get_battle_results():
     stats = {"player1": [], "player2": [], "result": [], "p1name": [], "p2name": []}
 
     progress = tqdm([(p1, p2) for p1 in range(file_loader.total_evolution_count()) for p2 in range(file_loader.total_evolution_count())])
-    max_count = 100000  # safety
+    max_count = 10000000  # safety
     count = 0
     for id_1, id_2 in progress:
         p1_name = file_loader.get_evo_name(id_1)

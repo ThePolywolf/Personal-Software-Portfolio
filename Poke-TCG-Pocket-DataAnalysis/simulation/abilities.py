@@ -1,5 +1,6 @@
 from .structs.player import Player
 from .structs.pokemon import Pokemon
+from .structs.ability import Ability
 from .structs.data import (
     ability_trigger as trigger,
     status as status
@@ -40,8 +41,13 @@ def _attack(target: Player, damage:int):
 def _give_status(target: (Pokemon | Player), status: str):
     target.add_status(status)
 
-def _give_active_energy(target: Player, energy:str, count:int=1):
-    target.active.energy.add(energy, count)
+def _give_energy(target: Pokemon, energy:str, player:Player, opponent:Player, count:int=1):
+    target.energy.add(energy, count)
+
+    if target.has_ability():
+        ability = get_ability(target.id)
+        if ability.has_trigger(trigger.EnergyAttached):
+            ability.energy_func(trigger.EnergyAttached)(energy, target, player, opponent)
 
 def _is_type(target: Pokemon, types: list[str]) -> bool:
     return target.type in types
@@ -97,14 +103,16 @@ def _shadow_void_check(caller: Pokemon, player: Player, _o) -> bool:
 
     return False
 
+volt_charge =       { trigger.Action: lambda caller, player, opponent: _give_energy(caller, 'electric', player, opponent) }
 fragrant_flower_garden = { trigger.Action: lambda _c, player, _o: _heal_all(player, 10) }
 powder_heal =       { trigger.Action: lambda _c, player, _o: _heal_all(player, 20) }
-psy_shadow =        { trigger.Action: lambda _c, player, _o: _give_active_energy(player, 'psychic') }
+psy_shadow =        { trigger.Action: lambda _c, player, opponent: _give_energy(player.active, 'psychic', player, opponent) }
 fragrance_trap =    { trigger.Action: lambda _c, _p, opponent: p_control.switch_active(opponent) if opponent.bench_count() > 0 else None }
 water_shuriken =    { trigger.Action: lambda _c, _p, opponent: _attack(opponent, 20) }
 sleep_pendulum =    { trigger.Action: lambda _c, _p, opponent: on_heads(_give_status, opponent.active, status.Sleep) }
 # TODO better drive-off (user's choice)
 drive_off =         { trigger.Action: lambda _c, _p, opponent: p_control.switch_active(opponent) if opponent.bench_count() > 0 else None }
+gas_leak =          { trigger.Action: lambda _c, _p, opponent: _give_status(opponent.active, status.Poisoned) }
 # TODO implement systems and replace EMPTY calls
 data_scan =         { trigger.Action: EMPTY }
 reckless_shearing = { trigger.Action: EMPTY }
@@ -151,12 +159,15 @@ id_abilities = {
     'ga61': counterattack,
     'ga67': shell_armor,
     'ga89': water_shuriken,
+    'ga98': volt_charge,
     'ga123': shadowy_spellbind,
     'ga125': sleep_pendulum,
     'ga132': psy_shadow,
+    'ga177': gas_leak,
     'ga182': hard_coat,
     'ga188': drive_off,
     'ga209': data_scan,
+    'ga243': gas_leak,
     'ga245': drive_off,
     'ga249': data_scan,
     'ga261': shadowy_spellbind,
@@ -200,5 +211,5 @@ id_abilities = {
 
 # TODO magneton ability
 
-def get_ability(id: str):
-    return id_abilities[id]
+def get_ability(id: str) -> Ability:
+    return Ability(id_abilities[id])

@@ -2,7 +2,7 @@ from ..attack_sequence import AttackSequence, AttackData
 from ..pokemon import Pokemon
 from ..player import Player
 from ..attack import Attack
-from ..ability import Ability
+from ..energy_pool import EnergyPool
 from ..data import (
     attack_trait as trait, 
     attack_bonus as bonus, 
@@ -10,8 +10,8 @@ from ..data import (
     ability_trigger as trigger
 )
 from . import attacker as attacker
+from . import ability_control as abilities
 from ...pokemon_moves import special_move
-from ...abilities import get_ability
 
 from random import randint, choice
 
@@ -80,11 +80,27 @@ def try_play_pokemon(player: Player, pokemon: Pokemon, opponent: Player) -> bool
         if target_is_pre_evo and not target_already_evolved:
             player.track_evolution(target.uid)
             target.evolve(pokemon)
-            player_turn_ability(pokemon, player, opponent)
-            player.reset_uid_ability(pokemon.uid)
+            abilities.try_trigger_func(target, trigger.PlayerTurn, target, player, opponent)
+            player.reset_uid_ability(target.uid)
             return True
 
     return False
+
+def max_energy_needed(pokemon: Pokemon) -> EnergyPool:
+    """
+    Creates an energy pool of the total energy needed by a player, max
+    """
+    moves = pokemon.moves()
+    if len(moves) == 0:
+        return EnergyPool({})
+
+    energy = pokemon.moves()[-1].cost.copy()
+
+    for attack in pokemon.moves():
+        if attack.has_bonus(bonus.EnergyBonusCount):
+            energy.add(attack.get_bonus(bonus.EnergyBonusType), attack.get_bonus(bonus.EnergyBonusCount))
+
+    return energy
 
 def start_turn(player: Player, opponent: Player):
     """
@@ -97,23 +113,14 @@ def start_turn(player: Player, opponent: Player):
     # player status'
     player.clear_status()
     for pokemon in player.all_pokemon():
-        player_turn_ability(pokemon, player, opponent)
+        abilities.try_trigger_func(pokemon, trigger.PlayerTurn, pokemon, player, opponent)
     for pokemon in opponent.all_pokemon():
-        if pokemon.has_ability():
-            ability = Ability(get_ability(pokemon.id))
-            if ability.has_trigger(trigger.OpponentTurn):
-                ability.func(trigger.OpponentTurn)(pokemon, opponent, player)
+        abilities.try_trigger_func(pokemon, trigger.OpponentTurn, pokemon, opponent, player)
 
     # progress energy
     player.progress_energy()
 
     # TODO draw card
-
-def player_turn_ability(pokemon: Pokemon, player: Player, opponent: Player):
-    if pokemon.has_ability():
-        ability = Ability(get_ability(pokemon.id))
-        if ability.has_trigger(trigger.PlayerTurn):
-            ability.func(trigger.PlayerTurn)(pokemon, player, opponent)
 
 def turn_actions(player: Player, opponent: Player, first_turn:bool=False):
     """
@@ -141,14 +148,21 @@ def turn_actions(player: Player, opponent: Player, first_turn:bool=False):
     while True:
         # attach energy once per turn
         if not player.current_energy == None:
-            player.active.energy.add(player.current_energy)
+            target = None
 
-            if player.active.has_ability():
-                ability = Ability(get_ability(player.active.id))
-                if ability.has_trigger(trigger.EnergyAttached):
-                    ability.func(trigger.EnergyAttached)(player.current_energy, player.active, player, opponent)
-                if ability.has_trigger(trigger.EnergyGiven):
-                    ability.func(trigger.EnergyGiven)(player.current_energy, player.active, player, opponent)
+            for pokemon in player.all_pokemon():
+                if not max_energy_needed(pokemon).compare(pokemon.energy):
+                    target = pokemon
+                    break
+
+            if target is None:
+                target = player.active
+
+            target.energy.add(player.current_energy)
+
+            abilities.try_trigger_func(target, trigger.EnergyAttached, player.current_energy, player.active, player, opponent)
+            abilities.try_trigger_func(target, trigger.EnergyGiven, player.current_energy, player.active, player, opponent)
+
             player.current_energy = None
             continue
 
@@ -157,23 +171,26 @@ def turn_actions(player: Player, opponent: Player, first_turn:bool=False):
         # use abilities
         used_ability = False
         for pokemon in player.all_pokemon():
-            if not pokemon.has_ability():
+            if player.ability_used(pokemon.uid):
                 continue
-
-            ability = Ability(get_ability(pokemon.id))
             
-            if ability.has_trigger(trigger.Action) and not player.ability_used(pokemon.uid):
-                ability.func(trigger.Action)(pokemon, player, opponent)
+            # standard action ability
+            result = abilities.try_trigger_func(pokemon, trigger.Action, pokemon, player, opponent)
+            if not result is None:
                 player.use_ability(pokemon.uid)
                 used_ability = True
                 break
 
-            if ability.has_trigger(trigger.MultiAction):
-                if ability.func(trigger.MultiCheck)(pokemon, player, opponent):
-                    ability.func(trigger.MultiAction)(pokemon, player, opponent)
-                    player.use_ability(pokemon.uid)
-                    used_ability = True
-                    break
+            # mutli-triggering abilities
+            multi_trigger = abilities.try_trigger_func(pokemon, trigger.MultiCheck, pokemon, player, opponent)
+            if multi_trigger is None or not multi_trigger: 
+                continue
+            
+            result = abilities.try_trigger_func(pokemon, trigger.MultiAction, pokemon, player, opponent)
+            if not result is None:
+                player.use_ability(pokemon.uid)
+                used_ability = True
+                break
 
         if used_ability:
             ko_points(player, opponent)
@@ -318,9 +335,7 @@ def __use_attack(attack: Attack, player: Player, opponent: Player, sequence: Att
     
     # opponent active On-Attack 
     if not opponent.active is None and opponent.active.has_ability():
-        ability = Ability(get_ability(opponent.active.id))
-        if ability.has_trigger(trigger.Attacked):
-            ability.func(trigger.Attacked)(player.active, player, opponent)
+        abilities.try_trigger_func(opponent.active, trigger.Attacked, player.active, player, opponent)
 
     koed = False if opponent.active is None else opponent.active.is_koed()
 

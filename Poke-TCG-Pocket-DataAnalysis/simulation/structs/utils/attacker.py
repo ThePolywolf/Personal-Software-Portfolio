@@ -2,7 +2,6 @@ from ..card import Card
 from ..attack import Attack
 from ..player import Player
 from ..pokemon import Pokemon
-from ..ability import Ability
 from ..attack_sequence import AttackSequence
 from ..data import (
     attack_trait as trait, 
@@ -11,8 +10,8 @@ from ..data import (
     status as status,
     ability_trigger as trigger,
 )
+from . import ability_control as abilities
 from ... import pokemon_loader as pk
-from ...abilities import get_ability
 
 from random import randint
 
@@ -116,10 +115,9 @@ def type_bonus(damage: int, active: Pokemon, opponent: Player):
     return damage
 
 def will_ko(damage: int, active: Pokemon, taker: Pokemon) -> bool:
-    if taker.has_ability():
-        ability = Ability(get_ability(taker.id))
-        if ability.has_trigger(trigger.Defend):
-            damage -= ability.func(trigger.Defend)(active, taker)
+    result = abilities.try_trigger_func(taker, trigger.Defend, active, taker)
+    if not result is None:
+        damage -= result
     
     if taker.hp <= damage:
         return True
@@ -130,12 +128,9 @@ def attack(damage: int, user: Pokemon, taker: Pokemon):
     """
     Damages the given pokemon based on the attacker and total damage
     """
-    if damage <= 0: return
-
-    if taker.has_ability():
-        ability = Ability(get_ability(taker.id))
-        if ability.has_trigger(trigger.Defend):
-            damage -= ability.func(trigger.Defend)(user, taker)
+    result = abilities.try_trigger_func(taker, trigger.Defend, user, taker)
+    if not result is None:
+        damage -= result
 
     if damage <= 0: return
 

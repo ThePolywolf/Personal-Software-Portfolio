@@ -96,7 +96,7 @@ ga94,0,pikachu,,60,electric,,e,gnaw,20,,,,,,,,fighting,1,1d
 ga95,1,raichu,pikachu,100,electric,,eee-[*],thunderbolt,140,,,,,,,,fighting,1,3d
 ga96,0,pikachu EX,,120,electric,,eee,circle circuit,0,bench-e,30,,,,,,fighting,1,4d
 ga97,0,magnemite,,60,electric,,e,lightning ball,20,,,,,,,,fighting,1,1d
-ga98,1,magneton,magnemite,80,electric,,exxx,spinning attack,60,,,,,,,,fighting,2,3d
+ga98,1,magneton,magnemite,80,electric,volt charge,exxx,spinning attack,60,,,,,,,,fighting,2,3d
 ga99,0,voltorb,,60,electric,,e,tackle,20,,,,,,,,fighting,1,1d
 ga100,1,electrode,voltorb,80,electric,,eee,electro ball,70,,,,,,,,fighting,0,2d
 ga101,0,electabuzz,,70,electric,,eee,thunder punch,,,,,,,,,fighting,1,1d
@@ -175,7 +175,7 @@ ga173,1,golbat,zubat,70,dark,,x,wing attack,40,,,,,,,,fighting,1,2d
 ga174,0,grimer,,70,dark,,d,poison gas,10,poison,,,,,,,fighting,3,1d
 ga175,1,muk,grimer,130,dark,,ddx,venoshock,70,poisoned,50,,,,,,fighting,3,3d
 ga176,0,koffing,,70,dark,,d,suffocating gas,20,,,,,,,,fighting,1,1d
-ga177,1,weezing,koffing,110,dark,,d,tackle,30,,,,,,,,fighting,3,3d
+ga177,1,weezing,koffing,110,dark,gas leak,d,tackle,30,,,,,,,,fighting,3,3d
 ga178,0,mawile,,70,metal,,m,crunch,20,\energy discard,,,,,,,fire,1,1d
 ga179,0,pawniard,,50,metal,,m,pierce,30,,,,,,,,fire,1,1d
 ga180,1,bisharp,pawniard,90,metal,,mm,metal claw,70,,,,,,,,fire,1,2d
@@ -230,7 +230,7 @@ ga239,0,cubone,,60,fighting,,x,growl,0,defend,20,,,,,,grass,1,1s
 ga240,2,nidoqueen,nidorina,140,dark,,ddx,lovestrike,80,bench-nidoking,50,,,,,,fighting,2,1s
 ga241,2,nidoking,nidorino,150,dark,,ddx,poison horn,90,poison,,,,,,,fighting,3,1s
 ga242,1,golbat,zubat,70,dark,,x,wing attack,40,,,,,,,,fighting,1,1s
-ga243,1,weezing,koffing,110,dark,,d,tackle,30,,,,,,,,fighting,3,1s
+ga243,1,weezing,koffing,110,dark,gas leak,d,tackle,30,,,,,,,,fighting,3,1s
 ga244,2,dragonite,dragonair,150,dragon,,wexx,draco meteor,0,random-4,50,,,,,,,3,1s
 ga245,2,pidgeot,pidgeotto,130,normal,drive off,xx,wing attack,70,,,,,,,,electric,1,1s
 ga246,0,meowth,,60,normal,,x,pay day,10,draw,1,,,,,,fighting,1,1s
@@ -248,7 +248,7 @@ ga257,1,starmie EX,staryu,130,water,,ww,hydro pump,90,,,,,,,,electric,0,2s
 ga258,0,articuno EX,,140,water,,wx,ice wing,40,,,www,blizzard,80,bTarget-all,10,electric,2,2s
 ga259,0,pikachu EX,,120,electric,,eee,circle circuit,0,bench-e,30,,,,,,fighting,1,2s
 ga260,0,zapdos EX,,130,electric,,e,peck,20,,,eee,thundering hurricane,0,coin-4,50,electric,1,2s
-ga261,2,gengar EX,haunter,170,psychic,shadowy spellbind,ppp,spooky shot,100,,,,,,,,dark,2,2s
+ga261,2,gengar EX,haunter,170,psychic,shadow spellbind,ppp,spooky shot,100,,,,,,,,dark,2,2s
 ga262,0,mewtwo EX,,150,psychic,,px,psychic sphere,50,,,ppxx-pp,psyshot,150,,,dark,2,2s
 ga263,1,marowak EX,cubone,140,fighting,,ff,bonerang,0,coin-2,80,,,,,,grass,1,2s
 ga264,2,machamp EX,machoke,180,fighting,,fff,mega punch,120,,,,,,,,psychic,3,2s
@@ -256,7 +256,7 @@ ga265,1,wigglytuff EX,jigglypuff,140,normal,,xxx,sleepy song,80,sleep,,,,,,,figh
 ga274,0,moltres EX,,140,fire,,r,inferno dance,,,,rxx,heat blast,70,,,electric,2,2s
 ga275,0,articuno EX,,140,water,,wx,ice wing,40,,,www,blizzard,80,bTarget-all,10,electric,2,2s
 ga276,0,zapdos EX,,130,electric,,e,peck,20,,,eee,thundering hurricane,0,coin-4,50,electric,1,2s
-ga277,2,gengar EX,haunter,170,psychic,shadowy spellbind,ppp,spooky shot,100,,,,,,,,dark,2,2s
+ga277,2,gengar EX,haunter,170,psychic,shadow spellbind,ppp,spooky shot,100,,,,,,,,dark,2,2s
 ga278,2,machamp EX,machoke,180,fighting,,fff,mega punch,120,,,,,,,,psychic,3,2s
 ga279,1,wigglytuff EX,jigglypuff,140,normal,,xxx,sleepy song,80,sleep,,,,,,,fighting,2,2s
 ga280,2,charizard EX,charmeleon,180,fire,,rxx,slash,60,,,rrxx-rr,crimson storm,200,,,water,2,3s

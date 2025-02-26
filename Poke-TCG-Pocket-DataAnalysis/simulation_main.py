@@ -7,7 +7,7 @@ def main():
 
     # evos = [100, 304]   # gyarados EX and Garchomp
 
-    evos = [259, 42]
+    evos = [102, 265]
 
     sim.simulate(evos[0], evos[1], debug=True)
 

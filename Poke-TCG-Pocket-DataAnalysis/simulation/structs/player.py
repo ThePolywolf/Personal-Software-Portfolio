@@ -2,16 +2,22 @@ from .card import Card
 from .energy_pool import EnergySet
 from .pokemon import Pokemon
 
+from random import choice, shuffle
+
 class Player:
     @staticmethod
-    def from_starter_and_hand(starter:Pokemon, hand:list[Card]):
+    def from_deck(deck:list[Card]):
         """
         Generates a player from a given starter and hand
         """
+        # deck must contain basics
+        basics = [card.get_pokemon() for card in deck if card.is_pokemon() and card.get_pokemon().is_basic()]
+        if len(basics) == 0:
+            raise Exception('Deck contains no basic pokemon')
         
         # get energy pool from sets by all pokemon
         energy_set = EnergySet.empty()
-        for card in [Card(starter)] + hand:
+        for card in deck:
             if card.is_pokemon():
                 energy_set.merge(card.get_pokemon().get_energy_set())
 
@@ -20,10 +26,29 @@ class Player:
         if energy_set.size() == 0:
             energy_set.add('water')
 
+        while True:
+            shuffle(deck)
+            hand = deck[:5]
+            deck = deck[5:]
+
+            basic_count = len([1 for card in hand if card.is_pokemon() and card.get_pokemon().is_basic()])
+            if basic_count > 0:
+                break
+
+        basic_index = 0
+        for card in hand:
+            if card.is_pokemon() and card.get_pokemon().is_basic():
+                break
+            basic_index += 1
+
+        starter = hand[basic_index].get_pokemon()
+        hand.remove(hand[basic_index])
+
         return Player({
             'active' : starter,
             'bench' : [None, None, None],
             'energy_pool': energy_set,
+            'deck': deck,
             'hand': hand,
         })
 
@@ -34,12 +59,13 @@ class Player:
         self.current_energy:str = None
         self.next_energy:str = None
         self.status:list[str] = []
+
+        self.deck:list[Card] = data['deck']
         self.hand:list[Card] = data['hand']
 
         self.__used_abilities: set[int] = set()
         self.__evolved_uids: set[int] = set()
 
-        # # TODO deck
         self.__points:int = 0
 
     def give_points(self, pts: int):
@@ -215,6 +241,22 @@ class Player:
         """
         bench = self.bench_pokemon()
         return sum([1 for pkmn in bench if pkmn.name == name])
+    
+    def draw_card(self):
+        """
+        Draws one card from the deck
+        """
+        if len(self.hand) >= 10:
+            return
+
+        if len(self.deck) == 0:
+            return
+        
+        self.hand += [self.deck[0]]
+        self.deck = self.deck[1:]
+
+    def shuffle_deck(self):
+        shuffle(self.deck)
 
     def print(self, indent=0):
         if len(self.hand) == 0:

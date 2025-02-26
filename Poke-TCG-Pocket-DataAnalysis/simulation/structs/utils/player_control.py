@@ -120,7 +120,7 @@ def start_turn(player: Player, opponent: Player):
     # progress energy
     player.progress_energy()
 
-    # TODO draw card
+    player.draw_card()
 
 def turn_actions(player: Player, opponent: Player, first_turn:bool=False):
     """
@@ -201,9 +201,6 @@ def turn_actions(player: Player, opponent: Player, first_turn:bool=False):
         # if any cards in hand, try to play them
         if try_play_cards(player, opponent):
             continue
-
-        # print("Player Hand Empty")
-        # print([card['data']['name'] for card in player['skipped_cards']])
 
         break
 

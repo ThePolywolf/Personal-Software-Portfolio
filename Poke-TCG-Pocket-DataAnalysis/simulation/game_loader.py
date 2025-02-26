@@ -34,4 +34,4 @@ def player_setup_from_evo_line(evo_line: list[str]) -> Player:
     hand = [Card(card) for card in hand]
     
     # generate player
-    return Player.from_starter_and_hand(starter, hand)
+    return Player.from_deck([Card(starter)] + hand)

@@ -146,6 +146,8 @@ def outcome(damage: int, attack: Attack, player: Player, opponent: Player):
     # self discard
 
     # draw
+    if attack.has_trait(trait.Draw):
+        player.draw_card()
 
     # self status
     o_status = attack.try_get_bonus(bonus.Status)
@@ -201,13 +203,14 @@ def __opponent_outcome(attack: Attack, opponent: Player):
     if attack.has_trait(trait.EnergyDiscard):
         opponent.active.energy.drop_random()
     
-    # shuffle back to deck (hand for now)
+    # shuffle back to deck
     if attack.has_trait(trait.ShufflePokemon):
         card_ids = opponent.active.get_card_stack()
         opponent.active = None
 
         for id in card_ids:
-            opponent.hand += [Card(pk.pkmn_from_data(id))]
+            opponent.deck += [Card(pk.pkmn_from_data(id))]
+            opponent.shuffle_deck()
 
 def __discard_random_energy(pokemon: list[Pokemon]):
     """

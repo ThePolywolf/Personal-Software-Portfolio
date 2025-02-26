@@ -104,7 +104,7 @@ ga102,1,jolteon,eevee,90,electric,,exxx,pin missile,0,coin-4,40,,,,,,fighting,1,
 ga103,0,zapdos,,100,electric,,eex,raging thunder,100,bTarget-self,30,,,,,,electric,1,3d
 ga104,0,zapdos EX,,130,electric,,e,peck,20,,,eee,thundering hurricane,0,coin-4,50,electric,1,4d
 ga105,0,blitzle,,60,electric,,e,zap kick,20,,,,,,,,fighting,1,1d
-ga106,1,zebstrika,blitzle,90,electric,,e,thunder spear,0,bTarget-1,30,,,,,,fighting,1,1d
+ga106,1,zebstrika,blitzle,90,electric,,e,thunder spear,0,free,30,,,,,,fighting,1,1d
 ga107,0,tynamo,,30,electric,,e,tiny charge,30,,,,,,,,fighting,1,1d
 ga108,1,eelektrik,tynamo,80,electric,,e,head bolt,40,,,,,,,,fighting,2,2d
 ga109,2,eelektross,eelektrik,140,electric,,eex,thunder fang,80,\paralysis,,,,,,,fighting,3,3d

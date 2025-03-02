@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665f0c4b319a41cdb1f7cb133fb97413, type: 3}
+  m_Name: NodeTrail_Body
+  m_EditorClassIdentifier: 
+  targetDistance: 1.44
+  positionSmoothing: 0.271
+  maxDistance: 1.73
+  minDistance: 1.2
+  jointHover: 0
+  minJointAngleDifference: 0.33
+  elasticRange: 0.75
+  rotationSmoothing: 0.275
+  scaleSize: 1.07
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.009311676
+      value: 0.5604286
+      inSlope: 1.7381173
+      outSlope: 1.7381173
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.05071316
+    - serializedVersion: 3
+      time: 0.136586
+      value: 1.0743647
+      inSlope: 0.046628803
+      outSlope: 0.046628803
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.98401517
+      value: 0.45863903
+      inSlope: -0.2976415
+      outSlope: -0.2976415
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07097798
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  offset: {x: 0, y: -4, z: 0}

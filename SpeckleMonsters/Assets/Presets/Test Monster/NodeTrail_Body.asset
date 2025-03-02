@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665f0c4b319a41cdb1f7cb133fb97413, type: 3}
   m_Name: NodeTrail_Body
   m_EditorClassIdentifier: 
-  targetDistance: 1.44
+  targetDistance: 2.08
   positionSmoothing: 0.271
   maxDistance: 1.73
   minDistance: 1.2
   jointHover: 0
-  minJointAngleDifference: 0.33
+  minJointAngleDifference: 0.36
   elasticRange: 0.75
   rotationSmoothing: 0.275
   scaleSize: 1.07
@@ -34,8 +34,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.05071316
     - serializedVersion: 3
-      time: 0.136586
-      value: 1.0743647
+      time: 0.22617798
+      value: 1.0641985
       inSlope: 0.046628803
       outSlope: 0.046628803
       tangentMode: 0
